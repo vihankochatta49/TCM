@@ -8,6 +8,16 @@ router.get("/create", (req, res) => {
   res.render("create");
 });
 
+//register route
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+
+//login route
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
 // saving blog to database
 router.post("/save", (req, res) => {
   const createDoc = async () => {

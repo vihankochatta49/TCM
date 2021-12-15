@@ -6,10 +6,16 @@ const a = require("./routes/models");
 const app = express();
 const port = 3000;
 
+//ejs engine
 app.set("view engine", "ejs");
 
+//body parser
 app.use(express.urlencoded({ extended: false }));
+
+//method override
 app.use(methodOverride("_method"));
+
+//getting routes/new.js
 app.use("/", require(path.join(__dirname, "routes/new")));
 
 // Connecting with database
