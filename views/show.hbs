@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog site</title>
+
+</head>
+<style>
+
+  body {
+    font-family: sans-serif
+  }
+  
+  .nav {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  padding: 10px;
+  margin-bottom: 25px;
+  position: relative;
+  }
+
+  .head {
+  font-size: 4rem;
+  color: black;
+  font-weight: 500;
+  font-family: monospace;
+}
+
+.btn {
+  position: absolute;
+  right: 25px;
+  font-size: 1.5em;
+  padding: 10px;
+  background-color: #7a7893;
+  border: 2px solid white;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.anchor {
+  text-decoration: white;
+  color: white;
+}
+
+.bloog {
+  margin: 0px 25px;
+}
+
+.head1 {
+  margin-bottom: 10px;
+ /* padding: 8px;*/
+}
+
+.para {
+  font-size: 1.2rem;
+ /* padding: 8px;*/
+}
+
+.like {
+  font-size: 1rem;
+  margin-top: 10px;
+  color: #7a7893;
+}
+
+code {
+  background-color: lightgray;
+  font-size: 1.3em;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+@media screen and (max-width: 640px) {
+
+  .head {
+    font-size: 2rem;
+  }
+
+  .btn {
+    font-size: 1em;
+    margin-top: 0px;
+  }
+}
+
+</style>
+
+<body>
+  <nav class="nav" style=" ">
+    <h1 class="head">Blog site</h1>
+    <button class="btn"><a class="anchor" href="/">All article</a></button><!--All article button-->
+  </nav>
+
+  <section>
+  <div class="bloog"><!--Blog section-->
+  
+    {{#with article}}
+    <h1 class="head1">{{title}}</h1><!--title-->
+    <p class="para">{{description}}</p><!--description--><hr>
+    {{{sanitizedHtml}}}<!--markdown-->
+    <p class="like"><i class="far fa-thumbs-up"></i> {{likes}}</p><!--total likes-->
+   {{/with}}
+ 
+  </div>
+  </section>
+</body>
+</html>
