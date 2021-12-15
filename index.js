@@ -6,7 +6,7 @@ const a = require("./routes/models");
 const app = express();
 const port = 3000;
 
-app.set("view engine", "hbs");
+app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));

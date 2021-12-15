@@ -193,7 +193,8 @@
 <body>
   <div class="top-bar">
     <h1 class="logo">Comments</h1>
-    <button class="btn"><a class="anchor" href="/">All article</a></button><!--All article button-->
+    <button class="btn"><a class="anchor" href="/">All article</a></button
+    ><!--All article button-->
   </div>
   <div class="blank"></div>
   <div class="send">
@@ -209,13 +210,15 @@
       </button>
     </form>
   </div>
-  <script>//script for comment section
-      {{#with art}}
-      const roomName = "{{roomName}}"
-      {{/with}}
+  <script>
+    //script for comment section
+    const roomName = "<%= art.roomName %>";
   </script>
-  <script src="http://localhost:4202/socket.io/socket.io.js">//script for comment section</script>
-  <script> //script for comment section
+  <script src="http://localhost:4202/socket.io/socket.io.js">
+    //script for comment section
+  </script>
+  <script>
+    //script for comment section
     const socket = io("http://localhost:4202");
 
     const drop = document.querySelector(".frm"); //form tag
@@ -251,7 +254,7 @@
     };
 
     const name = prompt("Enter your name to get in:", "Unknown");
-    socket.emit("new-user-joined",roomName, name);
+    socket.emit("new-user-joined", roomName, name);
 
     socket.on("recieve", (data) => {
       appendone(`${data.name}`, `${data.message}`);
