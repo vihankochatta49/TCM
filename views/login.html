@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog site</title>
+
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        font-family: sans-serif;
+      }
+
+      form {
+        max-width: 500px;
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        margin: auto;
+      }
+
+      label {
+        font-size: 2rem;
+        margin-top: 15px;
+      }
+
+      .head2 {
+        text-align: center;
+        color: black;
+        font-size: 3rem;
+        font-weight: 500;
+        margin-top: 30px;
+      }
+
+      .write {
+        padding: 8px;
+        max-width: 100%;
+        border: 2px solid #7a7893;
+        border-radius: 8px;
+        font-size: 1.5rem;
+        margin-top: 5px;
+      }
+
+      #description,
+      #markdown {
+        height: 250px;
+      }
+
+      .btns {
+        display: flex;
+        margin-top: 10px;
+      }
+
+      .btn {
+        font-size: 1.5em;
+        padding: 10px;
+        background-color: #4267b2;
+        color: white;
+        border: 2px solid white;
+        border-radius: 8px;
+        margin: 10px 0px;
+      }
+
+      .btn:hover {
+        background-color: rgb(16, 90, 16);
+      }
+
+      .btn-cancel {
+        font-size: 1.5em;
+        padding: 10px;
+        background-color: grey;
+        color: white;
+        border: 2px solid white;
+        border-radius: 8px;
+        margin-top: 10px;
+        margin-left: 10px;
+      }
+
+      .btn-cancel:hover {
+        background-color: red;
+      }
+
+      .anchor {
+        text-decoration: none;
+        color: white;
+      }
+
+      @media screen and (max-width: 640px) {
+        form {
+          margin: 10px;
+          padding: 0px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 class="head2">Login</h1>
+    <form action="/login" method="POST">
+      <!-- email -->
+      <label for="email">Email:</label>
+      <input type="text" class="write" name="email" id="email" required />
+      <!-- password -->
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        class="write"
+        name="password"
+        id="password"
+        required
+      />
+      <!-- buttons -->
+      <div class="btns">
+        <button class="btn" type="submit">Login</button>
+      </div>
+      <!--for register-->
+      <p>Don't have an account? <a href="/register">Register</a></p>
+    </form>
+  </body>
+</html>
