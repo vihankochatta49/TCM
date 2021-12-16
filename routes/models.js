@@ -13,6 +13,7 @@ const schema = new mongoose.Schema({
   roomName: String,
   slug: { type: String },
   createdAt: String,
+  blogNumber: Number,
 });
 
 //pre validation

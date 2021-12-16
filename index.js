@@ -18,6 +18,9 @@ app.use(methodOverride("_method"));
 //getting routes/new.js
 app.use("/", require(path.join(__dirname, "routes/new")));
 
+//getting routes/nav.js
+app.use("/", require(path.join(__dirname, "routes/nav")));
+
 // Connecting with database
 mongoose
   .connect("mongodb://localhost:27017/blogs")
@@ -43,39 +46,6 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", (message) => delete users[socket.id]);
-});
-
-//for comment section
-app.get("/comment/:slug", async (req, res) => {
-  const art = await a.findOne({ slug: req.params.slug });
-  if (art != null) res.render("comment", { art: art });
-  else res.redirect("/");
-});
-
-//for home page
-app.get("/", async (req, res) => {
-  const article = await a.find().sort({ date: -1 });
-  res.render("index", { article: article });
-});
-
-//for read more
-app.get("/:slug", async (req, res) => {
-  const article = await a.findOne({ slug: req.params.slug });
-  if (article != null) res.render("show", { article: article });
-  else res.redirect("/");
-});
-
-//for edit
-app.get("/edit/:slug", async (req, res) => {
-  const article = await a.findOne({ slug: req.params.slug });
-  if (article == null) res.redirect("/");
-  else res.render("edit", { article: article });
-});
-
-//for delete
-app.delete("/:id", async (req, res) => {
-  await a.findByIdAndDelete(req.params.id);
-  res.redirect("/");
 });
 
 app.listen(port, () => {

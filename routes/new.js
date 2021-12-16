@@ -9,14 +9,17 @@ router.get("/create", (req, res) => {
 });
 
 //register route
-app.get("/register", (req, res) => {
+router.get("/register", (req, res) => {
   res.render("register");
 });
 
 //login route
-app.get("/login", (req, res) => {
+router.get("/login", (req, res) => {
   res.render("login");
 });
+
+//generating 9 digit blog number
+var blogNumber = Math.floor(Math.random() * 1000000000);
 
 // saving blog to database
 router.post("/save", (req, res) => {
@@ -27,9 +30,10 @@ router.post("/save", (req, res) => {
         description: req.body.description,
         markdown: req.body.markdown,
         roomName: req.body.title,
+        blogNumber: blogNumber,
       });
       const blog = await Article.insertMany([apprec]);
-      res.redirect(`/${apprec.slug}`);
+      res.redirect(`/${apprec.slug}/${apprec.blogNumber}`);
     } catch (err) {
       console.log(err);
     }

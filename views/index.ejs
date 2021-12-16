@@ -201,7 +201,7 @@
       <h1 class="head">Blog site</h1>
       <a href="/register" style="position: absolute; right: 150px">Register</a>
       <a href="/login" style="position: absolute; right: 250px">Login</a>
-      <a class="plus" href="/create"><i class="fas fa-plus"></i></a>
+      <a href="/create" class="plus"><i class="fas fa-plus"></i></a>
     </nav>
 
     <section>
@@ -221,7 +221,9 @@
 
             <!-- read more -->
             <button class="btn">
-              <a class="anchor" href="<%= e.slug %>">Read More</a>
+              <a class="anchor" href="/<%= e.slug %>/<%= e.blogNumber %>"
+                >Read More</a
+              >
             </button>
             <p class="like"><i class="far fa-thumbs-up"></i> <%= e.likes %></p>
             <!-- no. of likes -->
@@ -229,7 +231,9 @@
             <div class="btns">
               <button class="btn-edit">
                 <!-- edit button -->
-                <a class="anchor-edit" href="/edit/<%= e.slug %>"
+                <a
+                  class="anchor-edit"
+                  href="/edit/<%= e.slug %>/<%= e.blogNumber %>"
                   ><i class="fas fa-pen"></i
                 ></a>
               </button>
@@ -255,7 +259,7 @@
               <!-- comment button -->
               <a
                 class="like-btn"
-                href="/comment/<%= e.slug %>"
+                href="/comment/<%= e.slug %>/<%= e.blogNumber %>"
                 style="margin-left: 5px"
                 ><i class="far fa-comment"></i
               ></a>
