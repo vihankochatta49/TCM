@@ -30,6 +30,12 @@
         margin: auto;
       }
 
+      .error {
+        color: red;
+        font-size: 1.5em;
+        margin-bottom: 10px;
+      }
+
       label {
         font-size: 2rem;
         margin-top: 15px;
@@ -107,11 +113,12 @@
 
   <body>
     <h1 class="head2">Register</h1>
-    <% if(typeof errors != 'undefined') { %> <% errors.forEach(function(error) {
-    %>
-    <p style="background-color: red; padding: 5px"><%= error.msg %></p>
-    <% }) %> <% } %>
     <form action="/register" method="POST">
+      <!--error messages-->
+      <% if(typeof errors != 'undefined') { %> <% errors.forEach(function(error)
+      { %>
+      <p class="error"><%= error.msg %></p>
+      <% }) %> <% } %>
       <!-- name -->
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" class="write" required />
@@ -143,5 +150,12 @@
       <!--for login-->
       <p>Already have an account? <a href="/login">Login</a></p>
     </form>
+    <script>
+      const clear = () => {
+        var errors = document.querySelectorAll(".error");
+        errors.forEach((e) => (e.style.display = "none"));
+      };
+      setTimeout(clear, 5000);
+    </script>
   </body>
 </html>

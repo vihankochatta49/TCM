@@ -4,9 +4,13 @@ const path = require("path");
 const methodOverride = require("method-override");
 const flash = require("connect-flash");
 const session = require("express-session");
+const passport = require("passport");
 const a = require("./routes/models");
 const app = express();
 const port = 3000;
+
+//passport config
+require("./config/passport")(passport);
 
 //ejs engine
 app.set("view engine", "ejs");

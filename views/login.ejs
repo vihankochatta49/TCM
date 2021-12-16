@@ -30,6 +30,12 @@
         margin: auto;
       }
 
+      .msg {
+        color: green;
+        font-size: 1.5em;
+        margin-bottom: 10px;
+      }
+
       label {
         font-size: 2rem;
         margin-top: 15px;
@@ -107,16 +113,18 @@
 
   <body>
     <h1 class="head2">Login</h1>
-    <% if(typeof errors != 'undefined') {%> <%errors.forEach(function(error) {%>
-    <p style="background-color: yellow; padding: 5px"><%=error.msg %></p>
-    <%});%> <% } %> <% if(success_msg != '') {%>
-    <p style="background-color: green; padding: 5px"><%=success_msg %></p>
-    <% } %> <% if(error_msg != '') {%>
-    <p style="background-color: red; padding: 5px"><%=error_msg %></p>
-    <% } %> <% if(error != '') {%>
-    <p style="background-color: red; padding: 5px"><%=error %></p>
-    <% } %>
     <form action="/login" method="POST">
+      <!--error and success messages-->
+      <% if(typeof errors != 'undefined') {%> <%errors.forEach(function(error)
+      {%>
+      <p class="msg" style="color: yellow"><%=error.msg %></p>
+      <%});%> <% } %> <% if(success_msg != '') {%>
+      <p class="msg" style="color: green"><%=success_msg %></p>
+      <% } %> <% if(error_msg != '') {%>
+      <p class="msg" style="color: red"><%=error_msg %></p>
+      <% } %> <% if(error != '') {%>
+      <p class="msg" style="color: red"><%=error %></p>
+      <% } %>
       <!-- email -->
       <label for="email">Email:</label>
       <input type="text" class="write" name="email" id="email" required />

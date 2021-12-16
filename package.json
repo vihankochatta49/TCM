@@ -19,6 +19,8 @@
     "markdown": "^0.5.0",
     "method-override": "^3.0.0",
     "mongoose": "^6.0.13",
+    "passport": "^0.5.1",
+    "passport-local": "^1.0.0",
     "slugify": "^1.6.3",
     "socket.io": "^4.4.0"
   }
