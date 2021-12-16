@@ -119,8 +119,10 @@
       {%>
       <p class="msg" style="color: yellow"><%=error.msg %></p>
       <%});%> <% } %> <% if(success_msg != '') {%>
+      <!--flash success message-->
       <p class="msg" style="color: green"><%=success_msg %></p>
       <% } %> <% if(error_msg != '') {%>
+      <!--flash error message-->
       <p class="msg" style="color: red"><%=error_msg %></p>
       <% } %> <% if(error != '') {%>
       <p class="msg" style="color: red"><%=error %></p>
@@ -144,5 +146,12 @@
       <!--for register-->
       <p>Don't have an account? <a href="/register">Register</a></p>
     </form>
+    <script>
+      const clear = () => {
+        var errors = document.querySelectorAll(".msg");
+        errors.forEach((e) => (e.style.display = "none"));
+      };
+      setTimeout(clear, 10000);
+    </script>
   </body>
 </html>
