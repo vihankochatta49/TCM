@@ -1,10 +1,14 @@
 const express = require("express");
 const a = require("./../routes/models");
+const userData = require("./../routes/registerModels");
 const router = express.Router();
 
 //for home page
-router.get("/", async (req, res) => {
-  const article = await a.find().sort({ date: -1 });
+router.get("/:name/:registerNumber", async (req, res) => {
+  const registerNumber = await userData.findOne({
+    registerNumber: req.params.registerNumber,
+  });
+  const article = await a.findOne({ registerNumber });
   res.render("index", { article: article });
 });
 

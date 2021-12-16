@@ -1,11 +1,15 @@
 const express = require("express");
 const Article = require("./../routes/models");
+const userData = require("./../routes/registerModels");
 const router = express.Router();
 const app = express();
 
 //for creating new blog
-router.get("/create", (req, res) => {
-  res.render("create");
+router.get("/create/:registerNumber", async (req, res) => {
+  const registeredUser = await userData.findOne({
+    registerNumber: req.params.registerNumber,
+  });
+  res.render("create", { registeredUser });
 });
 
 //register route
@@ -22,15 +26,20 @@ router.get("/login", (req, res) => {
 var blogNumber = Math.floor(Math.random() * 1000000000);
 
 // saving blog to database
-router.post("/save", (req, res) => {
+router.post("/save/:registerNumber", (req, res) => {
   const createDoc = async () => {
     try {
+      const registeredUser = await userData.findOne({
+        registerNumber: req.params.registerNumber,
+      });
       const apprec = new Article({
         title: req.body.title,
         description: req.body.description,
         markdown: req.body.markdown,
         roomName: req.body.title,
         blogNumber: blogNumber,
+        registerNumber: registeredUser.registerNumber,
+        name: registeredUser.name,
       });
       const blog = await Article.insertMany([apprec]);
       res.redirect(`/${apprec.slug}/${apprec.blogNumber}`);

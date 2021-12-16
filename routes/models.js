@@ -14,6 +14,8 @@ const schema = new mongoose.Schema({
   slug: { type: String },
   createdAt: String,
   blogNumber: Number,
+  registerNumber: Number,
+  name: String,
 });
 
 //pre validation
