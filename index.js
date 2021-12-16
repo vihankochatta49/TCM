@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require("method-override");
+const flash = require("connect-flash");
+const session = require("express-session");
 const a = require("./routes/models");
 const app = express();
 const port = 3000;
@@ -14,12 +16,6 @@ app.use(express.urlencoded({ extended: false }));
 
 //method override
 app.use(methodOverride("_method"));
-
-//getting routes/new.js
-app.use("/", require(path.join(__dirname, "routes/new")));
-
-//getting routes/nav.js
-app.use("/", require(path.join(__dirname, "routes/nav")));
 
 // Connecting with database
 mongoose
@@ -47,6 +43,37 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", (message) => delete users[socket.id]);
 });
+
+//express session
+app.use(
+  session({
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true,
+    // cookie: { secure: true }
+  })
+);
+
+//connect flash
+app.use(flash());
+
+//global vars
+app.use((req, res, next) => {
+  // res.locals variables can only be used in views render
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
+  next();
+});
+
+//getting routes/new.js
+app.use("/", require(path.join(__dirname, "routes/new")));
+
+//getting routes/nav.js
+app.use("/", require("./routes/nav"));
+
+//getting routes/register.js
+app.use("/", require("./routes/register"));
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);

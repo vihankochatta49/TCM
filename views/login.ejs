@@ -107,6 +107,15 @@
 
   <body>
     <h1 class="head2">Login</h1>
+    <% if(typeof errors != 'undefined') {%> <%errors.forEach(function(error) {%>
+    <p style="background-color: yellow; padding: 5px"><%=error.msg %></p>
+    <%});%> <% } %> <% if(success_msg != '') {%>
+    <p style="background-color: green; padding: 5px"><%=success_msg %></p>
+    <% } %> <% if(error_msg != '') {%>
+    <p style="background-color: red; padding: 5px"><%=error_msg %></p>
+    <% } %> <% if(error != '') {%>
+    <p style="background-color: red; padding: 5px"><%=error %></p>
+    <% } %>
     <form action="/login" method="POST">
       <!-- email -->
       <label for="email">Email:</label>

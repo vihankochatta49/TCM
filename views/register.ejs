@@ -107,7 +107,11 @@
 
   <body>
     <h1 class="head2">Register</h1>
-    <form action="/login" method="POST">
+    <% if(typeof errors != 'undefined') { %> <% errors.forEach(function(error) {
+    %>
+    <p style="background-color: red; padding: 5px"><%= error.msg %></p>
+    <% }) %> <% } %>
+    <form action="/register" method="POST">
       <!-- name -->
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" class="write" required />
@@ -121,6 +125,15 @@
         class="write"
         name="password"
         id="password"
+        required
+      />
+      <!--confirm password -->
+      <label for="password2">Confirm password:</label>
+      <input
+        type="password"
+        class="write"
+        name="password2"
+        id="password2"
         required
       />
       <!-- buttons -->
