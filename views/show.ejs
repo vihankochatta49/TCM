@@ -90,8 +90,10 @@
   <body>
     <nav class="nav">
       <h1 class="head">Blog site</h1>
-      <button class="btn"><a class="anchor" href="/feed">All article</a></button
-      ><!--All article button-->
+      <!--All article button-->
+      <button class="btn">
+        <a class="anchor" href="/feed">All article</a>
+      </button>
     </nav>
 
     <section>
@@ -103,7 +105,8 @@
         <!--description-->
         <p class="para"><%= article.description %></p>
         <hr />
-        <%- article.sanitizedHtml %><!--markdown-->
+        <!--markdown-->
+        <%- article.sanitizedHtml %>
         <!--total likes-->
         <p class="like">
           <i class="far fa-thumbs-up"></i> <%= article.likes %>

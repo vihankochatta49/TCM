@@ -4,14 +4,6 @@ const userData = require("./../routes/registerModels");
 const router = express.Router();
 const app = express();
 
-//for creating new blog
-router.get("/create/:registerNumber", async (req, res) => {
-  const registeredUser = await userData.findOne({
-    registerNumber: req.params.registerNumber,
-  });
-  res.render("create", { registeredUser });
-});
-
 //register route
 router.get("/register", (req, res) => {
   res.render("register");
@@ -42,7 +34,7 @@ router.post("/save/:registerNumber", (req, res) => {
         name: registeredUser.name,
       });
       const blog = await Article.insertMany([apprec]);
-      res.redirect(`/${apprec.slug}/${apprec.blogNumber}`);
+      res.redirect(`/create/${apprec.slug}/${apprec.blogNumber}`);
     } catch (err) {
       console.log(err);
     }

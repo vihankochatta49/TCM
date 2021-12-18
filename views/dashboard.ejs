@@ -199,8 +199,12 @@
   <body>
     <nav class="nav">
       <h1 class="head">Blog site</h1>
-      <a href="/register" style="position: absolute; right: 150px">Register</a>
-      <a href="/login" style="position: absolute; right: 250px">Login</a>
+      <a
+        href="/create/<%= blogs.registerNumber %>"
+        style="position: absolute; right: 150px"
+        >New article</a
+      >
+      <a href="/feed" style="position: absolute; right: 250px">Home</a>
     </nav>
 
     <section>
@@ -211,12 +215,12 @@
         <div class="bai">
           <!-- single article -->
           <div class="blog">
-            <h1 class="head1"><%= e.title %></h1>
             <!-- title -->
-            <p class="date"><%= e.createdAt %></p>
+            <h1 class="head1"><%= e.title %></h1>
             <!-- date -->
-            <p class="para"><%= e.description %></p>
+            <p class="date"><%= e.createdAt %></p>
             <!-- description -->
+            <p class="para"><%= e.description %></p>
 
             <!-- read more -->
             <button class="btn">
@@ -226,12 +230,13 @@
                 >Read More</a
               >
             </button>
-            <p class="like"><i class="far fa-thumbs-up"></i> <%= e.likes %></p>
+
             <!-- no. of likes -->
+            <p class="like"><i class="far fa-thumbs-up"></i> <%= e.likes %></p>
 
             <div class="btns">
+              <!-- edit button -->
               <button class="btn-edit">
-                <!-- edit button -->
                 <a
                   class="anchor-edit"
                   href="/edit/<%= e.slug %>/<%= e.blogNumber %>"

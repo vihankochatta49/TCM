@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const slugify = require("slugify");
 const markdown = require("markdown").markdown;
 
-//schema
+//schema for blog posts
 const schema = new mongoose.Schema({
   title: String,
   date: { type: Date, default: Date.now() },

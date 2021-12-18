@@ -119,6 +119,7 @@
       { %>
       <p class="error"><%= error.msg %></p>
       <% }) %> <% } %>
+
       <!-- name -->
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" class="write" required />
@@ -143,13 +144,17 @@
         id="password2"
         required
       />
+
       <!-- buttons -->
       <div class="btns">
         <button class="btn" type="submit">Register</button>
       </div>
+
       <!--for login-->
       <p>Already have an account? <a href="/login">Login</a></p>
     </form>
+
+    <!-- script for clearing flash/error messages-->
     <script>
       const clear = () => {
         var errors = document.querySelectorAll(".error");

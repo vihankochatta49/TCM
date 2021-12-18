@@ -16,6 +16,7 @@ router.get("/:name/:registerNumber", async (req, res) => {
   res.render("index", { article: userProfile });
 });
 
+// saving register data to db (post route)
 router.post("/register", (req, res) => {
   const { name, email, password, password2 } = req.body;
   let errors = [];
@@ -51,6 +52,7 @@ router.post("/register", (req, res) => {
               registerNumber: registerNumber,
             });
 
+            // generating hashed password
             const salt = await bcrypt.genSalt();
             const hashedPassword = await bcrypt.hash(req.body.password, salt);
             userData.password = hashedPassword;
@@ -70,8 +72,7 @@ router.post("/register", (req, res) => {
   }
 });
 
-console.log(registerNumber);
-
+//post route for login (passport authenticate)
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", {
     successRedirect: "/feed",

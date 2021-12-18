@@ -11,6 +11,14 @@ router.get("/feed", async (req, res) => {
   res.render("feed", { profile, article });
 });
 
+//for creating new blog
+router.get("/create/:registerNumber", async (req, res) => {
+  const registeredUser = await userData.findOne({
+    registerNumber: req.params.registerNumber,
+  });
+  res.render("create", { registeredUser });
+});
+
 //for read more
 router.get("/readMore/:slug/:blogNumber", async (req, res) => {
   const article = await a.findOne({ blogNumber: req.params.blogNumber });

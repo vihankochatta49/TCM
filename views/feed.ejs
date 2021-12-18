@@ -217,12 +217,12 @@
           <!-- single article -->
           <div class="blog">
             <p><%= e.registerNumber %></p>
-            <h1 class="head1"><%= e.title %></h1>
             <!-- title -->
-            <p class="date"><%= e.createdAt %></p>
+            <h1 class="head1"><%= e.title %></h1>
             <!-- date -->
-            <p class="para"><%= e.description %></p>
+            <p class="date"><%= e.createdAt %></p>
             <!-- description -->
+            <p class="para"><%= e.description %></p>
 
             <!-- read more -->
             <button class="btn">
@@ -232,8 +232,9 @@
                 >Read More</a
               >
             </button>
-            <p class="like"><i class="far fa-thumbs-up"></i> <%= e.likes %></p>
+
             <!-- no. of likes -->
+            <p class="like"><i class="far fa-thumbs-up"></i> <%= e.likes %></p>
 
             <div class="btns">
               <!-- like button -->

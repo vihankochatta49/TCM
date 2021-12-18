@@ -127,6 +127,7 @@
       <% } %> <% if(error != '') {%>
       <p class="msg" style="color: red"><%=error %></p>
       <% } %>
+
       <!-- email -->
       <label for="email">Email:</label>
       <input type="text" class="write" name="email" id="email" required />
@@ -139,13 +140,17 @@
         id="password"
         required
       />
+
       <!-- buttons -->
       <div class="btns">
         <button class="btn" type="submit">Login</button>
       </div>
+
       <!--for register-->
       <p>Don't have an account? <a href="/register">Register</a></p>
     </form>
+
+    <!--script for clearing flash and error messages-->
     <script>
       const clear = () => {
         var errors = document.querySelectorAll(".msg");

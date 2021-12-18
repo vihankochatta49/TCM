@@ -27,6 +27,7 @@ mongoose
   .then(() => console.log("Connection successful..."))
   .catch((err) => console.log(err));
 
+//profile route
 app.get("/:name/:registerNumber", async (req, res) => {
   const blogs = await a.find({
     resgisterNumber: req.params.registerNumber,
@@ -38,6 +39,7 @@ app.get("/:name/:registerNumber", async (req, res) => {
 const io = require("socket.io")(4202, { cors: { origin: "*" } });
 const users = {};
 
+//new user joined
 io.on("connection", (socket) => {
   socket.on("new-user-joined", (room, name) => {
     socket.join(room);
@@ -45,6 +47,7 @@ io.on("connection", (socket) => {
     socket.to(room).emit("user-joined", name);
   });
 
+  //user send message
   socket.on("send", (room, message) => {
     socket.to(room).emit("recieve", {
       message: message,
@@ -52,6 +55,7 @@ io.on("connection", (socket) => {
     });
   });
 
+  //user disconnected
   socket.on("disconnect", (message) => delete users[socket.id]);
 });
 
@@ -74,7 +78,6 @@ app.use(flash());
 
 //global vars
 app.use((req, res, next) => {
-  // res.locals variables can only be used in views render
   res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
   res.locals.error = req.flash("error");
