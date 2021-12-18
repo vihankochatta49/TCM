@@ -4,16 +4,15 @@ const userData = require("./../routes/registerModels");
 const router = express.Router();
 
 //for home page
-router.get("/:name/:registerNumber", async (req, res) => {
-  const registerNumber = await userData.findOne({
-    registerNumber: req.params.registerNumber,
-  });
-  const article = await a.findOne({ registerNumber });
-  res.render("index", { article: article });
+router.get("/feed", async (req, res) => {
+  console.log(req.user);
+  const profile = req.user;
+  const article = await a.find();
+  res.render("feed", { profile, article });
 });
 
 //for read more
-router.get("/:slug/:blogNumber", async (req, res) => {
+router.get("/readMore/:slug/:blogNumber", async (req, res) => {
   const article = await a.findOne({ blogNumber: req.params.blogNumber });
   if (article != null) res.render("show", { article: article });
   else res.redirect("/");

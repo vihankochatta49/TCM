@@ -74,7 +74,7 @@ router.put("/like/:id", async (req, res) => {
     await Article.updateMany(art, {
       $inc: { likes: 1 },
     });
-    res.redirect("/");
+    res.redirect("/feed");
   } catch (e) {
     console.log(e);
   }

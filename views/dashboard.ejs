@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog site</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        font-family: sans-serif;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        position: relative;
+        box-shadow: 15px 2px 2px white;
+        border-bottom: 2px solid black;
+        padding: 10px;
+        height: 70px;
+      }
+
+      .head {
+        position: absolute;
+        left: 10px;
+        font-size: 4rem;
+        color: black;
+        font-weight: 500;
+        font-family: monospace;
+      }
+
+      .plus {
+        text-decoration: none;
+        position: absolute;
+        right: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        font-size: 2rem;
+        color: #7a7893;
+        width: 50px;
+        height: 50px;
+      }
+
+      .half {
+        display: flex;
+      }
+
+      .blogs {
+        width: 60%;
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        flex-direction: column;
+        margin: 20px 10px 10px 10px;
+      }
+
+      .bai {
+        position: relative;
+        width: 95%;
+        background-color: white;
+        padding: 15px;
+        margin-top: 25px;
+      }
+
+      .blog {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .head1 {
+        width: 85%;
+        margin-bottom: 25px;
+      }
+
+      .date {
+        color: darkslategray;
+        margin-bottom: 10px;
+        font-size: 0.8rem;
+      }
+
+      .para {
+        width: 85%;
+        font-size: 1.3rem;
+      }
+
+      .like {
+        font-size: 1rem;
+        margin-top: 10px;
+        color: #7a7893;
+      }
+
+      .btns {
+        margin-top: 10px;
+        display: flex;
+      }
+
+      .btn {
+        margin: 5px 0px 0px -1px;
+        background-color: white;
+        border: 2px solid white;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .anchor {
+        color: #7a7893;
+        text-decoration: none;
+      }
+
+      .anchor:hover {
+        text-decoration: underline;
+      }
+
+      .delete {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+      }
+
+      .btn-delete {
+        background-color: white;
+        padding: 5px;
+        color: #7a7893;
+        font-size: 1.3rem;
+        border: 2px solid #fff;
+      }
+
+      .btn-delete:hover {
+        color: red;
+      }
+
+      .btn-edit {
+        position: absolute;
+        top: 7px;
+        right: 35px;
+        background-color: white;
+        border: 2px solid #fff;
+        padding: 5px;
+      }
+
+      .anchor-edit {
+        font-size: 1.3rem;
+        text-decoration: none;
+        color: #7a7893;
+      }
+
+      .anchor-edit:hover {
+        color: black;
+      }
+
+      .like-btn {
+        color: black;
+        font-size: 1.5rem;
+        background-color: white;
+        border: 2px solid white;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .like-btn:hover {
+        color: #4267b2;
+      }
+
+      @media screen and (max-width: 800px) {
+        .plus {
+          right: 5px;
+        }
+
+        .head {
+          font-size: 3rem;
+        }
+
+        .blogs {
+          width: auto;
+        }
+
+        .bai {
+          padding: 15px 10px;
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="nav">
+      <h1 class="head">Blog site</h1>
+      <a href="/register" style="position: absolute; right: 150px">Register</a>
+      <a href="/login" style="position: absolute; right: 250px">Login</a>
+    </nav>
+
+    <section>
+      <div class="blogs">
+        <!-- all articles -->
+
+        <% blogs.forEach(function (e) { %>
+        <div class="bai">
+          <!-- single article -->
+          <div class="blog">
+            <h1 class="head1"><%= e.title %></h1>
+            <!-- title -->
+            <p class="date"><%= e.createdAt %></p>
+            <!-- date -->
+            <p class="para"><%= e.description %></p>
+            <!-- description -->
+
+            <!-- read more -->
+            <button class="btn">
+              <a
+                class="anchor"
+                href="/readMore/<%= e.slug %>/<%= e.blogNumber %>"
+                >Read More</a
+              >
+            </button>
+            <p class="like"><i class="far fa-thumbs-up"></i> <%= e.likes %></p>
+            <!-- no. of likes -->
+
+            <div class="btns">
+              <button class="btn-edit">
+                <!-- edit button -->
+                <a
+                  class="anchor-edit"
+                  href="/edit/<%= e.slug %>/<%= e.blogNumber %>"
+                  ><i class="fas fa-pen"></i
+                ></a>
+              </button>
+
+              <!-- delete button -->
+              <form
+                action="/<%= e.id %>?_method=DELETE"
+                method="POST"
+                class="delete"
+              >
+                <button type="submit" class="btn-delete">
+                  <i class="far fa-trash-alt"></i>
+                </button>
+              </form>
+
+              <!-- like button -->
+              <form action="/like/<%= e.id %>?_method=PUT" method="POST">
+                <button type="submit" class="like-btn">
+                  <i class="far fa-thumbs-up"></i>
+                </button>
+              </form>
+
+              <!-- comment button -->
+              <a
+                class="like-btn"
+                href="/comment/<%= e.slug %>/<%= e.blogNumber %>"
+                style="margin-left: 5px"
+                ><i class="far fa-comment"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <%})%>
+      </div>
+    </section>
+  </body>
+</html>
