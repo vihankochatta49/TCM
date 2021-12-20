@@ -39,18 +39,16 @@
         font-family: monospace;
       }
 
-      .plus {
+      .profile {
+        color: black;
         text-decoration: none;
         position: absolute;
         right: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 100%;
-        font-size: 2rem;
+        font-size: 2.5rem;
+      }
+
+      .profile:hover {
         color: #7a7893;
-        width: 50px;
-        height: 50px;
       }
 
       .half {
@@ -81,15 +79,35 @@
         flex-direction: column;
       }
 
+      .written-by {
+        display: flex;
+        font-size: 14px;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 8px;
+        font-family: monospace;
+        font-weight: 600;
+      }
+
       .head1 {
         width: 85%;
-        margin-bottom: 25px;
+        margin-bottom: 10px;
+        color: black;
+        font-size: 2em;
+        word-spacing: -5px;
+        font-family: monospace;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .head1:hover {
+        text-decoration: underline;
       }
 
       .date {
         color: darkslategray;
-        margin-bottom: 10px;
-        font-size: 0.8rem;
+        margin: 3px 0px 8px;
+        font-size: 0.7rem;
       }
 
       .para {
@@ -114,52 +132,6 @@
         border: 2px solid white;
         border-radius: 8px;
         cursor: pointer;
-      }
-
-      .anchor {
-        color: #7a7893;
-        text-decoration: none;
-      }
-
-      .anchor:hover {
-        text-decoration: underline;
-      }
-
-      .delete {
-        position: absolute;
-        top: 5px;
-        right: 5px;
-      }
-
-      .btn-delete {
-        background-color: white;
-        padding: 5px;
-        color: #7a7893;
-        font-size: 1.3rem;
-        border: 2px solid #fff;
-      }
-
-      .btn-delete:hover {
-        color: red;
-      }
-
-      .btn-edit {
-        position: absolute;
-        top: 7px;
-        right: 35px;
-        background-color: white;
-        border: 2px solid #fff;
-        padding: 5px;
-      }
-
-      .anchor-edit {
-        font-size: 1.3rem;
-        text-decoration: none;
-        color: #7a7893;
-      }
-
-      .anchor-edit:hover {
-        color: black;
       }
 
       .like-btn {
@@ -199,13 +171,12 @@
   <body>
     <nav class="nav">
       <h1 class="head">Blog site</h1>
-      <a href="/register" style="position: absolute; right: 150px">Register</a>
-      <a href="/login" style="position: absolute; right: 250px">Login</a>
       <a
+        class="profile"
         href="/<%= profile.name %>/<%= profile.registerNumber %>"
         style="position: absolute; right: 50px"
-        >Profile</a
-      >
+        ><i class="far fa-user"></i
+      ></a>
     </nav>
 
     <section>
@@ -216,22 +187,24 @@
         <div class="bai">
           <!-- single article -->
           <div class="blog">
-            <p><%= e.registerNumber %></p>
+            <!--author name-->
+            <p class="written-by">
+              <i
+                class="far fa-user"
+                style="margin-right: 5px; font-size: 18px"
+              ></i>
+              <%= e.name %>
+            </p>
             <!-- title -->
-            <h1 class="head1"><%= e.title %></h1>
-            <!-- date -->
-            <p class="date"><%= e.createdAt %></p>
+            <a href="/readMore/<%= e.slug %>/<%= e.blogNumber %>" class="head1"
+              ><%= e.title %></a
+            >
+
             <!-- description -->
             <p class="para"><%= e.description %></p>
 
-            <!-- read more -->
-            <button class="btn">
-              <a
-                class="anchor"
-                href="/readMore/<%= e.slug %>/<%= e.blogNumber %>"
-                >Read More</a
-              >
-            </button>
+            <!-- date -->
+            <p class="date"><%= e.createdAt %></p>
 
             <!-- no. of likes -->
             <p class="like"><i class="far fa-thumbs-up"></i> <%= e.likes %></p>

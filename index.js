@@ -59,7 +59,7 @@ app.use(
     saveUninitialized: true,
     // cookie: { secure: true }
     cookie: {
-      expires: 100000000,
+      expires: 1000000000000000,
     },
   })
 );

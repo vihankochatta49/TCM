@@ -29,10 +29,11 @@ schema.pre("validate", function (next) {
 
   if (this.date) {
     var tarikh = new Date(this.date);
-    this.createdAt = tarikh.toDateString();
-    // var d = tarikh.getDate()
-    // var m = tarikh.getMonth()+1
-    // var y = tarikh.getFullYear()
+    // this.createdAt = tarikh.toDateString();
+    var d = tarikh.getDate();
+    var m = tarikh.getMonth() + 1;
+    var y = tarikh.getFullYear();
+    this.createdAt = d + "/" + m + "/" + y;
   }
   next();
 });
