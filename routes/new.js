@@ -53,7 +53,7 @@ router.put("/:id", async (req, res) => {
         markdown: req.body.markdown,
       },
     });
-    res.redirect("/");
+    res.redirect("/feed");
   } catch (err) {
     console.log(err);
   }

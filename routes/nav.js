@@ -52,7 +52,7 @@ router.get("/edit/:slug/:blogNumber", async (req, res) => {
 //for delete
 router.delete("/:id", async (req, res) => {
   await a.findByIdAndDelete(req.params.id);
-  res.redirect("/");
+  res.redirect("/feed");
 });
 
 module.exports = router;
