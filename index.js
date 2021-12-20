@@ -59,7 +59,6 @@ app.use(
     saveUninitialized: true,
     // cookie: { secure: true }
     cookie: {
-      // Session expires after 1 min of inactivity.
       expires: 100000000,
     },
   })

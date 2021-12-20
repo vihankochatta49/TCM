@@ -6,10 +6,18 @@ const router = express.Router();
 
 //for home page
 router.get("/feed", ensureAuthenticated, async (req, res) => {
-  console.log(req.user);
   const profile = req.user;
   const article = await a.find();
   res.render("feed", { profile, article });
+});
+
+//profile route
+router.get("/:name/:registerNumber", ensureAuthenticated, async (req, res) => {
+  const blogs = await a.find({
+    registerNumber: req.params.registerNumber,
+  });
+  const num = req.params.registerNumber;
+  res.render("dashboard", { blogs, num });
 });
 
 //for read more
@@ -24,15 +32,6 @@ router.get("/comment/:slug/:blogNumber", async (req, res) => {
   const art = await a.findOne({ blogNumber: req.params.blogNumber });
   if (art != null) res.render("comment", { art: art });
   else res.redirect("/");
-});
-
-//profile route
-router.get("/:name/:registerNumber", ensureAuthenticated, async (req, res) => {
-  const blogs = await a.find({
-    resgisterNumber: req.params.registerNumber,
-  });
-  const num = req.params.registerNumber;
-  res.render("dashboard", { blogs, num });
 });
 
 //for creating new blog
