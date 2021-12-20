@@ -14,11 +14,11 @@ router.get("/", (req, res) => {
   res.render("login");
 });
 
-//generating 9 digit blog number
-var blogNumber = Math.floor(Math.random() * 1000000000);
-
 // saving blog to database
 router.post("/save/:registerNumber", (req, res) => {
+  //generating 9 digit blog number
+  var blogNumber = Math.floor(Math.random() * 1000000000);
+
   const createDoc = async () => {
     try {
       const registeredUser = await userData.findOne({

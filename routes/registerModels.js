@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const slugify = require("slugify");
 
 //schema for register data
 const userSchema = new mongoose.Schema({
@@ -21,6 +22,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  slugName: String,
+});
+
+userSchema.pre("validate", function (next) {
+  if (this.name) {
+    this.slugName = slugify(this.name);
+  }
+  next();
 });
 
 module.exports = new mongoose.model("userData", userSchema);

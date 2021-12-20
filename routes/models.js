@@ -23,6 +23,7 @@ schema.pre("validate", function (next) {
   if (this.title) {
     this.slug = slugify(this.title); //slugify title for urls
   }
+
   if (this.markdown) {
     this.sanitizedHtml = markdown.toHTML(this.markdown); //converting text to raw html
   }

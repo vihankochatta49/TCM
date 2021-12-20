@@ -39,6 +39,30 @@
         font-family: monospace;
       }
 
+      .plus {
+        font-size: 2em;
+        color: #7a7893;
+        text-decoration: none;
+        position: absolute;
+        right: 30px;
+      }
+
+      .plus:hover {
+        color: black;
+      }
+
+      .home {
+        font-size: 2em;
+        color: #7a7893;
+        text-decoration: none;
+        position: absolute;
+        right: 80px;
+      }
+
+      .home:hover {
+        color: black;
+      }
+
       .profile {
         color: black;
         text-decoration: none;
@@ -184,6 +208,24 @@
         color: #4267b2;
       }
 
+      .logout {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        padding: 10px;
+        background-color: #7a7893;
+        color: white;
+        font-size: 20px;
+        border-radius: 10px;
+        text-decoration: none;
+      }
+
+      .logout:hover {
+        text-decoration: underline;
+        background-color: white;
+        color: #7a7893;
+      }
+
       @media screen and (max-width: 800px) {
         .plus {
           right: 5px;
@@ -208,14 +250,20 @@
   <body>
     <nav class="nav">
       <h1 class="head">Blog site</h1>
-      <a
-        href="/new-article/create/<%= num %>"
-        style="position: absolute; right: 150px"
-        >New article</a
-      >
-      <a href="/feed" style="position: absolute; right: 250px">Home</a>
-      <a href="/logout" style="position: absolute; right: 50px">Logout</a>
+
+      <!-- new article -->
+      <a href="/new-article/create/<%= num %>" class="plus"
+        ><i class="fas fa-plus"></i
+      ></a>
+
+      <!-- home -->
+      <a href="/feed" class="home"><i class="fas fa-home"></i></a>
     </nav>
+
+    <!-- logout -->
+    <a href="/logout" class="logout"
+      ><i class="fas fa-sign-out-alt"></i> Logout</a
+    >
 
     <section>
       <div class="blogs">

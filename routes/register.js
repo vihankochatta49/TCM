@@ -5,9 +5,6 @@ const passport = require("passport");
 const rM = require(".././routes/registerModels");
 const a = require(".././routes/models");
 
-//register number
-var registerNumber = Math.floor(Math.random() * 1000000000);
-
 // saving register data to db (post route)
 router.post("/register", (req, res) => {
   const { name, email, password, password2 } = req.body;
@@ -35,6 +32,9 @@ router.post("/register", (req, res) => {
         errors.push({ msg: "Email is already registered" });
         res.render("register", { errors, name, email, password, password2 });
       } else {
+        //register number
+        var registerNumber = Math.floor(Math.random() * 1000000000);
+
         const createDoc = async function () {
           try {
             const userData = new rM({
@@ -49,6 +49,7 @@ router.post("/register", (req, res) => {
             const hashedPassword = await bcrypt.hash(req.body.password, salt);
             userData.password = hashedPassword;
             const user = await rM.insertMany([userData]);
+            console.log(user);
             req.flash(
               "success_msg",
               "You have successfully registered and can login in"
