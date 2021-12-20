@@ -8,14 +8,6 @@ const a = require(".././routes/models");
 //register number
 var registerNumber = Math.floor(Math.random() * 1000000000);
 
-//profile route
-router.get("/:name/:registerNumber", async (req, res) => {
-  const userProfile = await rM.findOne({
-    registerNumber: req.params.registerNumber,
-  });
-  res.render("index", { article: userProfile });
-});
-
 // saving register data to db (post route)
 router.post("/register", (req, res) => {
   const { name, email, password, password2 } = req.body;
@@ -79,6 +71,13 @@ router.post("/login", (req, res, next) => {
     failureRedirect: "/login",
     failureFlash: true,
   })(req, res, next);
+});
+
+//logout handle
+router.get("/logout", (req, res) => {
+  req.logout();
+  req.flash("success_msg", "You are logged out");
+  res.redirect("/login");
 });
 
 module.exports = router;

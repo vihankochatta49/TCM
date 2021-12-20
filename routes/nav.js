@@ -1,10 +1,11 @@
 const express = require("express");
 const a = require("./../routes/models");
 const userData = require("./../routes/registerModels");
+const { ensureAuthenticated } = require("../config/auth");
 const router = express.Router();
 
 //for home page
-router.get("/feed", async (req, res) => {
+router.get("/feed", ensureAuthenticated, async (req, res) => {
   console.log(req.user);
   const profile = req.user;
   const article = await a.find();
@@ -26,7 +27,7 @@ router.get("/comment/:slug/:blogNumber", async (req, res) => {
 });
 
 //profile route
-router.get("/:name/:registerNumber", async (req, res) => {
+router.get("/:name/:registerNumber", ensureAuthenticated, async (req, res) => {
   const blogs = await a.find({
     resgisterNumber: req.params.registerNumber,
   });
