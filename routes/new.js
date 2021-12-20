@@ -34,7 +34,7 @@ router.post("/save/:registerNumber", (req, res) => {
         name: registeredUser.name,
       });
       const blog = await Article.insertMany([apprec]);
-      res.redirect(`/create/${apprec.slug}/${apprec.blogNumber}`);
+      res.redirect(`/readMore/${apprec.slug}/${apprec.blogNumber}`);
     } catch (err) {
       console.log(err);
     }

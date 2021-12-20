@@ -27,14 +27,6 @@ mongoose
   .then(() => console.log("Connection successful..."))
   .catch((err) => console.log(err));
 
-//profile route
-app.get("/:name/:registerNumber", async (req, res) => {
-  const blogs = await a.find({
-    resgisterNumber: req.params.registerNumber,
-  });
-  res.render("dashboard", { blogs });
-});
-
 // Socket connection for comments
 const io = require("socket.io")(4202, { cors: { origin: "*" } });
 const users = {};
