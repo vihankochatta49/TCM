@@ -29,37 +29,33 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
     padding: 10px;
-    width: 40%;
+    border-bottom: 2px solid;
   }
 
   .btn {
     font-size: 1.5em;
     padding: 5px 10px;
-    background-color: #7a7893;
-    border: 2px solid #7a7893;
+    border: 2px solid;
     border-radius: 8px;
-    margin-top: 10px;
   }
 
   .anchor {
     text-decoration: white;
-    color: white;
+    color: black;
   }
 
   .logo {
-    color: #f7f7f7;
+    font-weight: 500;
+    color: #000;
     font-size: 2rem;
     text-align: left;
   }
 
   .blank {
-    background-color: lightgray;
     height: 75%;
     overflow-x: hidden;
     overflow-y: auto;
-    width: 40%;
     padding: 10px;
   }
 
@@ -79,7 +75,6 @@
 
   .message {
     border-radius: 100px;
-    background-color: #333;
     outline: none;
     min-height: 35px;
     width: 75%;
@@ -87,14 +82,14 @@
     margin-right: 10px;
     border: 2px solid #333;
     font-size: 1.3rem;
-    color: white;
+    color: black;
   }
 
   .txt {
     position: relative;
     float: left;
     clear: both;
-    background-color: #fff;
+    border: 2px solid #e5e1e1;
     border-radius: 10px;
     margin-top: 20px;
     width: 45%;
@@ -107,14 +102,14 @@
     top: 2px;
     border-top: 15px solid transparent;
     border-left: none;
-    border-right: 15px solid #fff;
+    border-right: 8px solid #e5e1e1;
     border-bottom: 15px solid transparent;
   }
 
   .txtr {
     float: right;
     clear: both;
-    background-color: #fff;
+    border: 2px solid #e5e1e1;
     border-radius: 10px;
     width: 45%;
     margin-top: 20px;
@@ -128,7 +123,7 @@
     top: 2px;
     border-top: 15px solid transparent;
     border-right: none;
-    border-left: 15px solid #fff;
+    border-left: 8px solid #e5e1e1;
     border-bottom: 15px solid transparent;
   }
 
@@ -191,12 +186,26 @@
 </style>
 
 <body>
-  <div class="top-bar">
-    <h1 class="logo">Comments</h1>
-    <button class="btn"><a class="anchor" href="/feed">All article</a></button
-    ><!--All article button-->
+  <div
+    style="
+      display: flex;
+      margin: auto;
+      flex-direction: column;
+      width: 50%;
+      max-width: 100%;
+      border: 2px solid;
+      border-radius: 20px;
+      height: 80%;
+    "
+  >
+    <div class="top-bar">
+      <h1 class="logo">Comments</h1>
+      <button class="btn">
+        <a class="anchor" href="/feed"><i class="fas fa-home"></i></a></button
+      ><!--All article button-->
+    </div>
+    <div class="blank"></div>
   </div>
-  <div class="blank"></div>
   <div class="send">
     <form action="#" class="frm">
       <input
