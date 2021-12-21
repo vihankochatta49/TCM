@@ -253,7 +253,8 @@
       container.append(txtDiv);
     };
 
-    const name = prompt("Enter your name to get in:", "Unknown");
+    const name = "<%= num.name %>";
+    // const name = prompt("Enter your name to get in:", "Unknown");
     socket.emit("new-user-joined", roomName, name);
 
     socket.on("recieve", (data) => {

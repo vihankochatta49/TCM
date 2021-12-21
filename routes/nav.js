@@ -16,9 +16,26 @@ router.get("/:name/:registerNumber", ensureAuthenticated, async (req, res) => {
   const blogs = await a.find({
     registerNumber: req.params.registerNumber,
   });
-  const num = req.params.registerNumber;
+  const num = await userData.findOne({
+    registerNumber: req.params.registerNumber,
+  });
   res.render("dashboard", { blogs, num });
 });
+
+//others profile route
+router.get(
+  "/other-profile/:name/:registerNumber",
+  ensureAuthenticated,
+  async (req, res) => {
+    const blogs = await a.find({
+      registerNumber: req.params.registerNumber,
+    });
+    const num = await userData.findOne({
+      registerNumber: req.params.registerNumber,
+    });
+    res.render("otherProfile", { blogs, num });
+  }
+);
 
 //for read more
 router.get("/readMore/:slug/:blogNumber", async (req, res) => {
@@ -28,9 +45,12 @@ router.get("/readMore/:slug/:blogNumber", async (req, res) => {
 });
 
 //for comment section
-router.get("/comment/:slug/:blogNumber", async (req, res) => {
+router.get("/comment/:slug/:blogNumber/:registerNumber", async (req, res) => {
   const art = await a.findOne({ blogNumber: req.params.blogNumber });
-  if (art != null) res.render("comment", { art: art });
+  const num = await userData.findOne({
+    registerNumber: req.params.registerNumber,
+  });
+  if (art != null) res.render("comment", { art, num });
   else res.redirect("/");
 });
 

@@ -21,9 +21,10 @@
       }
 
       .nav {
+        max-width: 100%;
         display: flex;
         align-items: center;
-        position: relative;
+        justify-content: space-between;
         box-shadow: 15px 2px 2px white;
         border-bottom: 2px solid black;
         padding: 10px;
@@ -31,19 +32,74 @@
       }
 
       .head {
-        position: absolute;
-        left: 10px;
         font-size: 4rem;
         color: black;
         font-weight: 500;
         font-family: monospace;
       }
 
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        right: -15px;
+        top: 60px;
+        background-color: #2d2d2d;
+        min-width: 100px;
+        padding: 8px 0px;
+        z-index: 1;
+        border-radius: 10px;
+      }
+
+      .arrow-top:after {
+        content: " ";
+        position: absolute;
+        right: 19px;
+        top: -15px;
+        border-top: none;
+        border-right: 15px solid transparent;
+        border-left: 15px solid transparent;
+        border-bottom: 15px solid #2d2d2d;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown-content1 {
+        display: none;
+        position: absolute;
+        left: -17px;
+        top: 45px;
+        background-color: #2d2d2d;
+        min-width: 100px;
+        padding: 8px 0px;
+        z-index: 1;
+        border-radius: 10px;
+      }
+
+      .arrow-top1:after {
+        content: " ";
+        position: absolute;
+        left: 15px;
+        top: -15px;
+        border-top: none;
+        border-right: 15px solid transparent;
+        border-left: 15px solid transparent;
+        border-bottom: 15px solid #2d2d2d;
+      }
+
+      .dropdown:hover .dropdown-content1 {
+        display: block;
+      }
+
       .profile {
         color: black;
         text-decoration: none;
-        position: absolute;
-        right: 50px;
         font-size: 2.5rem;
       }
 
@@ -87,6 +143,8 @@
         margin-bottom: 8px;
         font-family: monospace;
         font-weight: 600;
+        text-decoration: none;
+        color: black;
       }
 
       .head1 {
@@ -171,12 +229,16 @@
   <body>
     <nav class="nav">
       <h1 class="head">Blog site</h1>
-      <a
-        class="profile"
-        href="/<%= profile.slugName %>/<%= profile.registerNumber %>"
-        style="position: absolute; right: 50px"
-        ><i class="far fa-user"></i
-      ></a>
+      <div class="dropdown" style="margin-right: 15px">
+        <a
+          class="profile"
+          href="/<%= profile.slugName %>/<%= profile.registerNumber %>"
+          ><i class="far fa-user"></i
+        ></a>
+        <div class="dropdown-content arrow-top">
+          <p style="text-align: center; color: white">Profile</p>
+        </div>
+      </div>
     </nav>
 
     <section>
@@ -188,13 +250,16 @@
           <!-- single article -->
           <div class="blog">
             <!--author name-->
-            <p class="written-by">
+            <a
+              href="/other-profile/<%= e.name %>/<%= e.registerNumber %>"
+              class="written-by"
+            >
               <i
                 class="far fa-user"
                 style="margin-right: 5px; font-size: 18px"
               ></i>
               <%= e.name %>
-            </p>
+            </a>
             <!-- title -->
             <a href="/readMore/<%= e.slug %>/<%= e.blogNumber %>" class="head1"
               ><%= e.title %></a
@@ -209,21 +274,38 @@
             <!-- no. of likes -->
             <p class="like"><i class="far fa-thumbs-up"></i> <%= e.likes %></p>
 
-            <div class="btns">
+            <div
+              class="btns"
+              style="
+                margin-top: 10px;
+                align-items: center;
+                justify-content: center;
+              "
+            >
               <!-- like button -->
               <form action="/like/<%= e.id %>?_method=PUT" method="POST">
-                <button type="submit" class="like-btn">
-                  <i class="far fa-thumbs-up"></i>
-                </button>
+                <div class="dropdown">
+                  <button type="submit" class="like-btn">
+                    <i class="far fa-thumbs-up"></i>
+                  </button>
+                  <div class="dropdown-content1 arrow-top1">
+                    <p style="text-align: center; color: white">Like</p>
+                  </div>
+                </div>
               </form>
 
               <!-- comment button -->
-              <a
-                class="like-btn"
-                href="/comment/<%= e.slug %>/<%= e.blogNumber %>"
-                style="margin-left: 5px"
-                ><i class="far fa-comment"></i
-              ></a>
+              <div class="dropdown">
+                <a
+                  class="like-btn"
+                  href="/comment/<%= e.slug %>/<%= e.blogNumber %>/<%= profile.registerNumber %>"
+                  style="margin-left: 5px"
+                  ><i class="far fa-comment"></i
+                ></a>
+                <div class="dropdown-content1 arrow-top1">
+                  <p style="text-align: center; color: white">Comment</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

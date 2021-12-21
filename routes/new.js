@@ -1,6 +1,7 @@
 const express = require("express");
 const Article = require("./../routes/models");
 const userData = require("./../routes/registerModels");
+const markdown = require("markdown").markdown;
 const router = express.Router();
 const app = express();
 
@@ -46,11 +47,13 @@ router.post("/save/:registerNumber", (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const art = Article.findById(req.params.id);
+
     await Article.updateMany(art, {
       $set: {
         title: req.body.title,
         description: req.body.description,
         markdown: req.body.markdown,
+        sanitizedHtml: markdown.toHTML(req.body.markdown),
       },
     });
     res.redirect("/feed");

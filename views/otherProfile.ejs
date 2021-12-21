@@ -38,13 +38,6 @@
         font-family: monospace;
       }
 
-      .plus {
-        font-size: 2em;
-        color: #7a7893;
-        text-decoration: none;
-        margin-right: 20px;
-      }
-
       .dropdown {
         position: relative;
         display: inline-block;
@@ -214,32 +207,10 @@
         cursor: pointer;
       }
 
-      .btn-delete {
-        background-color: white;
-        padding: 5px;
-        color: #7a7893;
-        font-size: 1.3rem;
-        border: 2px solid #fff;
-      }
-
-      .btn-delete:hover {
-        color: red;
-      }
-
       .btn-edit {
         background-color: white;
         border: 2px solid #fff;
         padding: 5px;
-      }
-
-      .anchor-edit {
-        font-size: 1.3rem;
-        text-decoration: none;
-        color: #7a7893;
-      }
-
-      .anchor-edit:hover {
-        color: black;
       }
 
       .like-btn {
@@ -255,32 +226,13 @@
         color: #4267b2;
       }
 
-      .logout {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        padding: 10px;
-        background-color: #7a7893;
-        color: white;
-        font-size: 20px;
-        border-radius: 10px;
-        text-decoration: none;
-      }
-
-      .logout:hover {
-        text-decoration: underline;
-        background-color: white;
-        color: #7a7893;
-      }
-
       @media screen and (max-width: 800px) {
-        .plus,
-        .home {
-          margin-right: 10px;
+        .plus {
+          right: 5px;
         }
 
         .head {
-          font-size: 2rem;
+          font-size: 3rem;
         }
 
         .blogs {
@@ -301,16 +253,6 @@
       <h1 class="head">Blog site</h1>
 
       <div class="icons">
-        <!-- new article -->
-        <div class="dropdown">
-          <a href="/new-article/create/<%= num.registerNumber %>" class="plus"
-            ><i class="fas fa-plus"></i
-          ></a>
-          <div class="dropdown-content arrow-top">
-            <p style="text-align: center; color: white">New blog</p>
-          </div>
-        </div>
-
         <!-- home -->
 
         <div class="dropdown">
@@ -326,11 +268,6 @@
       <p class="user-name"><%= num.name %></p>
       <p class="user-posts">Posts: <%= blogs.length %></p>
     </div>
-
-    <!-- logout -->
-    <a href="/logout" class="logout"
-      ><i class="fas fa-sign-out-alt"></i> Logout</a
-    >
 
     <section>
       <div class="blogs">
@@ -389,7 +326,7 @@
                 <div class="dropdown">
                   <a
                     class="like-btn"
-                    href="/comment/<%= e.slug %>/<%= e.blogNumber %>/<%= num.registerNumber %>"
+                    href="/comment/<%= e.slug %>/<%= e.blogNumber %>"
                     style="margin-left: 5px"
                     ><i class="far fa-comment"></i
                   ></a>
@@ -398,39 +335,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div class="btns">
-              <!-- edit button -->
-
-              <div class="dropdown">
-                <button class="btn-edit">
-                  <a
-                    class="anchor-edit"
-                    href="/edit/<%= e.slug %>/<%= e.blogNumber %>"
-                    ><i class="fas fa-pen"></i
-                  ></a>
-                </button>
-                <div class="dropdown-content arrow-top" style="right: -10px">
-                  <p style="text-align: center; color: white">Edit blog</p>
-                </div>
-              </div>
-
-              <!-- delete button -->
-              <form
-                action="/<%= e.id %>?_method=DELETE"
-                method="POST"
-                class="delete"
-              >
-                <div class="dropdown">
-                  <button type="submit" class="btn-delete">
-                    <i class="far fa-trash-alt"></i>
-                  </button>
-                  <div class="dropdown-content arrow-top" style="right: -18px">
-                    <p style="text-align: center; color: white">Delete blog</p>
-                  </div>
-                </div>
-              </form>
             </div>
           </div>
         </div>
