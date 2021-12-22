@@ -18,46 +18,43 @@ router.get("/", (req, res) => {
 });
 
 // saving blog to database
-router.post("/save/:registerNumber", store.array("images", 12), (req, res) => {
+router.post("/save/:registerNumber", store.single("images"), (req, res) => {
   //generating 9 digit blog number
   var blogNumber = Math.floor(Math.random() * 1000000000);
 
   const createDoc = async () => {
     try {
-      const files = req.files; //gives all files selected by user
+      const files = req.file;
 
       // convert images to base64 emcoding
-      let imgArray = files.map((file) => {
-        let img = fs.readFileSync(file.path); //this convert image into buffer
+      let img = fs.readFileSync(files.path);
+      encode_image = img.toString("base64");
 
-        return (encode_image = img.toString("base64"));
+      //create object to store data in db
+      let finalimg = {
+        filename: files.originalname,
+        contentType: files.mimetype,
+        imageBase64: encode_image,
+      };
+
+      const registeredUser = await userData.findOne({
+        registerNumber: req.params.registerNumber,
       });
 
-      let result = imgArray.map((src, index) => {
-        //create object to store data in db
-        let finalimg = {
-          filename: files[index].originalname,
-          contentType: files[index].mimetype,
-          imageBase64: src,
-        };
-
-        const registeredUser = await userData.findOne({
-          registerNumber: req.params.registerNumber,
-        });
-        const apprec = new Article({
-          title: req.body.title,
-          description: req.body.description,
-          markdown: req.body.markdown,
-          roomName: req.body.title,
-          blogNumber: blogNumber,
-          registerNumber: registeredUser.registerNumber,
-          name: registeredUser.name,
-          filename: finalimg.filename,
-          contentType: finalimg.contentType,
-          imageBase64: finalimg.imageBase64,
-        });
-        const blog = await Article.insertMany([apprec]);
+      const apprec = new Article({
+        title: req.body.title,
+        description: req.body.description,
+        markdown: req.body.markdown,
+        roomName: req.body.title,
+        blogNumber: blogNumber,
+        registerNumber: registeredUser.registerNumber,
+        name: registeredUser.name,
+        filename: finalimg.filename,
+        contentType: finalimg.contentType,
+        imageBase64: finalimg.imageBase64,
       });
+
+      const blog = await Article.insertMany([apprec]);
       res.redirect(`/readMore/${apprec.slug}/${apprec.blogNumber}`);
     } catch (err) {
       console.log(err);
@@ -67,7 +64,7 @@ router.post("/save/:registerNumber", store.array("images", 12), (req, res) => {
 });
 
 //updating blog
-router.put("/:id", async (req, res) => {
+router.put("/:id", store.single("images"), async (req, res) => {
   try {
     const art = Article.findById(req.params.id);
 

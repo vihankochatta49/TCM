@@ -400,6 +400,17 @@
               </div>
             </div>
 
+            <% if(e.imageBase64) {%>
+
+            <img
+              src="data:<%= e.contentType %>;base64,<%= e.imageBase64 %>"
+              height="150"
+              width="150"
+              style="margin: 15px"
+            />
+
+            <% } %>
+
             <div class="btns">
               <!-- edit button -->
 
