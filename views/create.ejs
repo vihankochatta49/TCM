@@ -105,7 +105,11 @@
 
   <body>
     <h1 class="head2">New Article</h1>
-    <form action="/save/<%= registeredUser.registerNumber %>" method="POST">
+    <form
+      action="/save/<%= registeredUser.registerNumber %>"
+      method="POST"
+      enctype="multipart/form-data"
+    >
       <!-- new article -->
       <label for="title">Title:</label
       ><!-- title -->
@@ -128,6 +132,7 @@
         id="markdown"
         required
       ></textarea>
+      <input type="file" name="images" />
       <div class="btns">
         <!-- buttons -->
         <button class="btn" type="submit">Save</button>

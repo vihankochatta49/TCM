@@ -4,18 +4,24 @@ const markdown = require("markdown").markdown;
 
 //schema for blog posts
 const schema = new mongoose.Schema({
+  name: String,
+  registerNumber: Number,
+  blogNumber: Number,
   title: String,
-  date: { type: Date, default: Date.now() },
+  slug: { type: String },
   description: String,
-  likes: { type: Number, default: 0 },
+  date: { type: Date, default: Date.now() },
+  createdAt: String,
   markdown: String,
   sanitizedHtml: { type: String, required: true },
+  likes: { type: Number, default: 0 },
   roomName: String,
-  slug: { type: String },
-  createdAt: String,
-  blogNumber: Number,
-  registerNumber: Number,
-  name: String,
+  filename: {
+    type: String,
+    unique: true,
+  },
+  contentType: String,
+  imageBase64: String,
 });
 
 //pre validation

@@ -1,6 +1,8 @@
 const express = require("express");
 const Article = require("./../routes/models");
 const userData = require("./../routes/registerModels");
+const fs = require("fs");
+const store = require("../middleware/multer");
 const markdown = require("markdown").markdown;
 const router = express.Router();
 const app = express();
@@ -16,25 +18,46 @@ router.get("/", (req, res) => {
 });
 
 // saving blog to database
-router.post("/save/:registerNumber", (req, res) => {
+router.post("/save/:registerNumber", store.array("images", 12), (req, res) => {
   //generating 9 digit blog number
   var blogNumber = Math.floor(Math.random() * 1000000000);
 
   const createDoc = async () => {
     try {
-      const registeredUser = await userData.findOne({
-        registerNumber: req.params.registerNumber,
+      const files = req.files; //gives all files selected by user
+
+      // convert images to base64 emcoding
+      let imgArray = files.map((file) => {
+        let img = fs.readFileSync(file.path); //this convert image into buffer
+
+        return (encode_image = img.toString("base64"));
       });
-      const apprec = new Article({
-        title: req.body.title,
-        description: req.body.description,
-        markdown: req.body.markdown,
-        roomName: req.body.title,
-        blogNumber: blogNumber,
-        registerNumber: registeredUser.registerNumber,
-        name: registeredUser.name,
+
+      let result = imgArray.map((src, index) => {
+        //create object to store data in db
+        let finalimg = {
+          filename: files[index].originalname,
+          contentType: files[index].mimetype,
+          imageBase64: src,
+        };
+
+        const registeredUser = await userData.findOne({
+          registerNumber: req.params.registerNumber,
+        });
+        const apprec = new Article({
+          title: req.body.title,
+          description: req.body.description,
+          markdown: req.body.markdown,
+          roomName: req.body.title,
+          blogNumber: blogNumber,
+          registerNumber: registeredUser.registerNumber,
+          name: registeredUser.name,
+          filename: finalimg.filename,
+          contentType: finalimg.contentType,
+          imageBase64: finalimg.imageBase64,
+        });
+        const blog = await Article.insertMany([apprec]);
       });
-      const blog = await Article.insertMany([apprec]);
       res.redirect(`/readMore/${apprec.slug}/${apprec.blogNumber}`);
     } catch (err) {
       console.log(err);
