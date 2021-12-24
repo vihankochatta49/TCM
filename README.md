@@ -44,18 +44,18 @@ User can register himself on site and his mail address and password(hashed) save
 
 All section except for feed section contain home button so user can go to feed section easily.
 
-# _Frontend backend_
+# _Frontend-Backend_
 
-_Langauges used_: html, css, javascript, node.js
+**_Langauges used_**: html, css, javascript, node.js
 
-_Database_: mongodb
+**_Database_**: mongodb
 
-_Frameworks used_: Express.js, Mongoose.js
+**_Frameworks used_**: Express.js, Mongoose.js
 
-_Templating engine_: EJS
+**_Templating engine_**: EJS
 
-_Dependancies used_: Passport.js, Bcrypt, connect-flash, Multer, Socket.io, Slugify, Markdown
+**_Dependancies used_**: Passport.js, Bcrypt, connect-flash, Multer, Socket.io, Slugify, Markdown
 
-_Modules used_: path, method-override, fs
+**_Modules used_**: path, method-override, fs
 
 
