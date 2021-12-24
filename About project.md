@@ -6,41 +6,41 @@ User can register himself on site and his mail address and password(hashed) save
 
 **_Feed page contain_**:
 
-•	All blog posts of different users
-•	Profile Section
+-	All blog posts of different users
+-	Profile Section
 
 **_A single blog contain (on feed page)_**:
 
-•	Name of the author, one can go to author profile by clicking on it.
-•	Title (given by author), one can see the markdown section by clicking on it
-•	Description (given by the author)
-•	Date on which the blog is created
-•	Number of likes
-•	Like and comment button
-•	Uploaded picture
+-	Name of the author, one can go to author profile by clicking on it.
+-	Title (given by author), one can see the markdown section by clicking on it
+-	Description (given by the author)
+-	Date on which the blog is created
+-	Number of likes
+-	Like and comment button
+-	Uploaded picture
 
 **_Profile Section_**:
 
-•	User name and other details.
-•	All the posts created by user (this posts also contain edit and delete button for editing and deleting the post)
-•	Create button(for creating new blog)
-•	Logout button
+-	User name and other details.
+-	All the posts created by user (this posts also contain edit and delete button for editing and deleting the post)
+-	Create button(for creating new blog)
+-	Logout button
 
 **_Creating new post section_**:
 
-•	Takes 4 inputs
-•	Title: Heading of blog
-•	Description
-•	Markdown: Detailed content
-•	Image
+-	Takes 4 inputs
+-	Title: Heading of blog
+-	Description
+-	Markdown: Detailed content
+-	Image
 
 **_Readmore section contain_**:
 
-•	Title
-•	Description
-•	createdAt(date)
-•	Mardown
-•	Number of likes
+-	Title
+-	Description
+-	createdAt(date)
+-	Mardown
+-	Number of likes
 
 All section except for feed section contain home button go user can go to feed section easily.
 
