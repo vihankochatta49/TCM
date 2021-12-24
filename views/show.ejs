@@ -107,16 +107,14 @@
         <!--Blog section-->
 
         <!--title-->
-        <h1 class="head1"><%= article.title %></h1>
+        <h1 class="head1"><%= blogs.title %></h1>
         <!--description-->
-        <p class="para"><%= article.description %></p>
+        <p class="para"><%= blogs.description %></p>
         <hr />
         <!--markdown-->
-        <%- article.sanitizedHtml %>
+        <%- blogs.sanitizedHtml %>
         <!--total likes-->
-        <p class="like">
-          <i class="far fa-thumbs-up"></i> <%= article.likes %>
-        </p>
+        <p class="like"><i class="far fa-thumbs-up"></i> <%= blogs.likes %></p>
       </div>
     </section>
   </body>

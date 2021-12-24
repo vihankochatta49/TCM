@@ -5,6 +5,7 @@ const markdown = require("markdown").markdown;
 //schema for blog posts
 const schema = new mongoose.Schema({
   name: String,
+  slugName: String,
   registerNumber: Number,
   blogNumber: Number,
   title: String,
@@ -27,7 +28,7 @@ const schema = new mongoose.Schema({
 //pre validation
 schema.pre("validate", function (next) {
   if (this.title) {
-    this.slug = slugify(this.title); //slugify title for urls
+    this.slug = slugify(this.title.toLowerCase()); //slugify title for urls
   }
 
   if (this.markdown) {
@@ -41,6 +42,10 @@ schema.pre("validate", function (next) {
     var m = tarikh.getMonth() + 1;
     var y = tarikh.getFullYear();
     this.createdAt = d + "/" + m + "/" + y;
+  }
+
+  if (this.name) {
+    this.slugName = slugify(this.name.toLowerCase());
   }
   next();
 });

@@ -70,14 +70,14 @@
   <body>
     <h1 class="head2">Edit Article</h1>
 
-    <form action="/<%= article.id %>?_method=PUT" method="POST">
+    <form action="/<%= blogs.id %>?_method=PUT" method="POST">
       <!-- title -->
       <label for="title">Title:</label>
       <input
         type="text"
         id="title"
         name="title"
-        value="<%= article.title %>"
+        value="<%= blogs.title %>"
         class="write"
         required
       />
@@ -90,7 +90,7 @@
         id="description"
         required
       >
-      <%= article.description %></textarea
+      <%= blogs.description %></textarea
       >
       <!-- markdown -->
       <label for="markdown">Markdown:</label>
@@ -101,7 +101,7 @@
         id="markdown"
         required
       >
-      <%= article.markdown %></textarea
+      <%= blogs.markdown %></textarea
       >
 
       <div class="btns">

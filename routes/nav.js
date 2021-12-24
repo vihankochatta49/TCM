@@ -1,82 +1,82 @@
 const express = require("express");
-const a = require("./../routes/models");
-const userData = require("./../routes/registerModels");
+const blogdb = require("./../routes/models");
+const userdb = require("./../routes/registerModels");
 const { ensureAuthenticated } = require("../config/auth");
 const router = express.Router();
 
-//for home page
+//home page route
 router.get("/feed", ensureAuthenticated, async (req, res) => {
   const profile = req.user;
-  const article = await a.find().sort({ date: -1 });
-  res.render("feed", { profile, article });
+  const blogs = await blogdb.find().sort({ date: -1 });
+  res.render("feed", { profile, blogs });
 });
 
 //profile route
 router.get("/:name/:registerNumber", ensureAuthenticated, async (req, res) => {
-  const blogs = await a
+  const profile = await userdb.findOne({
+    registerNumber: req.params.registerNumber,
+  });
+  const blogs = await blogdb
     .find({
       registerNumber: req.params.registerNumber,
     })
     .sort({ date: -1 });
-  const num = await userData.findOne({
-    registerNumber: req.params.registerNumber,
-  });
-  res.render("dashboard", { blogs, num });
+  res.render("dashboard", { blogs, profile });
 });
 
-//others profile route
+//other-profile route
 router.get(
   "/other-profile/:name/:registerNumber",
   ensureAuthenticated,
   async (req, res) => {
-    const blogs = await a.find({
+    const profile = await userdb.findOne({
       registerNumber: req.params.registerNumber,
     });
-    const num = await userData.findOne({
+    const blogs = await blogdb.find({
       registerNumber: req.params.registerNumber,
     });
-    res.render("otherProfile", { blogs, num });
+    res.render("otherProfile", { blogs, profile });
   }
 );
 
-//for read more
+//read more route
 router.get("/readMore/:slug/:blogNumber", async (req, res) => {
-  const article = await a.findOne({ blogNumber: req.params.blogNumber });
-  if (article != null) res.render("show", { article: article });
+  const blogs = await blogdb.findOne({ blogNumber: req.params.blogNumber });
+  if (blogs != null) res.render("show", { blogs });
   else res.redirect("/");
 });
 
-//for comment section
+//comment route
 router.get("/comment/:slug/:blogNumber/:registerNumber", async (req, res) => {
-  const art = await a.findOne({ blogNumber: req.params.blogNumber });
-  const num = await userData.findOne({
+  const profile = await userdb.findOne({
     registerNumber: req.params.registerNumber,
   });
-  if (art != null) res.render("comment", { art, num });
+  const blogs = await blogdb.findOne({ blogNumber: req.params.blogNumber });
+  if (blogs != null) res.render("comment", { blogs, profile });
   else res.redirect("/");
 });
 
-//for creating new blog
+//creating new blog route
 router.get("/new-article/create/:registerNumber", async (req, res) => {
-  const registeredUser = await userData.findOne({
+  const registeredUser = await userdb.findOne({
     registerNumber: req.params.registerNumber,
   });
   res.render("create", { registeredUser });
 });
 
-//for edit
+// edit route
 router.get("/edit/:slug/:blogNumber", async (req, res) => {
-  const article = await a.findOne({ blogNumber: req.params.blogNumber });
-  if (article == null) res.redirect("/");
-  else res.render("edit", { article: article });
+  const blogs = await blogdb.findOne({ blogNumber: req.params.blogNumber });
+  if (blogs == null) res.redirect("/");
+  else res.render("edit", { blogs });
 });
 
-//for delete
+// delete route
 router.delete("/:id", async (req, res) => {
-  const url = await a.findById(req.params.id);
-  const n = await userData.findOne({ registerNumber: url.registerNumber });
-  await a.findByIdAndDelete(req.params.id);
-  res.redirect(`/${n.slugName}/${url.registerNumber}`);
+  const blogdb = await blogdb.findById(req.params.id);
+  const profile = await userdb.findOne({ registerNumber: blog.registerNumber });
+  await blogdb.findByIdAndDelete(req.params.id);
+  res.redirect(`/${profile.slugName}/${blog.registerNumber}`);
 });
 
 module.exports = router;

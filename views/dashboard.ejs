@@ -256,7 +256,7 @@
       }
 
       .logout {
-        position: absolute;
+        position: fixed;
         bottom: 10px;
         right: 10px;
         padding: 10px;
@@ -303,7 +303,9 @@
       <div class="icons">
         <!-- new article -->
         <div class="dropdown">
-          <a href="/new-article/create/<%= num.registerNumber %>" class="plus"
+          <a
+            href="/new-article/create/<%= profile.registerNumber %>"
+            class="plus"
             ><i class="fas fa-plus"></i
           ></a>
           <div class="dropdown-content arrow-top">
@@ -323,14 +325,9 @@
     </nav>
 
     <div class="userInfo">
-      <p class="user-name"><%= num.name %></p>
+      <p class="user-name"><%= profile.name %></p>
       <p class="user-posts">Posts: <%= blogs.length %></p>
     </div>
-
-    <!-- logout -->
-    <a href="/logout" class="logout"
-      ><i class="fas fa-sign-out-alt"></i> Logout</a
-    >
 
     <section>
       <div class="blogs">
@@ -389,7 +386,7 @@
                 <div class="dropdown">
                   <a
                     class="like-btn"
-                    href="/comment/<%= e.slug %>/<%= e.blogNumber %>/<%= num.registerNumber %>"
+                    href="/comment/<%= e.slug %>/<%= e.blogNumber %>/<%= profile.registerNumber %>"
                     style="margin-left: 5px"
                     ><i class="far fa-comment"></i
                   ></a>
@@ -448,5 +445,9 @@
         <%})%>
       </div>
     </section>
+    <!-- logout -->
+    <a href="/logout" class="logout"
+      ><i class="fas fa-sign-out-alt"></i> Logout</a
+    >
   </body>
 </html>

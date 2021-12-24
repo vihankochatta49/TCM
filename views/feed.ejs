@@ -243,7 +243,7 @@
       <div class="blogs">
         <!-- all articles -->
 
-        <% article.forEach(function (e) { %>
+        <% blogs.forEach(function (e) { %>
         <div class="bai">
           <!-- single article -->
           <div class="blog">
@@ -253,7 +253,7 @@
               <div>
                 <!--author name-->
                 <a
-                  href="/other-profile/<%= e.name %>/<%= e.registerNumber %>"
+                  href="/other-profile/<%= e.slugName %>/<%= e.registerNumber %>"
                   class="written-by"
                 >
                   <i

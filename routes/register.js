@@ -48,8 +48,10 @@ router.post("/register", (req, res) => {
             const salt = await bcrypt.genSalt();
             const hashedPassword = await bcrypt.hash(req.body.password, salt);
             userData.password = hashedPassword;
+
+            //saving to db
             const user = await rM.insertMany([userData]);
-            console.log(user);
+
             req.flash(
               "success_msg",
               "You have successfully registered and can login in"

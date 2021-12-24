@@ -221,7 +221,7 @@
   </div>
   <script>
     //script for comment section
-    const roomName = "<%= art.roomName %>";
+    const roomName = "<%= blogs.roomName %>";
   </script>
   <script src="http://localhost:4202/socket.io/socket.io.js">
     //script for comment section
@@ -262,7 +262,7 @@
       container.append(txtDiv);
     };
 
-    const name = "<%= num.name %>";
+    const name = "<%= profile.name %>";
     // const name = prompt("Enter your name to get in:", "Unknown");
     socket.emit("new-user-joined", roomName, name);
 
