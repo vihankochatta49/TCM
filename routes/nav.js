@@ -73,7 +73,7 @@ router.get("/edit/:slug/:blogNumber", async (req, res) => {
 
 // delete route
 router.delete("/:id", async (req, res) => {
-  const blogdb = await blogdb.findById(req.params.id);
+  const blog = await blogdb.findById(req.params.id);
   const profile = await userdb.findOne({ registerNumber: blog.registerNumber });
   await blogdb.findByIdAndDelete(req.params.id);
   res.redirect(`/${profile.slugName}/${blog.registerNumber}`);
