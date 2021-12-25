@@ -1,6 +1,6 @@
 const express = require("express");
-const Article = require("./../routes/models");
-const userData = require("./../routes/registerModels");
+const blogdb = require("./../routes/models");
+const userdb = require("./../routes/registerModels");
 const fs = require("fs");
 const store = require("../config/multer");
 const markdown = require("markdown").markdown;
@@ -37,11 +37,11 @@ router.post("/save/:registerNumber", store.single("images"), (req, res) => {
         imageBase64: encode_image,
       };
 
-      const registeredUser = await userData.findOne({
+      const registeredUser = await userdb.findOne({
         registerNumber: req.params.registerNumber,
       });
 
-      const apprec = new Article({
+      const apprec = new blogdb({
         title: req.body.title,
         description: req.body.description,
         markdown: req.body.markdown,
@@ -54,7 +54,7 @@ router.post("/save/:registerNumber", store.single("images"), (req, res) => {
         imageBase64: finalimg.imageBase64,
       });
 
-      const blog = await Article.insertMany([apprec]);
+      const blog = await blogdb.insertMany([apprec]);
       res.redirect(`/readMore/${apprec.slug}/${apprec.blogNumber}`);
     } catch (err) {
       console.log(err);
@@ -66,9 +66,9 @@ router.post("/save/:registerNumber", store.single("images"), (req, res) => {
 //updating blog
 router.put("/:id", store.single("images"), async (req, res) => {
   try {
-    const art = Article.findById(req.params.id);
+    const art = blogdb.findById(req.params.id);
 
-    await Article.updateMany(art, {
+    await blogdb.updateMany(art, {
       $set: {
         title: req.body.title,
         description: req.body.description,
@@ -85,8 +85,8 @@ router.put("/:id", store.single("images"), async (req, res) => {
 //counting likes
 router.put("/like/:id", async (req, res) => {
   try {
-    const art = Article.findById(req.params.id);
-    await Article.updateMany(art, {
+    const art = blogdb.findById(req.params.id);
+    await blogdb.updateMany(art, {
       $inc: { likes: 1 },
     });
     res.redirect("/feed");
