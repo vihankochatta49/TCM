@@ -69,11 +69,18 @@
     }
 
     /* for markdown */
+
+    h1 {
+      border-bottom: 2px solid grey;
+      padding-bottom: 2px;
+    }
+
     code {
       background-color: lightgray;
       font-size: 1.3em;
       border-radius: 8px;
       padding: 5px;
+      margin-bottom: 5px;
     }
 
     p,
@@ -95,7 +102,7 @@
 
   <body>
     <nav class="nav">
-      <h1 class="head">Blog site</h1>
+      <h2 class="head">Blog site</h2>
       <!--All article button-->
       <button class="btn">
         <a class="anchor" href="/feed">All article</a>
@@ -107,7 +114,7 @@
         <!--Blog section-->
 
         <!--title-->
-        <h1 class="head1"><%= blogs.title %></h1>
+        <h2 class="head1"><%= blogs.title %></h2>
         <!--description-->
         <p class="para"><%= blogs.description %></p>
         <hr />
