@@ -2,7 +2,8 @@
 
 # _About_
 
-User can register himself on site and his mail address and password(hashed) saved in our database and he also get error message like password doesn’t match, email already registered etc. After registration is complete he can go to login page where his email and password get authenticated and also get error messages if authentication fails and he gets back to login section, once authentication is completed he can go to feed page.
+A blog website made using MERN stack.
+User can register himself on site, his mail address and password(hashed) saved in our database and he also get error messages like password doesn’t match, email already registered etc. After registration is completed he can go to login page where his email and password get authenticated and also get error messages if authentication fails and he gets back to login section, once authentication is completed he can go to feed page.
 
 **_Feed page contain_**:
 
