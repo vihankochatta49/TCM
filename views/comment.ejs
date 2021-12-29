@@ -255,10 +255,6 @@
       appendone(`${data.name}`, `${data.message}`);
     });
 
-    socket.on("left", (name) => {
-      appendone(`${name}`, "flyied away...");
-    });
-
     drop.addEventListener("submit", (e) => {
       e.preventDefault();
       const mass = dropMessage.value;
