@@ -88,6 +88,11 @@ app.use("/", require("./routes/nav"));
 //getting routes/register.js
 app.use("/", require("./routes/register"));
 
+//404 page
+app.get("*", (req, res) => {
+  res.render("404Page");
+});
+
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });

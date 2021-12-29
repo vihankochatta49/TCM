@@ -340,6 +340,22 @@
     </div>
 
     <section>
+      <% if( blogs.length == 0) {%>
+      <h1
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 70vh;
+          font-size: 4em;
+          font-family: monospace;
+          font-weight: 500;
+          color: #adacac;
+        "
+      >
+        No post yet
+      </h1>
+      <%}%> <% if(blogs.length != 0) {%>
       <div class="blogs">
         <!-- all articles -->
 
@@ -447,6 +463,7 @@
         </div>
         <%})%>
       </div>
+      <%}%>
     </section>
     <!-- logout -->
     <a href="/logout" class="logout"
