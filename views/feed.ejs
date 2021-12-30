@@ -136,7 +136,7 @@
         flex-direction: column;
         align-items: center;
         width: 25%;
-        height: 480px;
+        height: fit-content;
         margin-left: 65px;
         margin-top: 35px;
         background-color: white;
@@ -144,6 +144,7 @@
         border-radius: 10px;
         box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
         line-height: 1.8;
+        padding: 0px 5px;
       }
 
       .blog {
@@ -373,7 +374,9 @@
           "
         >
           <h1 style="font-size: 4em"><i class="far fa-user"></i></h1>
-          <p style="font-size: 2em"><%= profile.name %></p>
+          <p style="font-size: 1.5em; text-align: center">
+            <%= profile.name %>
+          </p>
           <a
             href="/<%= profile.slugName %>/<%= profile.registerNumber %>"
             style="
@@ -403,18 +406,16 @@
           >
             <%= profile.email %>
           </p>
-          <p style="color: #777676">Blog site profile:</p>
-          <a
-            style="
-              color: blue;
-              text-decoration: none;
-              font-weight: 600;
-              border-bottom: 2px solid black;
-            "
-            href="/<%= profile.slugName %>/<%= profile.registerNumber %>"
-          >
-            localhost:3000/<%= profile.slugName %>/<%= profile.registerNumber %>
-          </a>
+          <div style="border-bottom: 2px solid black; margin-bottom: 40px">
+            <p style="color: #777676">Blog site profile:</p>
+            <a
+              style="color: blue; text-decoration: none; font-weight: 600"
+              href="/<%= profile.slugName %>/<%= profile.registerNumber %>"
+            >
+              localhost:3000/<%= profile.slugName %>/<%= profile.registerNumber
+              %>
+            </a>
+          </div>
         </div>
       </div>
     </section>

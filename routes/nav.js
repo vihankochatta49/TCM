@@ -21,10 +21,7 @@ router.get("/:name/:registerNumber", ensureAuthenticated, async (req, res) => {
       registerNumber: req.params.registerNumber,
     })
     .sort({ date: -1 });
-  console.log(profile);
-  if (profile != "null") {
-    res.render("dashboard", { blogs, profile });
-  } else if (profile == "null") res.render("404Page");
+  res.render("dashboard", { blogs, profile });
 });
 
 //other-profile route
