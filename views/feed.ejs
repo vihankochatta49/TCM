@@ -26,7 +26,7 @@
         align-items: center;
         justify-content: space-between;
         box-shadow: 15px 2px 2px white;
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid white;
         padding: 10px;
         height: 70px;
       }
@@ -116,19 +116,38 @@
         align-items: start;
         justify-content: center;
         flex-direction: column;
-        margin: 20px 10px 10px 10px;
+        padding: 10px 0px 20px;
       }
 
       .bai {
         position: relative;
-        width: 95%;
+        width: 100%;
         background-color: white;
         padding: 15px;
         margin-top: 25px;
+        border: 2px solid white;
+        border-radius: 10px;
+        box-sizing: border-box;
+        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
+      }
+
+      .protfolio {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 25%;
+        height: 480px;
+        margin-left: 65px;
+        margin-top: 35px;
+        background-color: white;
+        border: 2px solid white;
+        border-radius: 10px;
+        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
+        line-height: 1.8;
       }
 
       .blog {
-        width: 50%;
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: start;
@@ -219,6 +238,7 @@
         }
 
         .blogs {
+          padding: 10px 10px 20px;
           width: auto;
         }
 
@@ -239,6 +259,10 @@
           width: 300px !important;
           padding: 10px;
         }
+
+        .protfolio {
+          display: none;
+        }
       }
     </style>
   </head>
@@ -258,7 +282,9 @@
       </div>
     </nav>
 
-    <section>
+    <section
+      style="display: flex; justify-content: center; background-color: #f2f2f2"
+    >
       <div class="blogs">
         <!-- all articles -->
 
@@ -336,6 +362,60 @@
           </div>
         </div>
         <%})%>
+      </div>
+      <div class="protfolio">
+        <div
+          style="
+            display: flex;
+            margin-bottom: 50px;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <h1 style="font-size: 4em"><i class="far fa-user"></i></h1>
+          <p style="font-size: 2em"><%= profile.name %></p>
+          <a
+            href="/<%= profile.slugName %>/<%= profile.registerNumber %>"
+            style="
+              border: 2px solid blue;
+              border-radius: 10px;
+              padding: 1px 10px;
+              color: black;
+              text-decoration: none;
+              font-size: 1.4em;
+            "
+            >View Profile</a
+          >
+        </div>
+
+        <div>
+          <div style="display: flex; justify-content: space-between">
+            <p style="color: #777676">Posts:</p>
+            <p><%= blogs.length %></p>
+          </div>
+          <p style="color: #777676">Email address:</p>
+          <p
+            style="
+              margin-bottom: 20px;
+              border-bottom: 2px solid;
+              font-size: 1.4em;
+            "
+          >
+            <%= profile.email %>
+          </p>
+          <p style="color: #777676">Blog site profile:</p>
+          <a
+            style="
+              color: blue;
+              text-decoration: none;
+              font-weight: 600;
+              border-bottom: 2px solid black;
+            "
+            href="/<%= profile.slugName %>/<%= profile.registerNumber %>"
+          >
+            localhost:3000/<%= profile.slugName %>/<%= profile.registerNumber %>
+          </a>
+        </div>
       </div>
     </section>
     <!--script for clearing flash and error messages-->
