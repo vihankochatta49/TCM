@@ -44,6 +44,7 @@ User can register himself on site, his mail address and password(hashed) saved i
 - Number of likes
 
 All section except for feed section contain home button so user can go to feed section easily.
+An error page render when user search for url that doesn't exist.
 
 # _Frontend-Backend_
 
