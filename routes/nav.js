@@ -25,19 +25,15 @@ router.get("/:name/:registerNumber", ensureAuthenticated, async (req, res) => {
 });
 
 //other-profile route
-router.get(
-  "/other-profile/:name/:registerNumber",
-  ensureAuthenticated,
-  async (req, res) => {
-    const profile = await userdb.findOne({
-      registerNumber: req.params.registerNumber,
-    });
-    const blogs = await blogdb.find({
-      registerNumber: req.params.registerNumber,
-    });
-    res.render("otherProfile", { blogs, profile });
-  }
-);
+router.get("/other-profile/:name/:registerNumber", async (req, res) => {
+  const profile = await userdb.findOne({
+    registerNumber: req.params.registerNumber,
+  });
+  const blogs = await blogdb.find({
+    registerNumber: req.params.registerNumber,
+  });
+  res.render("otherProfile", { blogs, profile });
+});
 
 //read more route
 router.get("/readMore/:slug/:blogNumber", async (req, res) => {
