@@ -21,7 +21,7 @@ router.get("/:name/:registerNumber", ensureAuthenticated, async (req, res) => {
       registerNumber: req.params.registerNumber,
     })
     .sort({ date: -1 });
-  res.render("dashboard", { blogs, profile });
+  res.render("dashboard", { profile, blogs });
 });
 
 //other-profile route
