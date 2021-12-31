@@ -26,7 +26,6 @@
         align-items: center;
         justify-content: space-between;
         box-shadow: 15px 2px 2px white;
-        border-bottom: 2px solid black;
         padding: 10px;
         height: 70px;
       }
@@ -119,7 +118,8 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin: 15px 15px 0px;
+        padding: 10px 25px;
+        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
       }
 
       .user-name {
@@ -140,14 +140,16 @@
         align-items: start;
         justify-content: center;
         flex-direction: column;
-        margin: 20px 10px 10px 10px;
       }
 
       .bai {
-        width: 50%;
+        border: 2px solid white;
+        border-radius: 10px;
+        width: 100%;
         background-color: white;
         padding: 15px;
-        margin-top: 25px;
+        margin: 20px 0px 10px;
+        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
       }
 
       .blog {
@@ -339,7 +341,14 @@
       <p class="user-posts">Posts: <%= blogs.length %></p>
     </div>
 
-    <section>
+    <section
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f2f2f2;
+      "
+    >
       <% if( blogs.length == 0) {%>
       <h1
         style="

@@ -26,7 +26,6 @@
         align-items: center;
         justify-content: space-between;
         box-shadow: 15px 2px 2px white;
-        border-bottom: 2px solid black;
         padding: 10px;
         height: 70px;
       }
@@ -36,6 +35,13 @@
         color: black;
         font-weight: 500;
         font-family: monospace;
+      }
+
+      .plus {
+        font-size: 2em;
+        color: #7a7893;
+        text-decoration: none;
+        margin-right: 20px;
       }
 
       .dropdown {
@@ -112,7 +118,8 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin: 15px 15px 0px;
+        padding: 10px 25px;
+        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
       }
 
       .user-name {
@@ -133,20 +140,28 @@
         align-items: start;
         justify-content: center;
         flex-direction: column;
-        margin: 20px 10px 10px 10px;
       }
 
       .bai {
-        width: 50%;
+        border: 2px solid white;
+        border-radius: 10px;
+        width: 100%;
         background-color: white;
         padding: 15px;
-        margin-top: 25px;
+        margin: 20px 0px 10px;
+        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
       }
 
       .blog {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
+      }
+
+      .content-img {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
       }
 
       .blog-content {
@@ -157,7 +172,6 @@
       }
 
       .written-by {
-        display: flex;
         font-size: 14px;
         margin-bottom: 8px;
         font-family: monospace;
@@ -186,7 +200,7 @@
       }
 
       .para {
-        margin: 10px 0px;
+        width: 85%;
         font-size: 1.3rem;
       }
 
@@ -208,10 +222,32 @@
         cursor: pointer;
       }
 
+      .btn-delete {
+        background-color: white;
+        padding: 5px;
+        color: #7a7893;
+        font-size: 1.3rem;
+        border: 2px solid #fff;
+      }
+
+      .btn-delete:hover {
+        color: red;
+      }
+
       .btn-edit {
         background-color: white;
         border: 2px solid #fff;
         padding: 5px;
+      }
+
+      .anchor-edit {
+        font-size: 1.3rem;
+        text-decoration: none;
+        color: #7a7893;
+      }
+
+      .anchor-edit:hover {
+        color: black;
       }
 
       .like-btn {
@@ -227,13 +263,32 @@
         color: #4267b2;
       }
 
+      .logout {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        padding: 10px;
+        background-color: #7a7893;
+        color: white;
+        font-size: 20px;
+        border-radius: 10px;
+        text-decoration: none;
+      }
+
+      .logout:hover {
+        text-decoration: underline;
+        background-color: white;
+        color: #7a7893;
+      }
+
       @media screen and (max-width: 800px) {
-        .plus {
-          right: 5px;
+        .plus,
+        .home {
+          margin-right: 10px;
         }
 
         .head {
-          font-size: 3rem;
+          font-size: 2rem;
         }
 
         .blogs {
@@ -241,22 +296,13 @@
         }
 
         .bai {
-          padding: 15px 0px;
+          padding: 15px 10px;
           max-width: 100%;
-          width: 100%;
+          width: 90%;
         }
 
-        .blog {
-          max-width: 100%;
-          width: 100%;
+        .content-img {
           flex-direction: column;
-        }
-
-        .blog img {
-          margin: auto !important;
-          height: 300px !important;
-          width: 300px !important;
-          padding: 10px;
         }
       }
     </style>
@@ -283,7 +329,30 @@
       <p class="user-posts">Posts: <%= blogs.length %></p>
     </div>
 
-    <section>
+    <section
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f2f2f2;
+      "
+    >
+      <% if( blogs.length == 0) {%>
+      <h1
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 70vh;
+          font-size: 4em;
+          font-family: monospace;
+          font-weight: 500;
+          color: #adacac;
+        "
+      >
+        No post yet
+      </h1>
+      <%}%> <% if(blogs.length != 0) {%>
       <div class="blogs">
         <!-- all articles -->
 
@@ -291,44 +360,45 @@
         <div class="bai">
           <!-- single article -->
           <div class="blog">
-            <div>
-              <!--author name-->
-              <a class="written-by">
-                <i
-                  class="far fa-user"
-                  style="margin-right: 5px; font-size: 18px"
-                ></i>
-                <%= e.name %>
-              </a>
-              <!-- title -->
-              <a
-                href="/readMore/<%= e.slug %>/<%= e.blogNumber %>"
-                class="head1"
-                ><%= e.title %></a
-              >
+            <div class="content-img">
+              <div class="blog-content">
+                <!--author name-->
+                <p class="written-by">
+                  <i
+                    class="far fa-user"
+                    style="margin-right: 5px; font-size: 18px"
+                  ></i>
+                  <%= e.name %>
+                </p>
+                <!-- title -->
+                <a
+                  href="/readMore/<%= e.slug %>/<%= e.blogNumber %>"
+                  class="head1"
+                  ><%= e.title %></a
+                >
+                <!-- description -->
+                <p class="para"><%= e.description %></p>
 
-              <!-- description -->
-              <p class="para"><%= e.description %></p>
+                <!-- date -->
+                <p class="date"><%= e.createdAt %></p>
 
-              <!-- date -->
-              <p class="date"><%= e.createdAt %></p>
+                <!-- no. of likes -->
+                <p class="like">
+                  <i class="far fa-thumbs-up"></i> <%= e.likes %>
+                </p>
+              </div>
 
-              <!-- no. of likes -->
-              <p class="like">
-                <i class="far fa-thumbs-up"></i> <%= e.likes %>
-              </p>
+              <% if(e.imageBase64) {%>
+
+              <img
+                src="data:<%= e.contentType %>;base64,<%= e.imageBase64 %>"
+                height="150"
+                width="150"
+                style="margin: 15px"
+              />
+
+              <% } %>
             </div>
-
-            <% if(e.imageBase64) {%>
-
-            <img
-              src="data:<%= e.contentType %>;base64,<%= e.imageBase64 %>"
-              height="150"
-              width="150"
-              style="margin: 15px"
-            />
-
-            <% } %>
           </div>
           <div class="btns" style="margin-top: 10px; align-items: center">
             <!-- like button -->
@@ -342,7 +412,6 @@
                 </div>
               </div>
             </form>
-
             <!-- comment button -->
             <div class="dropdown">
               <a
@@ -359,6 +428,7 @@
         </div>
         <%})%>
       </div>
+      <%}%>
     </section>
   </body>
 </html>
