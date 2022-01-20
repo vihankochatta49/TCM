@@ -26,15 +26,16 @@
         align-items: center;
         justify-content: space-between;
         box-shadow: 15px 2px 2px white;
-        border-bottom: 2px solid white;
+        /* border-bottom: 2px solid white; */
+        background-color: #1b324f;
         padding: 10px;
-        height: 70px;
+        height: 50px;
       }
 
       .head {
-        font-size: 4rem;
-        color: black;
-        font-weight: 500;
+        font-size: 2.2rem;
+        color: #fff;
+        font-weight: 600;
         font-family: monospace;
       }
 
@@ -98,9 +99,9 @@
       }
 
       .profile {
-        color: black;
+        color: #fff;
         text-decoration: none;
-        font-size: 2.5rem;
+        font-size: 2.2rem;
       }
 
       .profile:hover {
@@ -112,16 +113,19 @@
       }
 
       .blogs {
-        display: flex;
-        align-items: start;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        width: 75%;
+        align-content: start;
         justify-content: center;
         flex-direction: column;
         padding: 10px 0px 20px;
+        margin: 0px 25px;
       }
 
       .bai {
         position: relative;
-        width: 100%;
+        width: 95%;
         background-color: white;
         padding: 15px;
         margin-top: 25px;
@@ -129,6 +133,15 @@
         border-radius: 10px;
         box-sizing: border-box;
         box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
+      }
+
+      img {
+        margin: auto !important;
+        width: 350px;
+        max-width: 100%;
+        height: 275px;
+        margin-bottom: 25px !important;
+        margin-top: 25px !important;
       }
 
       .protfolio {
@@ -150,6 +163,7 @@
       .blog {
         width: 100%;
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         align-items: start;
       }
@@ -283,9 +297,7 @@
       </div>
     </nav>
 
-    <section
-      style="display: flex; justify-content: center; background-color: #f2f2f2"
-    >
+    <section style="justify-content: center; background-color: #f2f2f2">
       <div class="blogs">
         <!-- all articles -->
 
