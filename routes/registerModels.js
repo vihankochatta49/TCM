@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const slugify = require("slugify");
+var findOrCreate = require("mongoose-findorcreate");
 
 //schema for register data
 const userSchema = new mongoose.Schema({
@@ -9,20 +10,20 @@ const userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: true,
   },
   password: {
     type: String,
-    required: true,
+    // required: true,
   },
   password2: {
     type: String,
   },
   registerNumber: {
     type: String,
-    required: true,
+    // required: true,
   },
   slugName: String,
+  proivder: String,
 });
 
 userSchema.pre("validate", function (next) {
@@ -31,5 +32,6 @@ userSchema.pre("validate", function (next) {
   }
   next();
 });
+userSchema.plugin(findOrCreate);
 
 module.exports = new mongoose.model("userData", userSchema);

@@ -7,11 +7,11 @@ const a = require(".././routes/models");
 
 // saving register data to db (post route)
 router.post("/register", (req, res) => {
-  const { name, email, password, password2 } = req.body;
+  const { name, password, password2 } = req.body;
   let errors = [];
 
   //check require fields
-  if (!name || !email || !password || !password2) {
+  if (!name || !password || !password2) {
     errors.push({ msg: "Please fill all fields" });
   }
 
@@ -24,13 +24,13 @@ router.post("/register", (req, res) => {
   }
 
   if (errors.length > 0) {
-    res.render("register", { errors, name, email, password, password2 });
+    res.render("register", { errors, name, password, password2 });
   } else {
-    rM.findOne({ email: email }).then((user) => {
+    rM.findOne({ name: name }).then((user) => {
       if (user) {
         //User exists
         errors.push({ msg: "Email is already registered" });
-        res.render("register", { errors, name, email, password, password2 });
+        res.render("register", { errors, name, password, password2 });
       } else {
         //register number
         var registerNumber = Math.floor(Math.random() * 1000000000);
@@ -39,7 +39,6 @@ router.post("/register", (req, res) => {
           try {
             const userData = new rM({
               name: req.body.name,
-              email: req.body.email,
               password: req.body.password,
               registerNumber: registerNumber,
             });

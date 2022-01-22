@@ -6,6 +6,7 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
 const a = require("./routes/models");
+require("./config/googleAuth");
 const app = express();
 const port = 3000;
 
@@ -79,6 +80,22 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["email", "profile"] })
+);
+
+app.get(
+  "/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/feed",
+    failureRedirect: "/auth/google/failure",
+  })
+);
+
+app.get("/auth/google/failure", (req, res) => {
+  res.send("Failed to authenticate..");
+});
 //getting routes/new.js
 app.use("/", require(path.join(__dirname, "routes/new")));
 

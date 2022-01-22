@@ -31,23 +31,17 @@
         align-items: center;
         justify-content: space-between;
         box-shadow: 15px 2px 2px white;
-        background-color: white;
+        background-color: #1b324f;
         padding: 10px;
-        height: 70px;
+        height: 50px;
       }
 
       .head {
-        font-size: 4rem;
-        color: black;
-        font-weight: 500;
+        font-size: 2.2rem;
+        color: white;
+        font-weight: 600;
         font-family: monospace;
-      }
-
-      .plus {
-        font-size: 2em;
-        color: #7a7893;
-        text-decoration: none;
-        margin-right: 20px;
+        margin-left: 15px;
       }
 
       .dropdown {
@@ -55,65 +49,11 @@
         display: inline-block;
       }
 
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        right: 0px;
-        top: 50px;
-        background-color: #2d2d2d;
-        min-width: 100px;
-        padding: 8px 0px;
-        z-index: 1;
-        border-radius: 10px;
-      }
-
-      .arrow-top:after {
-        content: " ";
-        position: absolute;
-        right: 19px;
-        top: -15px;
-        border-top: none;
-        border-right: 15px solid transparent;
-        border-left: 15px solid transparent;
-        border-bottom: 15px solid #2d2d2d;
-      }
-
-      .dropdown:hover .dropdown-content {
-        display: block;
-      }
-
-      .dropdown-content1 {
-        display: none;
-        position: absolute;
-        left: -17px;
-        top: 45px;
-        background-color: #2d2d2d;
-        min-width: 100px;
-        padding: 8px 0px;
-        z-index: 1;
-        border-radius: 10px;
-      }
-
-      .arrow-top1:after {
-        content: " ";
-        position: absolute;
-        left: 15px;
-        top: -15px;
-        border-top: none;
-        border-right: 15px solid transparent;
-        border-left: 15px solid transparent;
-        border-bottom: 15px solid #2d2d2d;
-      }
-
-      .dropdown:hover .dropdown-content1 {
-        display: block;
-      }
-
       .home {
-        font-size: 2em;
-        color: #7a7893;
+        font-size: 2.2rem;
+        color: #fff;
         text-decoration: none;
-        margin-right: 20px;
+        margin-right: 10px;
       }
 
       .home:hover {
@@ -229,34 +169,6 @@
         cursor: pointer;
       }
 
-      .btn-delete {
-        background-color: white;
-        padding: 5px;
-        color: #7a7893;
-        font-size: 1.3rem;
-        border: 2px solid #fff;
-      }
-
-      .btn-delete:hover {
-        color: red;
-      }
-
-      .btn-edit {
-        background-color: white;
-        border: 2px solid #fff;
-        padding: 5px;
-      }
-
-      .anchor-edit {
-        font-size: 1.3rem;
-        text-decoration: none;
-        color: #7a7893;
-      }
-
-      .anchor-edit:hover {
-        color: black;
-      }
-
       .like-btn {
         color: black;
         font-size: 1.5rem;
@@ -324,9 +236,6 @@
 
         <div class="dropdown">
           <a href="/feed" class="home"><i class="fas fa-home"></i></a>
-          <div class="dropdown-content arrow-top">
-            <p style="text-align: center; color: white">Feeds</p>
-          </div>
         </div>
       </div>
     </nav>
@@ -400,7 +309,7 @@
               <img
                 src="data:<%= e.contentType %>;base64,<%= e.imageBase64 %>"
                 height="150"
-                width="150"
+                width="200"
                 style="margin: 15px"
               />
 
@@ -414,9 +323,6 @@
                 <button type="submit" class="like-btn">
                   <i class="far fa-thumbs-up"></i>
                 </button>
-                <div class="dropdown-content1 arrow-top1">
-                  <p style="text-align: center; color: white">Like</p>
-                </div>
               </div>
             </form>
             <!-- comment button -->
@@ -427,9 +333,6 @@
                 style="margin-left: 5px"
                 ><i class="far fa-comment"></i
               ></a>
-              <div class="dropdown-content1 arrow-top1">
-                <p style="text-align: center; color: white">Comment</p>
-              </div>
             </div>
           </div>
         </div>

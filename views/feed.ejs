@@ -26,7 +26,6 @@
         align-items: center;
         justify-content: space-between;
         box-shadow: 15px 2px 2px white;
-        /* border-bottom: 2px solid white; */
         background-color: #1b324f;
         padding: 10px;
         height: 50px;
@@ -37,6 +36,7 @@
         color: #fff;
         font-weight: 600;
         font-family: monospace;
+        margin-left: 15px;
       }
 
       .dropdown {
@@ -44,64 +44,11 @@
         display: inline-block;
       }
 
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        right: -15px;
-        top: 60px;
-        background-color: #2d2d2d;
-        min-width: 100px;
-        padding: 8px 0px;
-        z-index: 1;
-        border-radius: 10px;
-      }
-
-      .arrow-top:after {
-        content: " ";
-        position: absolute;
-        right: 19px;
-        top: -15px;
-        border-top: none;
-        border-right: 15px solid transparent;
-        border-left: 15px solid transparent;
-        border-bottom: 15px solid #2d2d2d;
-      }
-
-      .dropdown:hover .dropdown-content {
-        display: block;
-      }
-
-      .dropdown-content1 {
-        display: none;
-        position: absolute;
-        left: -17px;
-        top: 45px;
-        background-color: #2d2d2d;
-        min-width: 100px;
-        padding: 8px 0px;
-        z-index: 1;
-        border-radius: 10px;
-      }
-
-      .arrow-top1:after {
-        content: " ";
-        position: absolute;
-        left: 15px;
-        top: -15px;
-        border-top: none;
-        border-right: 15px solid transparent;
-        border-left: 15px solid transparent;
-        border-bottom: 15px solid #2d2d2d;
-      }
-
-      .dropdown:hover .dropdown-content1 {
-        display: block;
-      }
-
       .profile {
         color: #fff;
         text-decoration: none;
         font-size: 2.2rem;
+        margin-left: 10px;
       }
 
       .profile:hover {
@@ -114,8 +61,7 @@
 
       .blogs {
         display: grid;
-        grid-template-columns: 50% 50%;
-        width: 75%;
+        grid-template-columns: auto;
         align-content: start;
         justify-content: center;
         flex-direction: column;
@@ -136,36 +82,38 @@
       }
 
       img {
-        margin: auto !important;
-        width: 350px;
         max-width: 100%;
-        height: 275px;
-        margin-bottom: 25px !important;
-        margin-top: 25px !important;
       }
 
       .protfolio {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        max-width: 30%;
+        max-width: 100%;
+        width: 300px;
+        font-size: 1.2rem;
         height: fit-content;
-        margin-left: 65px;
+        margin-left: 50px;
+        margin-right: 15px;
         margin-top: 35px;
-        background-color: white;
+        background-color: rgb(157 146 219 / 80%);
         border: 2px solid white;
         border-radius: 10px;
         box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
         line-height: 1.8;
-        padding: 0px 10px;
+        padding: 15px;
+      }
+
+      .protfolio a {
+        background-color: white;
+      }
+
+      .protfolio a:hover {
+        background-color: rgb(255 255 255 / 80%);
       }
 
       .blog {
         width: 100%;
         display: flex;
-        flex-direction: column;
         justify-content: space-between;
-        align-items: start;
+        /* align-items: start; */
       }
 
       .written-by {
@@ -270,8 +218,6 @@
 
         .blog img {
           margin: auto !important;
-          height: 300px !important;
-          width: 300px !important;
           padding: 10px;
         }
 
@@ -291,13 +237,12 @@
           href="/<%= profile.slugName %>/<%= profile.registerNumber %>"
           ><i class="far fa-user"></i
         ></a>
-        <div class="dropdown-content arrow-top">
-          <p style="text-align: center; color: white">Profile</p>
-        </div>
       </div>
     </nav>
 
-    <section style="justify-content: center; background-color: #f2f2f2">
+    <section
+      style="display: flex; justify-content: center; background-color: #f2f2f2"
+    >
       <div class="blogs">
         <!-- all articles -->
 
@@ -305,31 +250,38 @@
         <div class="bai">
           <!-- single article -->
           <div class="blog">
-            <div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+              "
+            >
               <!--author name-->
-              <a
-                href="/other-profile/<%= e.slugName %>/<%= e.registerNumber %>"
-                class="written-by"
-              >
-                <i
-                  class="far fa-user"
-                  style="margin-right: 5px; font-size: 18px"
-                ></i>
-                <%= e.name %>
-              </a>
-              <!-- title -->
-              <a
-                href="/readMore/<%= e.slug %>/<%= e.blogNumber %>"
-                class="head1"
-                ><%= e.title %></a
-              >
+              <div>
+                <a
+                  href="/other-profile/<%= e.slugName %>/<%= e.registerNumber %>"
+                  class="written-by"
+                >
+                  <i
+                    class="far fa-user"
+                    style="margin-right: 5px; font-size: 18px"
+                  ></i>
+                  <%= e.name %>
+                </a>
+                <!-- title -->
+                <a
+                  href="/readMore/<%= e.slug %>/<%= e.blogNumber %>"
+                  class="head1"
+                  ><%= e.title %></a
+                >
 
-              <!-- description -->
-              <p class="para"><%= e.description %></p>
+                <!-- description -->
+                <p class="para"><%= e.description %></p>
 
-              <!-- date -->
-              <p class="date"><%= e.createdAt %></p>
-
+                <!-- date -->
+                <p class="date"><%= e.createdAt %></p>
+              </div>
               <!-- no. of likes -->
               <p class="like">
                 <i class="far fa-thumbs-up"></i> <%= e.likes %>
@@ -341,7 +293,7 @@
             <img
               src="data:<%= e.contentType %>;base64,<%= e.imageBase64 %>"
               height="150"
-              width="150"
+              width="200"
               style="margin: 15px"
             />
 
@@ -354,9 +306,6 @@
                 <button type="submit" class="like-btn">
                   <i class="far fa-thumbs-up"></i>
                 </button>
-                <div class="dropdown-content1 arrow-top1">
-                  <p style="text-align: center; color: white">Like</p>
-                </div>
               </div>
             </form>
 
@@ -368,66 +317,40 @@
                 style="margin-left: 5px"
                 ><i class="far fa-comment"></i
               ></a>
-              <div class="dropdown-content1 arrow-top1">
-                <p style="text-align: center; color: white">Comment</p>
-              </div>
             </div>
           </div>
         </div>
         <%})%>
       </div>
-      <div class="protfolio">
-        <div
-          style="
-            display: flex;
-            margin-bottom: 50px;
-            flex-direction: column;
-            align-items: center;
-          "
-        >
-          <h1 style="font-size: 4em"><i class="far fa-user"></i></h1>
-          <p style="font-size: 1.5em; text-align: center">
-            <%= profile.name %>
+      <div>
+        <div class="protfolio">
+          <p style="font-weight: 600; margin-bottom: 20px">
+            Write on Blog site
           </p>
+          <p>Grow your readship</p>
+          <p style="margin-bottom: 20px">Improve your writing skills</p>
           <a
-            href="/<%= profile.slugName %>/<%= profile.registerNumber %>"
+            href="create"
             style="
-              border: 2px solid blue;
+              border: 2px solid white;
+              padding: 7px;
               border-radius: 10px;
-              padding: 1px 10px;
-              color: black;
               text-decoration: none;
-              font-size: 1.4em;
+              color: black;
             "
-            >View Profile</a
+            >Start writing</a
           >
         </div>
-
-        <div>
-          <div style="display: flex; justify-content: space-between">
-            <p style="color: #777676">Posts:</p>
-            <p><%= blogs.length %></p>
-          </div>
-          <p style="color: #777676">Email address:</p>
-          <p
-            style="
-              margin-bottom: 20px;
-              border-bottom: 2px solid;
-              font-size: 1.4em;
-            "
-          >
-            <%= profile.email %>
-          </p>
-          <div style="border-bottom: 2px solid black; margin-bottom: 40px">
-            <p style="color: #777676">Blog site profile:</p>
-            <a
-              style="color: blue; text-decoration: none; font-weight: 600"
-              href="/<%= profile.slugName %>/<%= profile.registerNumber %>"
-            >
-              localhost:3000/<%= profile.slugName %>/<%= profile.registerNumber
-              %>
-            </a>
-          </div>
+        <div class="protfolio" style="text-align: center; background: white">
+          <h1 style="font-weight: 400; font-size: 2.2rem">Follow us on</h1>
+          <a style="font-size: 2.8em; margin-right: 20px; color: #00acee"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a
+            href="#"
+            style="text-align: center; font-size: 2.8em; color: #0e76a8"
+            ><i class="fab fa-linkedin"></i
+          ></a>
         </div>
       </div>
     </section>

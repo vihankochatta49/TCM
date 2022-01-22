@@ -32,20 +32,21 @@
         justify-content: space-between;
         box-shadow: 15px 2px 2px white;
         padding: 10px;
-        height: 70px;
-        background-color: white;
+        height: 50px;
+        background-color: #1b324f;
       }
 
       .head {
-        font-size: 4rem;
-        color: black;
-        font-weight: 500;
+        font-size: 2.2rem;
+        color: #fff;
+        font-weight: 600;
         font-family: monospace;
+        margin-left: 15px;
       }
 
       .plus {
-        font-size: 2em;
-        color: #7a7893;
+        font-size: 2.2rem;
+        color: #fff;
         text-decoration: none;
         margin-right: 20px;
       }
@@ -110,10 +111,10 @@
       }
 
       .home {
-        font-size: 2em;
-        color: #7a7893;
+        font-size: 2.2rem;
+        color: #fff;
         text-decoration: none;
-        margin-right: 20px;
+        margin-right: 10px;
       }
 
       .home:hover {
@@ -275,7 +276,7 @@
         bottom: 10px;
         right: 10px;
         padding: 10px;
-        background-color: #7a7893;
+        background-color: #f11818;
         color: white;
         font-size: 20px;
         border-radius: 10px;
@@ -327,18 +328,12 @@
             class="plus"
             ><i class="fas fa-plus"></i
           ></a>
-          <div class="dropdown-content arrow-top">
-            <p style="text-align: center; color: white">New blog</p>
-          </div>
         </div>
 
         <!-- home -->
 
         <div class="dropdown">
           <a href="/feed" class="home"><i class="fas fa-home"></i></a>
-          <div class="dropdown-content arrow-top">
-            <p style="text-align: center; color: white">Feeds</p>
-          </div>
         </div>
       </div>
     </nav>
@@ -412,7 +407,7 @@
               <img
                 src="data:<%= e.contentType %>;base64,<%= e.imageBase64 %>"
                 height="150"
-                width="150"
+                width="200"
                 style="margin: 15px"
               />
 
@@ -429,9 +424,6 @@
                     ><i class="fas fa-pen"></i
                   ></a>
                 </button>
-                <div class="dropdown-content arrow-top" style="right: -10px">
-                  <p style="text-align: center; color: white">Edit blog</p>
-                </div>
               </div>
 
               <!-- delete button -->
@@ -444,9 +436,6 @@
                   <button type="submit" class="btn-delete">
                     <i class="far fa-trash-alt"></i>
                   </button>
-                  <div class="dropdown-content arrow-top" style="right: -18px">
-                    <p style="text-align: center; color: white">Delete blog</p>
-                  </div>
                 </div>
               </form>
             </div>
@@ -458,9 +447,6 @@
                 <button type="submit" class="like-btn">
                   <i class="far fa-thumbs-up"></i>
                 </button>
-                <div class="dropdown-content1 arrow-top1">
-                  <p style="text-align: center; color: white">Like</p>
-                </div>
               </div>
             </form>
             <!-- comment button -->
@@ -471,9 +457,6 @@
                 style="margin-left: 5px"
                 ><i class="far fa-comment"></i
               ></a>
-              <div class="dropdown-content1 arrow-top1">
-                <p style="text-align: center; color: white">Comment</p>
-              </div>
             </div>
           </div>
         </div>

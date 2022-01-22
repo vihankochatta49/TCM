@@ -17,17 +17,43 @@
         padding: 0px;
       }
 
-      html {
-        background-color: #f2f2f2;
-      }
-
       body {
         font-family: sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .cont {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
+        border-radius: 10px;
+      }
+
+      .mssg {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        background: #1b324f;
+        color: white;
+        font-size: 25px;
+        width: 25%;
+        text-align: center;
+        height: 555px;
+      }
+
+      .form {
+        width: 50%;
       }
 
       form {
         max-width: 500px;
-        padding: 15px 25px;
+        padding: 25px;
         display: flex;
         flex-direction: column;
         background-color: white;
@@ -36,12 +62,12 @@
 
       .error {
         color: red;
-        font-size: 1.2em;
+        font-size: 1.5em;
         margin-bottom: 10px;
       }
 
       label {
-        font-size: 1.7rem;
+        font-size: 2rem;
         margin-top: 15px;
       }
 
@@ -96,6 +122,7 @@
         margin-top: 10px;
         margin-left: 10px;
       }
+      /* box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important; */
 
       .btn-cancel:hover {
         background-color: red;
@@ -106,10 +133,20 @@
         color: white;
       }
 
+      .google {
+        background-color: #189940;
+        text-decoration: none;
+        padding: 15px;
+        border-radius: 30px;
+        color: white;
+        font-size: 25px;
+        width: 60%;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
       @media screen and (max-width: 640px) {
-        body > div {
-          width: auto !important;
-        }
         form {
           margin: 10px;
           padding: 0px;
@@ -119,60 +156,69 @@
   </head>
 
   <body>
-    <div
-      style="
-        width: 40%;
-        background-color: white;
-        border: 2px solid white;
-        border-radius: 10px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
-      "
-    >
-      <h1 class="head2">Register</h1>
-      <form action="/register" method="POST">
-        <!--error messages-->
-        <% if(typeof errors != 'undefined') { %> <%
-        errors.forEach(function(error) { %>
-        <p class="error"><%= error.msg %></p>
-        <% }) %> <% } %>
-
-        <!-- name -->
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" class="write" required />
-        <!-- email -->
-        <label for="email">Username/Email:</label>
-        <input type="text" class="write" name="email" id="email" required />
-        <!-- password -->
-        <label for="password">Password:</label>
-        <input
-          type="password"
-          class="write"
-          name="password"
-          id="password"
-          required
-        />
-        <!--confirm password -->
-        <label for="password2">Confirm password:</label>
-        <input
-          type="password"
-          class="write"
-          name="password2"
-          id="password2"
-          required
-        />
-
-        <!-- buttons -->
-        <div class="btns">
-          <button class="btn" type="submit">Register</button>
+    <div class="cont">
+      <div class="mssg">
+        <h1 style="font-size: 2.2rem; font-family: monospace">Blog Site</h1>
+        <h1 style="font-weight: 500; font-size: 2.5rem">Welcome!</h1>
+        <div>
+          <p style="font-size: 20px">Already have an account!</p>
+          <br />
+          <a
+            href="/"
+            class="log"
+            style="
+              border: 2px solid white;
+              border-radius: 5px;
+              padding: 5px;
+              color: white;
+              text-decoration: none;
+            "
+          >
+            Login
+          </a>
         </div>
+      </div>
+      <div class="form">
+        <form action="/register" method="POST">
+          <!--error messages-->
+          <% if(typeof errors != 'undefined') { %> <%
+          errors.forEach(function(error) { %>
+          <p class="error"><%= error.msg %></p>
+          <% }) %> <% } %>
 
-        <!--for login-->
-        <p>Already have an account? <a href="/">Login</a></p>
-      </form>
+          <!-- email -->
+          <label for="name">User-name:</label>
+          <input type="text" class="write" name="name" id="name" required />
+          <!-- password -->
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            class="write"
+            name="password"
+            id="password"
+            required
+          />
+          <!--confirm password -->
+          <label for="password2">Confirm password:</label>
+          <input
+            type="password"
+            class="write"
+            name="password2"
+            id="password2"
+            required
+          />
+
+          <!-- buttons -->
+          <div class="btns">
+            <button class="btn" type="submit">Register</button>
+          </div>
+          <p style="margin: auto; font-size: 25px; color: #7a7893">OR</p>
+          <a class="google" href="/auth/google"
+            ><i class="fab fa-google" style="margin-right: 10px"></i> sign up
+            with GOOGLE</a
+          >
+        </form>
+      </div>
     </div>
     <!-- script for clearing flash/error messages-->
     <script>

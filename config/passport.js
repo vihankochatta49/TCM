@@ -5,9 +5,9 @@ const db = require(".././routes/registerModels");
 
 module.exports = function (passport) {
   passport.use(
-    new localStrategy({ usernameField: "email" }, (email, password, done) => {
+    new localStrategy({ usernameField: "email" }, (name, password, done) => {
       // match user
-      db.findOne({ email: email })
+      db.findOne({ name: name })
         .then((user) => {
           if (!user)
             return done(null, false, {
