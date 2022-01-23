@@ -17,6 +17,7 @@
       }
 
       body {
+        background-color: #f2f2f2;
         font-family: sans-serif;
       }
 
@@ -71,7 +72,8 @@
 
       .bai {
         position: relative;
-        width: 95%;
+        min-width: 600px;
+        max-width: 800px;
         background-color: white;
         padding: 15px;
         margin-top: 25px;
@@ -208,6 +210,7 @@
         .bai {
           padding: 15px 10px;
           max-width: 100%;
+          min-width: 300px;
         }
 
         .blog {
@@ -232,9 +235,7 @@
     <nav class="nav">
       <h1 class="head">Blog site</h1>
       <div class="dropdown" style="margin-right: 15px">
-        <a
-          class="profile"
-          href="/<%= profile.slugName %>/<%= profile.registerNumber %>"
+        <a class="profile" href="/<%= profile.slugName %>"
           ><i class="far fa-user"></i
         ></a>
       </div>
@@ -259,10 +260,7 @@
             >
               <!--author name-->
               <div>
-                <a
-                  href="/other-profile/<%= e.slugName %>/<%= e.registerNumber %>"
-                  class="written-by"
-                >
+                <a href="/users/profile/<%= e.slugName %>" class="written-by">
                   <i
                     class="far fa-user"
                     style="margin-right: 5px; font-size: 18px"
@@ -313,7 +311,7 @@
             <div class="dropdown">
               <a
                 class="like-btn"
-                href="/comment/<%= e.slug %>/<%= e.blogNumber %>/<%= profile.registerNumber %>"
+                href="/comment/<%= e.slug %>/<%= e.blogNumber %>/<%= profile.slugName %>"
                 style="margin-left: 5px"
                 ><i class="far fa-comment"></i
               ></a>
@@ -330,7 +328,7 @@
           <p>Grow your readship</p>
           <p style="margin-bottom: 20px">Improve your writing skills</p>
           <a
-            href="create"
+            href="/new-article/create/<%= profile.slugName%>"
             style="
               border: 2px solid white;
               padding: 7px;
@@ -351,7 +349,9 @@
             style="text-align: center; font-size: 2.8em; color: #0e76a8"
             ><i class="fab fa-linkedin"></i
           ></a>
-        </div>
+        </div>  
+      </div>
+        
       </div>
     </section>
     <!--script for clearing flash and error messages-->

@@ -92,7 +92,9 @@
       .bai {
         border: 2px solid white;
         border-radius: 10px;
-        width: 100%;
+        min-width: 600px;
+        max-width: 800px;
+        /* width: 100%; */
         background-color: white;
         padding: 15px;
         margin: 20px 0px 10px;
@@ -201,6 +203,9 @@
       }
 
       @media screen and (max-width: 800px) {
+        img {
+          margin: auto !important;
+        }
         .plus,
         .home {
           margin-right: 10px;
@@ -217,6 +222,7 @@
         .bai {
           padding: 15px 10px;
           max-width: 100%;
+          min-width: 300px;
           box-sizing: border-box;
         }
 

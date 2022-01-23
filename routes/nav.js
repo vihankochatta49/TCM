@@ -12,14 +12,13 @@ router.get("/feed", ensureAuthenticated, async (req, res) => {
 });
 
 //profile route
-router.get("/:name/:registerNumber", ensureAuthenticated, async (req, res) => {
+router.get("/:name", ensureAuthenticated, async (req, res) => {
   const profile = await userdb.findOne({
-    registerNumber: req.params.registerNumber,
     slugName: req.params.name,
   });
   const blogs = await blogdb
     .find({
-      registerNumber: req.params.registerNumber,
+      slugName: req.params.name,
     })
     .sort({ date: -1 });
   if (profile != null) res.render("dashboard", { profile, blogs });
@@ -27,12 +26,12 @@ router.get("/:name/:registerNumber", ensureAuthenticated, async (req, res) => {
 });
 
 //other-profile route
-router.get("/other-profile/:name/:registerNumber", async (req, res) => {
+router.get("/users/profile/:name", async (req, res) => {
   const profile = await userdb.findOne({
-    registerNumber: req.params.registerNumber,
+    slugName: req.params.name,
   });
   const blogs = await blogdb.find({
-    registerNumber: req.params.registerNumber,
+    slugName: req.params.name,
   });
   if (profile != null) res.render("otherProfile", { profile, blogs });
   else res.render("404Page");
@@ -46,9 +45,9 @@ router.get("/readMore/:slug/:blogNumber", async (req, res) => {
 });
 
 //comment route
-router.get("/comment/:slug/:blogNumber/:registerNumber", async (req, res) => {
+router.get("/comment/:slug/:blogNumber/:name", async (req, res) => {
   const profile = await userdb.findOne({
-    registerNumber: req.params.registerNumber,
+    slugName: req.params.name,
   });
   const blogs = await blogdb.findOne({ blogNumber: req.params.blogNumber });
   if (blogs != null && profile != null)
@@ -57,9 +56,9 @@ router.get("/comment/:slug/:blogNumber/:registerNumber", async (req, res) => {
 });
 
 //creating new blog route
-router.get("/new-article/create/:registerNumber", async (req, res) => {
+router.get("/new-article/create/:name", async (req, res) => {
   const registeredUser = await userdb.findOne({
-    registerNumber: req.params.registerNumber,
+    slugName: req.params.name,
   });
   if (registeredUser != null) res.render("create", { registeredUser });
   else res.render("404Page");
@@ -77,7 +76,7 @@ router.delete("/:id", async (req, res) => {
   const blog = await blogdb.findById(req.params.id);
   const profile = await userdb.findOne({ registerNumber: blog.registerNumber });
   await blogdb.findByIdAndDelete(req.params.id);
-  res.redirect(`/${profile.slugName}/${blog.registerNumber}`);
+  res.redirect(`/${profile.slugName}`);
 });
 
 module.exports = router;

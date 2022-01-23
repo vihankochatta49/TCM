@@ -171,7 +171,7 @@
       </div>
     </nav>
     <form
-      action="/save/<%= registeredUser.registerNumber %>"
+      action="/save/<%= registeredUser.slugName %>"
       method="POST"
       enctype="multipart/form-data"
     >
@@ -202,7 +202,7 @@
         <!-- buttons -->
         <button class="btn" type="submit">Save</button>
         <button class="btn-cancel" type="submit">
-          <a class="anchor" href="/create/<%= registeredUser.registerNumber %>"
+          <a class="anchor" href="/create/<%= registeredUser.slugName %>"
             >Cancel</a
           >
         </button>

@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
 });
 
 // saving blog to database
-router.post("/save/:registerNumber", store.single("images"), (req, res) => {
+router.post("/save/:name", store.single("images"), (req, res) => {
   //generating 9 digit blog number
   var blogNumber = Math.floor(Math.random() * 1000000000);
 
@@ -38,7 +38,7 @@ router.post("/save/:registerNumber", store.single("images"), (req, res) => {
       };
 
       const registeredUser = await userdb.findOne({
-        registerNumber: req.params.registerNumber,
+        slugName: req.params.name,
       });
 
       const apprec = new blogdb({

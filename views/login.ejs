@@ -140,16 +140,63 @@
         border-radius: 30px;
         color: white;
         font-size: 25px;
-        width: 65%;
         margin: auto;
         margin-top: 10px;
         margin-bottom: 10px;
       }
 
+      .exist {
+        display: none;
+      }
+
       @media screen and (max-width: 640px) {
+        body {
+          height: 100%;
+        }
+
+        .cont {
+          flex-direction: column;
+          margin-top: 30px;
+        }
+
+        .mssg {
+          flex-direction: row;
+          height: 50px;
+          width: 100%;
+        }
+
+        .mssg h1 {
+          font-size: 1.5rem !important;
+        }
+
+        .form {
+          width: 100%;
+        }
+
+        label {
+          font-size: 1.5rem;
+        }
+
+        .write {
+          font-size: 1.2rem;
+        }
+
+        .already {
+          display: none;
+        }
+
+        .google {
+          font-size: 14px;
+          width: 70%;
+        }
+
         form {
           margin: 10px;
           padding: 0px;
+        }
+
+        .exist {
+          display: block;
         }
       }
     </style>
@@ -159,8 +206,8 @@
     <div class="cont">
       <div class="mssg">
         <h1 style="font-size: 2.2rem; font-family: monospace">Blog Site</h1>
-        <p style="font-size: 30px">Welcome back!</p>
-        <div>
+        <h1 style="font-weight: 500; font-size: 2.5rem">Welcome!</h1>
+        <div class="already">
           <p style="font-size: 20px">Don't have an account!</p>
           <br />
           <a
@@ -174,7 +221,7 @@
               text-decoration: none;
             "
           >
-            sign-up
+            Sign-up
           </a>
         </div>
       </div>
@@ -216,6 +263,13 @@
             ><i class="fab fa-google" style="margin-right: 10px"></i> continue
             with GOOGLE</a
           >
+          <p
+            class="exist"
+            style="font-size: 1.1rem; text-align: center; margin-top: 10px"
+          >
+            Don't have a account?
+            <a href="/register"><strong>Sign-up</strong></a>
+          </p>
         </form>
       </div>
     </div>

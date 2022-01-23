@@ -1,7 +1,6 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
 const User = require("../routes/registerModels");
-var registerNumber = Math.floor(Math.random() * 1000000000);
 
 passport.use(
   new GoogleStrategy(
@@ -13,30 +12,16 @@ passport.use(
       passReqToCallback: true,
     },
     function (request, accessToken, refreshToken, profile, done) {
-      User.create({ registerNumber: registerNumber }, function (err, val) {
-        User.findOrCreate(
-          {
-            name: profile.displayName,
-            email: profile.email,
-            provider: "GOOGLE",
-          },
-          function (err, user) {
-            return done(err, user);
-          }
-        );
-      });
-
-      //   User.findOrCreate(
-      //     {
-      //       name: profile.displayName,
-      //       email: profile.email,
-      //       provider: "GOOGLE",
-      //       registerNumber: registerNumber,
-      //     },
-      //     function (err, user) {
-      //       return done(err, user);
-      //     }
-      //   );
+      User.findOrCreate(
+        {
+          name: profile.displayName,
+          email: profile.email,
+          provider: "GOOGLE",
+        },
+        function (err, user) {
+          return done(err, user);
+        }
+      );
     }
   )
 );

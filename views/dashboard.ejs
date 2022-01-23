@@ -153,7 +153,9 @@
       .bai {
         border: 2px solid white;
         border-radius: 10px;
-        width: 100%;
+        min-width: 600px;
+        max-width: 800px;
+        /* width: 100%; */
         background-color: white;
         padding: 15px;
         margin: 20px 0px 10px;
@@ -306,6 +308,7 @@
         .bai {
           padding: 15px 10px;
           max-width: 100%;
+          min-width: 300px;
           box-sizing: border-box;
         }
 
@@ -323,9 +326,7 @@
       <div class="icons">
         <!-- new article -->
         <div class="dropdown">
-          <a
-            href="/new-article/create/<%= profile.registerNumber %>"
-            class="plus"
+          <a href="/new-article/create/<%= profile.slugName %>" class="plus"
             ><i class="fas fa-plus"></i
           ></a>
         </div>
@@ -453,7 +454,7 @@
             <div class="dropdown">
               <a
                 class="like-btn"
-                href="/comment/<%= e.slug %>/<%= e.blogNumber %>/<%= profile.registerNumber %>"
+                href="/comment/<%= e.slug %>/<%= e.blogNumber %>/<%= profile.slugName %>"
                 style="margin-left: 5px"
                 ><i class="far fa-comment"></i
               ></a>
@@ -464,7 +465,7 @@
       </div>
       <%}%>
       <!-- logout -->
-      <a href="/logout" class="logout"
+      <a href="/user/logout" class="logout"
         ><i class="fas fa-sign-out-alt"></i> Logout</a
       >
     </section>

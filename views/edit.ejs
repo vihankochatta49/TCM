@@ -14,13 +14,52 @@
     <style>
       body {
         font-family: sans-serif;
+        margin: 0px;
+        padding: 0px;
+      }
+
+      .nav {
+        display: flex;
+        max-width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 15px 2px 2px white;
+        background-color: #1b324f;
+        padding: 10px;
+        height: 50px;
+      }
+
+      .head {
+        font-size: 2.2rem;
+        color: white;
+        font-weight: 600;
+        font-family: monospace;
+        margin-left: 15px;
+      }
+
+      .icons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .home {
+        font-size: 2.2rem;
+        color: #fff;
+        text-decoration: none;
+        margin-right: 10px;
       }
 
       form {
         padding: 25px;
         display: flex;
         flex-direction: column;
-        background-color: white;
+        background-color: #f2f2f2;
       }
 
       label {
@@ -30,19 +69,27 @@
 
       .head2 {
         text-align: center;
-        color: black;
-        font-size: 3rem;
+        color: white;
+        font-size: 1.5rem;
         font-weight: 500;
-        margin: 30px 0px 0px 0px;
+        margin-right: 15px;
       }
 
       .write {
-        padding: 8px;
+        margin: 15px 0 10px;
+        border: 2px solid white;
+        border-radius: 10px;
+        max-width: 100%;
+        background-color: white;
+        padding: 15px;
+        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
+        font-size: 1.5rem;
+        /* padding: 8px;
         width: 100%;
         border: 2px solid #7a7893;
         border-radius: 8px;
         font-size: 1.5rem;
-        margin-top: 5px;
+        margin-top: 5px; */
       }
 
       #description,
@@ -68,7 +115,18 @@
   </head>
 
   <body>
-    <h1 class="head2">Edit Article</h1>
+    <nav class="nav">
+      <h1 class="head">Blog site</h1>
+
+      <div class="icons">
+        <!-- home -->
+
+        <h1 class="head2">Edit Article</h1>
+        <div class="dropdown">
+          <a href="/feed" class="home"><i class="fas fa-home"></i></a>
+        </div>
+      </div>
+    </nav>
 
     <form action="/<%= blogs.id %>?_method=PUT" method="POST">
       <!-- title -->
