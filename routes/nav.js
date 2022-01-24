@@ -4,6 +4,17 @@ const userdb = require("./../routes/registerModels");
 const { ensureAuthenticated } = require("../config/auth");
 const router = express.Router();
 
+//home page
+router.get("/", async (req, res) => {
+  const profile = req.user;
+  const blogs = await blogdb.find().sort({ date: -1 });
+  res.render("home", { profile, blogs });
+});
+
+router.get("/oops/maintance", (req, res) => {
+  res.render("maintance");
+});
+
 //home page route
 router.get("/feed", ensureAuthenticated, async (req, res) => {
   const profile = req.user;

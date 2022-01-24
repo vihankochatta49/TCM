@@ -13,7 +13,7 @@ router.get("/register", (req, res) => {
 });
 
 //login route
-router.get("/", (req, res) => {
+router.get("/login", (req, res) => {
   res.render("login");
 });
 

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog site</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color: #f2f2f2;
+        font-family: sans-serif;
+      }
+
+      .nav {
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 15px 2px 2px white;
+        background-color: #feed2d;
+        border-bottom: 3px solid black;
+        padding: 10px;
+        height: 50px;
+      }
+
+      .intro {
+          display:  flex;
+          flex-direction: column;
+          height: 60vh;
+          align-items: center;
+          justify-content: center;
+          background-color: #feed2d;
+      }
+
+      .head {
+        font-size: 2.2rem;
+        color: #000;
+        font-weight: 600;
+        font-family: monospace;
+        margin-left: 15px;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .profile {
+        color: #000;
+        text-decoration: none;
+        font-size: 1.5rem;
+        margin-left: 30px;
+      }
+
+      .profile:hover {
+        color: #7a7893;
+      }
+
+      .half {
+        display: flex;
+      }
+
+      .blogs {
+        display: grid;
+        grid-template-columns: auto;
+        align-content: start;
+        justify-content: center;
+        flex-direction: column;
+        padding: 10px 0px 20px;
+        margin: 0px 25px;
+      }
+
+      .bai {
+        position: relative;
+        min-width: 600px;
+        max-width: 800px;
+        background-color: white;
+        padding: 15px;
+        margin-top: 25px;
+        border: 2px solid white;
+        border-radius: 10px;
+        box-sizing: border-box;
+        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      .protfolio {
+        max-width: 100%;
+        width: 300px;
+        font-size: 1.2rem;
+        height: fit-content;
+        margin-left: 50px;
+        margin-right: 15px;
+        margin-top: 35px;
+        background-color: rgb(157 146 219 / 80%);
+        border: 2px solid white;
+        border-radius: 10px;
+        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
+        line-height: 1.8;
+        padding: 15px;
+      }
+
+      .protfolio a {
+        background-color: white;
+      }
+
+      .protfolio a:hover {
+        background-color: rgb(255 255 255 / 80%);
+      }
+
+      .blog {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        /* align-items: start; */
+      }
+
+      .written-by {
+        display: flex;
+        font-size: 14px;
+        align-items: center;
+        margin-bottom: 8px;
+        font-family: monospace;
+        font-weight: 600;
+        text-decoration: none;
+        color: black;
+      }
+
+      .head1 {
+        width: 85%;
+        margin-bottom: 10px;
+        color: black;
+        font-size: 2em;
+        word-spacing: -5px;
+        font-family: monospace;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .head1:hover {
+        text-decoration: underline;
+      }
+
+      .date {
+        color: darkslategray;
+        margin: 3px 0px 8px;
+        font-size: 0.7rem;
+      }
+
+      .para {
+        font-size: 1.3rem;
+        margin: 10px 0px;
+      }
+
+      .like {
+        font-size: 1rem;
+        margin-top: 10px;
+        color: #7a7893;
+      }
+
+      .btns {
+        margin-top: 10px;
+        display: flex;
+      }
+
+      .btn {
+        margin: 5px 0px 0px -1px;
+        background-color: white;
+        border: 2px solid white;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .like-btn {
+        color: black;
+        font-size: 1.5rem;
+        background-color: white;
+        border: 2px solid white;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .like-btn:hover {
+        color: #4267b2;
+      }
+
+      .msg {
+        color: green;
+        font-size: 1.2em;
+        margin-top: 10px;
+      }
+
+      .footer {
+          color: grey;
+        text-decoration: none;
+
+      }
+
+      .footer:hover {
+          color: black;
+      }
+      @media screen and (max-width: 800px) {
+        .plus {
+          right: 5px;
+        }
+
+        .head {
+          font-size: 1.5rem;
+        }
+
+         #profile {
+             display: none;
+         }
+
+         .intro {
+             text-align: center;
+         }
+        .blogs {
+          padding: 10px 10px 20px;
+          width: auto;
+        }
+
+        .bai {
+          padding: 15px 10px;
+          max-width: 100%;
+          min-width: 300px;
+        }
+
+        .blog {
+          max-width: 100%;
+          width: 100%;
+          flex-direction: column;
+        }
+
+        .blog img {
+          margin: auto !important;
+          padding: 10px;
+        }
+
+        .protfolio {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+<nav class="nav" id='nav'>
+      <h1 class="head">Blog site</h1>
+      <div class="dropdown" style="margin-right: 15px">
+        <a class="profile" id="profile" href="/">login</a>
+        <a class="profile" href="/register"
+          >Getting started</a>
+      </div>
+    </nav>
+    <div class="intro">
+        <h1 style="
+        font-size: 3.3rem;
+        font-weight: 400;
+    ">If you wish to be a writer, <b>write</b></h1>
+        <i style="
+        align-self: self-end;
+        width: 30%;
+        margin-top: 10px;
+    ">-Epictetus</i>
+    </div>
+
+    <section
+      style="display: flex; justify-content: center; background-color: #f2f2f2"
+    >
+      <div class="blogs">
+        <!-- all articles -->
+
+        <% blogs.forEach(function (e) { %>
+        <div class="bai">
+          <!-- single article -->
+          <div class="blog">
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+              "
+            >
+              <!--author name-->
+              <div>
+                <a href="/" class="written-by">
+                  <i
+                    class="far fa-user"
+                    style="margin-right: 5px; font-size: 18px"
+                  ></i>
+                  <%= e.name %>
+                </a>
+                <!-- title -->
+                <a
+                  href="/"
+                  class="head1"
+                  ><%= e.title %></a
+                >
+
+                <!-- description -->
+                <p class="para"><%= e.description %></p>
+
+                <!-- date -->
+                <p class="date"><%= e.createdAt %></p>
+              </div>
+              <!-- no. of likes -->
+              <p class="like">
+                <i class="far fa-thumbs-up"></i> <%= e.likes %>
+              </p>
+            </div>
+
+            <% if(e.imageBase64) {%>
+
+            <img
+              src="data:<%= e.contentType %>;base64,<%= e.imageBase64 %>"
+              height="150"
+              width="200"
+              style="margin: 15px"
+            />
+
+            <% } %>
+          </div>
+        </div>
+        <%})%>
+      </div>
+      <div>
+        <div class="protfolio">
+          <p style="font-weight: 600; margin-bottom: 20px">
+            Write on Blog site
+          </p>
+          <p>Grow your readship</p>
+          <p style="margin-bottom: 20px">Improve your writing skills</p>
+          <a
+            href="/"
+            style="
+              border: 2px solid white;
+              padding: 7px;
+              border-radius: 10px;
+              text-decoration: none;
+              color: black;
+            "
+            >Start writing</a
+          >
+        </div>
+        <div class="protfolio" style="text-align: center; background: white">
+          <h1 style="font-weight: 400; font-size: 2.2rem">Follow us on</h1>
+          <a style="font-size: 2.8em; margin-right: 20px; color: #00acee"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a
+            href="#"
+            style="text-align: center; font-size: 2.8em; color: #0e76a8"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+        </div>  
+      </div>
+        
+      </div>
+    </section>
+    <footer style="
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff;
+">
+        <p class="footer">About</p>
+        <a href="/oops/maintance" class="footer">Terms</a>
+        <a href='/oops/maintance' class="footer">Policy</a>
+        <a class="footer" href="https://www.linkedin.com/in/vihan-kochatta-179606223/" target="_blank">Contact-us</a>
+        <a class="footer" href='#nav'>Home</a>
+    </footer>
+
+  </body>
+</html>

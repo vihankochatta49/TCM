@@ -55,7 +55,7 @@ router.post("/register", (req, res) => {
               "success_msg",
               "You have successfully registered and can login in"
             );
-            res.redirect("/");
+            res.redirect("/login");
           } catch (err) {
             console.log(err);
           }
@@ -79,7 +79,7 @@ router.post("/login", (req, res, next) => {
 router.get("/user/logout", (req, res) => {
   req.logout();
   req.flash("success_msg", "You are logged out");
-  res.redirect("/");
+  res.redirect("/login");
 });
 
 module.exports = router;
