@@ -280,10 +280,12 @@
                 <!-- date -->
                 <p class="date"><%= e.createdAt %></p>
               </div>
-              <!-- no. of likes -->
-              <p class="like">
-                <i class="far fa-thumbs-up"></i> <%= e.likes %>
-              </p>
+
+             <!-- no. of likes -->
+            <p class="like">
+              <i class="far fa-thumbs-up"></i> <span id="<%= e.id%>"><%=e.likes%></span>
+            </p>
+
             </div>
 
             <% if(e.imageBase64) {%>
@@ -299,13 +301,13 @@
           </div>
           <div class="btns" style="margin-top: 10px; align-items: center">
             <!-- like button -->
-            <form action="/like/<%= e.id %>?_method=PUT" method="POST">
+            <!-- <form action="/like/<%= e.id %>?_method=PUT" method="POST"> -->
               <div class="dropdown">
-                <button type="submit" class="like-btn">
+                <button class="like-btn" onclick="likePost('<%= e.id %>')">
                   <i class="far fa-thumbs-up"></i>
                 </button>
               </div>
-            </form>
+            <!-- </form> -->
 
             <!-- comment button -->
             <div class="dropdown">
@@ -354,13 +356,23 @@
         
       </div>
     </section>
-    <!--script for clearing flash and error messages-->
     <script>
-      const clear = () => {
-        var errors = document.querySelectorAll(".msg");
-        errors.forEach((e) => (e.style.display = "none"));
-      };
-      setTimeout(clear, 5000);
+      function likePost(id) {
+        var totalLikes = document.getElementById(`${id}`);
+        fetch(`/like/post/${id}`, {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: {
+            postId: id,
+          },
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            totalLikes.innerHTML = result.likes;
+          });
+      }
     </script>
   </body>
 </html>
