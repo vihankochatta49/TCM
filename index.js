@@ -8,7 +8,7 @@ const passport = require("passport");
 const a = require("./routes/models");
 require("./config/googleAuth");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 //passport config
 require("./config/passport")(passport);
