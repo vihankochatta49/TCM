@@ -18,12 +18,6 @@ const schema = new mongoose.Schema({
   likes: { type: Number, default: 0 },
   roomName: String,
 });
-// filename: {
-//   type: String,
-//   unique: true,
-// },
-// contentType: String,
-// imageBase64: String,
 
 //pre validation
 schema.pre("validate", function (next) {

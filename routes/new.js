@@ -2,7 +2,6 @@ const express = require("express");
 const blogdb = require("./../routes/models");
 const userdb = require("./../routes/registerModels");
 const fs = require("fs");
-const store = require("../config/multer");
 const markdown = require("markdown").markdown;
 const router = express.Router();
 const app = express();
@@ -18,25 +17,12 @@ router.get("/login", (req, res) => {
 });
 
 // saving blog to database
-router.post("/save/:name", store.single("images"), (req, res) => {
+router.post("/save/:name", (req, res) => {
   //generating 9 digit blog number
   var blogNumber = Math.floor(Math.random() * 1000000000);
 
   const createDoc = async () => {
     try {
-      // const files = req.file;
-
-      // convert images to base64 emcoding
-      // let img = fs.readFileSync(files.path);
-      // encode_image = img.toString("base64");
-
-      //create object to store data in db
-      // let finalimg = {
-      //   filename: files.originalname,
-      //   contentType: files.mimetype,
-      //   imageBase64: encode_image,
-      // };
-
       const registeredUser = await userdb.findOne({
         slugName: req.params.name,
       });
@@ -49,9 +35,6 @@ router.post("/save/:name", store.single("images"), (req, res) => {
         blogNumber: blogNumber,
         registerNumber: registeredUser.registerNumber,
         name: registeredUser.name,
-        // filename: finalimg.filename,
-        // contentType: finalimg.contentType,
-        // imageBase64: finalimg.imageBase64,
       });
 
       const blog = await blogdb.insertMany([apprec]);
@@ -64,7 +47,7 @@ router.post("/save/:name", store.single("images"), (req, res) => {
 });
 
 //updating blog
-router.put("/:id", store.single("images"), async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const art = blogdb.findById(req.params.id);
 
