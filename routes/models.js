@@ -17,12 +17,12 @@ const schema = new mongoose.Schema({
   sanitizedHtml: { type: String, required: true },
   likes: { type: Number, default: 0 },
   roomName: String,
-  filename: {
-    type: String,
-    unique: true,
-  },
-  contentType: String,
-  imageBase64: String,
+  // filename: {
+  //   type: String,
+  //   unique: true,
+  // },
+  // contentType: String,
+  // imageBase64: String,
 });
 
 //pre validation
