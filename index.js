@@ -1,10 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
-const methodOverride = require("method-override");
 const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
+const commentDB = require("./routes/commentDB");
+const methodOverride = require("method-override");
 const a = require("./routes/models");
 const app = express();
 const http = require("http").createServer(app);
@@ -39,6 +40,12 @@ const users = {};
 
 //new user joined
 io.on("connection", (socket) => {
+  //fetching data
+  commentDB.find().then((data) => {
+    socket.emit("user-msg", data);
+  });
+
+  //new user joined
   socket.on("new-user-joined", (room, name) => {
     socket.join(room);
     users[socket.id] = name;
@@ -47,9 +54,17 @@ io.on("connection", (socket) => {
 
   //user send message
   socket.on("send", (room, message) => {
-    socket.to(room).emit("recieve", {
-      message: message,
-      name: users[socket.id],
+    //saving comment to database
+    const userMsg = new commentDB({
+      roomName: room,
+      userName: users[socket.id],
+      userChat: message,
+    });
+    userMsg.save().then(() => {
+      socket.to(room).emit("recieve", {
+        message: message,
+        name: users[socket.id],
+      });
     });
   });
 

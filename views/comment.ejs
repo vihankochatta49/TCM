@@ -255,6 +255,17 @@
     const name = "<%= profile.name %>";
     socket.emit("new-user-joined", roomName, name);
 
+    //displaying database
+    socket.on("user-msg", (data) => {
+        if (data.length) {
+          data.forEach((message) => {
+            if (message.roomName == roomName) {
+              appendone(message.userName, message.userChat);
+            }
+          });
+        }
+      });
+
     socket.on("recieve", (data) => {
       appendone(`${data.name}`, `${data.message}`);
     });
