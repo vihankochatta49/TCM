@@ -213,12 +213,12 @@
     //script for comment section
     const roomName = "<%= blogs.roomName %>";
   </script>
-  <script src="http://localhost:4202/socket.io/socket.io.js">
+  <script src="/socket.io/socket.io.js">
     //script for comment section
   </script>
   <script>
     //script for comment section
-    const socket = io("http://localhost:4202");
+    const socket = io();
 
     const drop = document.querySelector(".frm"); //form tag
     const dropMessage = document.querySelector(".message"); //input tag

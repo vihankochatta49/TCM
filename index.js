@@ -7,6 +7,7 @@ const session = require("express-session");
 const passport = require("passport");
 const a = require("./routes/models");
 const app = express();
+const http = require("http").createServer(app);
 const port = process.env.PORT || 3000;
 
 //passport config
@@ -31,7 +32,8 @@ mongoose
   .catch((err) => console.log(err));
 
 // Socket connection for comments
-const io = require("socket.io")(4202, { cors: { origin: "*" } });
+const io = require("socket.io")(http);
+// const io = require("socket.io")(4202, { cors: { origin: "*" } });
 const users = {};
 
 //new user joined
@@ -114,6 +116,6 @@ app.get("*", (req, res) => {
   res.render("404Page");
 });
 
-app.listen(port, () => {
+http.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });
