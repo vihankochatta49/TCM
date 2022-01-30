@@ -33,7 +33,8 @@ mongoose
 
 // Socket connection for comments
 const io = require("socket.io")(http);
-// const io = require("socket.io")(4202, { cors: { origin: "*" } });
+
+//user object
 const users = {};
 
 //new user joined
