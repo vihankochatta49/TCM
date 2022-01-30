@@ -23,12 +23,13 @@ router.post("/register", (req, res) => {
     errors.push({ msg: "Password should be at least 6 characters long" });
   }
 
+  //check for error
   if (errors.length > 0) {
     res.render("register", { errors, name, password, password2 });
   } else {
     rM.findOne({ name: name }).then((user) => {
+      //User exists
       if (user) {
-        //User exists
         errors.push({ msg: "Email is already registered" });
         res.render("register", { errors, name, password, password2 });
       } else {
@@ -70,7 +71,7 @@ router.post("/register", (req, res) => {
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", {
     successRedirect: "/feed",
-    failureRedirect: "/",
+    failureRedirect: "/login",
     failureFlash: true,
   })(req, res, next);
 });

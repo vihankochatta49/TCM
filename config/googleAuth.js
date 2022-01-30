@@ -2,6 +2,7 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
 const User = require("../routes/registerModels");
 
+//passport google strategy
 passport.use(
   new GoogleStrategy(
     {

@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const db = require(".././routes/registerModels");
 
+//passport strategy
 module.exports = function (passport) {
   passport.use(
     new localStrategy({ usernameField: "email" }, (name, password, done) => {

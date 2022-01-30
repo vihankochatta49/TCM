@@ -29,6 +29,7 @@ schema.pre("validate", function (next) {
     this.sanitizedHtml = markdown.toHTML(this.markdown); //converting text to raw html
   }
 
+  //changing date format
   if (this.date) {
     var tarikh = new Date(this.date);
     // this.createdAt = tarikh.toDateString();
@@ -39,7 +40,7 @@ schema.pre("validate", function (next) {
   }
 
   if (this.name) {
-    this.slugName = slugify(this.name);
+    this.slugName = slugify(this.name); //slugify user name
   }
   next();
 });

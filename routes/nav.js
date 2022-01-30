@@ -11,6 +11,7 @@ router.get("/", async (req, res) => {
   res.render("home", { profile, blogs });
 });
 
+//maintance error page
 router.get("/oops/maintance", (req, res) => {
   res.render("maintance");
 });
