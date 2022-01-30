@@ -183,7 +183,7 @@
 
       .written-by {
         font-size: 14px;
-        margin-bottom: 8px;
+        margin-bottom: 15px;
         font-family: monospace;
         font-weight: 600;
       }
@@ -192,7 +192,7 @@
         width: 85%;
         margin-bottom: 10px;
         color: black;
-        font-size: 2em;
+        font-size: 1.8em;
         word-spacing: -5px;
         font-family: monospace;
         text-decoration: none;
@@ -211,7 +211,7 @@
 
       .para {
         width: 85%;
-        font-size: 1.3rem;
+        font-size: 1.2em;
       }
 
       .like {
@@ -401,7 +401,13 @@
                 <p class="para"><%= e.description %></p>
 
                 <!-- date -->
-                <p class="date"><%= e.createdAt %></p>
+                <p class="date">
+                  <%= e.createdAt %>
+                  <a
+                    style="margin-left: 15px"
+                    href="/readMore/<%= e.slug %>/<%= e.blogNumber %>"
+                  ></a>
+                </p>
 
                 <!-- no. of likes -->
                 <p class="like">

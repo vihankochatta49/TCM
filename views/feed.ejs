@@ -122,7 +122,7 @@
         display: flex;
         font-size: 14px;
         align-items: center;
-        margin-bottom: 8px;
+        margin-bottom: 15px;
         font-family: monospace;
         font-weight: 600;
         text-decoration: none;
@@ -133,7 +133,7 @@
         width: 85%;
         margin-bottom: 10px;
         color: black;
-        font-size: 2em;
+        font-size: 1.8em;
         word-spacing: -5px;
         font-family: monospace;
         text-decoration: none;
@@ -151,7 +151,7 @@
       }
 
       .para {
-        font-size: 1.3rem;
+        font-size: 1.2em;
         margin: 10px 0px;
       }
 
@@ -279,7 +279,7 @@
                 <p class="para"><%= e.description %></p>
 
                 <!-- date -->
-                <p class="date"><%= e.createdAt %></p>
+                <p class="date"><%= e.createdAt %> <a style='margin-left: 15px;' href="/readMore/<%= e.slug %>/<%= e.blogNumber %>">read more</a></p>
               </div>
 
              <!-- no. of likes -->
@@ -342,10 +342,10 @@
         </div>
         <div class="protfolio" style="text-align: center; background: white">
           <h1 style="font-weight: 400; font-size: 2.2rem">Follow us on</h1>
-          <a href="https://github.com/vihankochatta49/Blogs-work" style="text-decoration:none;font-size: 2.8em; margin-right: 20px; color: #171517"
+          <a href="https://github.com/vihankochatta49/Blogs-work" target='_blank' style="text-decoration:none;font-size: 2.8em; margin-right: 20px; color: #171517"
             ><i class="fab fa-github"></i></a>
           <a
-            href="https://www.linkedin.com/in/vihan-kochatta-179606223/"
+            href="https://www.linkedin.com/in/vihan-kochatta-179606223/" target='_blank'
             style="text-align: center; font-size: 2.8em; color: #0e76a8; text-decoration:none;"
             ><i class="fab fa-linkedin"></i
           ></a>
