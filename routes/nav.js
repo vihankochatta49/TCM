@@ -1,6 +1,7 @@
 const express = require("express");
 const blogdb = require("./../routes/models");
 const userdb = require("./../routes/registerModels");
+const commentDB = require("./../routes/commentDB");
 const { ensureAuthenticated } = require("../config/auth");
 const router = express.Router();
 
@@ -20,7 +21,8 @@ router.get("/oops/maintance", (req, res) => {
 router.get("/feed", ensureAuthenticated, async (req, res) => {
   const profile = req.user;
   const blogs = await blogdb.find().sort({ date: -1 });
-  res.render("feed", { profile, blogs });
+  const commentDB = await commentDB.find({ roomName: blogs.roomName });
+  res.render("feed", { profile, blogs, commentDB });
 });
 
 //profile route
