@@ -58,8 +58,9 @@
 
     .written-by {
       display: flex;
-      font-size: 14px;
+      font-size: 4em;
       align-items: center;
+      justify-content: center;
       margin-top: 15px;
       font-family: monospace;
       font-weight: 600;
@@ -106,6 +107,10 @@
         font-size: 2rem;
       }
 
+      .written-by {
+        font-size: 2em;
+      }
+
       .btn {
         font-size: 1em;
         margin-top: 0px;
@@ -130,15 +135,12 @@
       <div class="bloog">
         <!--Blog section-->
         <!-- author name -->
-        <a class="written-by">
-          <i class="far fa-user" style="margin-right: 5px; font-size: 18px"></i>
-          <%= blogs.name %>
-        </a>
+        <a class="written-by"> <%= blogs.name %> </a>
         <!--title-->
         <h2 class="head1"><%= blogs.title %></h2>
         <!--description-->
         <p class="para"><%= blogs.description %></p>
-        <hr />
+
         <!--markdown-->
         <%- blogs.sanitizedHtml %>
         <!--total likes-->
