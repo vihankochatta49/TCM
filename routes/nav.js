@@ -21,7 +21,7 @@ router.get("/oops/maintance", (req, res) => {
 router.get("/feed", ensureAuthenticated, async (req, res) => {
   const profile = req.user;
   const blogs = await blogdb.find().sort({ date: -1 });
-  res.render("feed", { profile, blogs, commentDB });
+  res.render("feed", { profile, blogs });
 });
 
 //profile route
