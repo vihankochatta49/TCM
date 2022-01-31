@@ -56,6 +56,17 @@
       margin: 0px 25px;
     }
 
+    .written-by {
+      display: flex;
+      font-size: 14px;
+      align-items: center;
+      margin-bottom: 15px;
+      font-family: monospace;
+      font-weight: 600;
+      text-decoration: none;
+      color: black;
+    }
+
     .head1 {
       margin-bottom: 10px;
     }
@@ -118,7 +129,11 @@
     <section>
       <div class="bloog">
         <!--Blog section-->
-
+        <!-- author name -->
+        <a href="/users/profile/<%= e.slugName %>" class="written-by">
+          <i class="far fa-user" style="margin-right: 5px; font-size: 18px"></i>
+          <%= e.name %>
+        </a>
         <!--title-->
         <h2 class="head1"><%= blogs.title %></h2>
         <!--description-->
@@ -127,7 +142,10 @@
         <!--markdown-->
         <%- blogs.sanitizedHtml %>
         <!--total likes-->
-        <p class="like"><i class="far fa-thumbs-up"></i> <%= blogs.likes %></p>
+        <p class="like">
+          <i class="far fa-thumbs-up"></i> <%= blogs.likes %> <%=blogs.createdAt
+          %>
+        </p>
       </div>
     </section>
   </body>
