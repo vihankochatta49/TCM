@@ -443,7 +443,7 @@
     padding: 15px;
     background: #fff;
 ">
-<p class="footer" class='bttn'>Developer</p>
+<p class="footer" id='bttn'>Developer</p>
 <a class="footer" href="https://www.linkedin.com/in/vihan-kochatta-179606223/" target="_blank">Contact-us</a>
         <a href="/oops/maintance" class="footer">Terms</a>
         <a href='/oops/maintance' class="footer">Policy</a>
@@ -452,14 +452,17 @@
           <!--for developers element or developers info-->
 
           <div class="person1">
+            <div class="cross">
+              <i class="fas fa-times" style="font-size: 30px; cursor: pointer"></i>
+            </div>
             <!-- <img
               class="photo"
               src="https://www.iitk.ac.in/counsel/assets/img/developers/abhishek.jpg"
             /> -->
-            <h4 style="margin: 10px">Vihan Kochatta</h4>
-            <p class="email">ft.vihank20@iitk.ac.in</p>
+            <h4 style="margin: 10px; font-size: 3em; font-family: monospace;">Vihan Kochatta</h4>
+            <p class="email" style="font-size: 1.4em;">ft.vihank20@iitk.ac.in</p>
 
-            <div class="icons3">
+            <div class="icons3" style="margin-top: 10px;">
               <a
                 href="https://www.instagram.com/vihankochatta/"
                 style="color: white"
@@ -491,7 +494,7 @@
       // developers info script and cross script
       var aboutDevs = document.querySelector(".about-devs");
       var Blur = document.querySelector(".blur");
-      var bttn = document.querySelector(".bttn");
+      var bttn = document.querySelector("#bttn");
       var cross = document.querySelector(".cross");
 
       bttn.addEventListener("click", () => {
