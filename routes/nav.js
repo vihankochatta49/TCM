@@ -21,7 +21,6 @@ router.get("/oops/maintance", (req, res) => {
 router.get("/feed", ensureAuthenticated, async (req, res) => {
   const profile = req.user;
   const blogs = await blogdb.find().sort({ date: -1 });
-  const commentDB = await commentDB.find({ roomName: blogs.roomName });
   res.render("feed", { profile, blogs, commentDB });
 });
 
