@@ -60,7 +60,7 @@
       display: flex;
       font-size: 14px;
       align-items: center;
-      margin-bottom: 15px;
+      margin-top: 15px;
       font-family: monospace;
       font-weight: 600;
       text-decoration: none;
@@ -143,8 +143,10 @@
         <%- blogs.sanitizedHtml %>
         <!--total likes-->
         <p class="like">
-          <i class="far fa-thumbs-up"></i> <%= blogs.likes %> <%=blogs.createdAt
-          %>
+          <i class="far fa-thumbs-up"></i> <%= blogs.likes %>
+          <span style="margin-left: 10px; font-size: 0.9em">
+            <%=blogs.createdAt%>
+          </span>
         </p>
       </div>
     </section>
