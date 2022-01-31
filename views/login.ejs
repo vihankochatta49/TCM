@@ -156,7 +156,9 @@
 
         .cont {
           flex-direction: column;
-          margin-top: 30px;
+          width: 100%;
+          box-shadow: none !important;
+          border-radius: 0;
         }
 
         .mssg {
@@ -226,7 +228,7 @@
         </div>
       </div>
       <div class="form">
-        <form action="/login" method="POST">
+        <form action="/login" method="POST" autocomplete="off">
           <!--error and success messages-->
           <% if(typeof errors != 'undefined') {%>
           <%errors.forEach(function(error) {%>
@@ -243,7 +245,14 @@
 
           <!-- email -->
           <label for="email">User name:</label>
-          <input type="text" class="write" name="email" id="email" required />
+          <input
+            type="text"
+            class="write"
+            name="email"
+            id="email"
+            autocomplete="off"
+            required
+          />
           <!-- password -->
           <label for="password">Password:</label>
           <input
@@ -251,6 +260,7 @@
             class="write"
             name="password"
             id="password"
+            autocomplete="off"
             required
           />
 
