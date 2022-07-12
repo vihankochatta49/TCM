@@ -22,7 +22,10 @@
       }
 
       body {
+        background-image: url("https://cdn1.photostockeditor.com/c/2812/black-white-pencil-on-black-platform-background-background-image.jpg");
+        background-size: cover;
         font-family: sans-serif;
+        height: 100vh;
       }
 
       .nav {
@@ -30,8 +33,7 @@
         max-width: 100%;
         align-items: center;
         justify-content: space-between;
-        box-shadow: 15px 2px 2px white;
-        background-color: #1b324f;
+        box-shadow: 15px 2px 2px gold;
         padding: 10px;
         height: 50px;
       }
@@ -51,35 +53,33 @@
 
       .home {
         font-size: 2.2rem;
-        color: #fff;
+        color: gold;
         text-decoration: none;
         margin-right: 10px;
       }
 
       .home:hover {
-        color: black;
+        color: white;
       }
 
       .userInfo {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background-color: white;
+        background-color: rgba(0, 0, 0, 0.7);
         padding: 10px 25px;
         box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
       }
 
       .user-name {
+        color: white;
         font-size: 25px;
         font-family: monospace;
       }
 
       .user-posts {
+        color: white;
         font-size: 20px;
-      }
-
-      .half {
-        display: flex;
       }
 
       .blogs {
@@ -90,11 +90,11 @@
       }
 
       .bai {
-        border: 2px solid white;
+        border: 2px solid gold;
         border-radius: 10px;
         min-width: 600px;
         max-width: 800px;
-        background-color: white;
+        background-color: rgba(0, 0, 0, 0.7);
         padding: 15px;
         margin: 20px 0px 10px;
         box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
@@ -124,12 +124,13 @@
         margin-bottom: 15px;
         font-family: monospace;
         font-weight: 600;
+        color: white;
       }
 
       .head1 {
         width: 85%;
         margin-bottom: 10px;
-        color: black;
+        color: white;
         font-size: 1.8em;
         word-spacing: -5px;
         font-family: monospace;
@@ -142,12 +143,13 @@
       }
 
       .date {
-        color: darkslategray;
+        color: white;
         margin: 3px 0px 8px;
         font-size: 0.7rem;
       }
 
       .para {
+        color: white;
         width: 85%;
         font-size: 1.2em;
       }
@@ -155,7 +157,7 @@
       .like {
         font-size: 1rem;
         margin-top: 10px;
-        color: #7a7893;
+        color: wheat;
       }
 
       .btns {
@@ -164,41 +166,19 @@
 
       .btn {
         margin: 5px 0px 0px -1px;
-        background-color: white;
-        border: 2px solid white;
-        border-radius: 8px;
+        background-color: rgba(0, 0, 0, 0.7);
         cursor: pointer;
       }
 
       .like-btn {
-        color: black;
+        color: gold;
         font-size: 1.5rem;
-        background-color: white;
-        border: 2px solid white;
-        border-radius: 8px;
+        background-color: rgba(0, 0, 0, 0.7);
         cursor: pointer;
       }
 
       .like-btn:hover {
         color: #4267b2;
-      }
-
-      .logout {
-        position: fixed;
-        bottom: 10px;
-        right: 10px;
-        padding: 10px;
-        background-color: #7a7893;
-        color: white;
-        font-size: 20px;
-        border-radius: 10px;
-        text-decoration: none;
-      }
-
-      .logout:hover {
-        text-decoration: underline;
-        background-color: white;
-        color: #7a7893;
       }
 
       @media screen and (max-width: 800px) {
@@ -257,12 +237,7 @@
     </div>
 
     <section
-      style="
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #f2f2f2;
-      "
+      style="display: flex; align-items: center; justify-content: center"
     >
       <% if( blogs.length == 0) {%>
       <h1

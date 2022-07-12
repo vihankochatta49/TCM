@@ -23,28 +23,23 @@
         align-items: center;
         justify-content: center;
         height: 100vh;
+        background-image: url("https://i.pinimg.com/736x/6e/5a/9b/6e5a9b7514899500000d31e685c3e0a3.jpg");
       }
 
       .cont {
-        width: 80%;
+        width: 65%;
         display: flex;
         align-items: center;
         justify-content: center;
         box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
         border-radius: 10px;
+        background-color: rgba(0, 0, 0, 0.7);
       }
 
-      .mssg {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        background: #1b324f;
-        color: white;
-        font-size: 25px;
-        width: 25%;
-        text-align: center;
-        height: 555px;
+      .error {
+        color: red;
+        font-size: 1.5em;
+        margin-bottom: 10px;
       }
 
       .form {
@@ -54,57 +49,37 @@
       form {
         max-width: 500px;
         padding: 25px;
+        padding-bottom: 10px;
         display: flex;
         flex-direction: column;
-        background-color: white;
         margin: auto;
-      }
-
-      .error {
-        color: red;
-        font-size: 1.5em;
-        margin-bottom: 10px;
-      }
-
-      label {
-        font-size: 2rem;
-        margin-top: 15px;
-      }
-
-      .head2 {
-        text-align: center;
-        color: black;
-        font-size: 3rem;
-        font-weight: 500;
-        margin-top: 30px;
       }
 
       .write {
         padding: 8px;
         max-width: 100%;
-        border: 2px solid #7a7893;
-        border-radius: 8px;
+        border: 2px solid #fff;
+        border-bottom: 2px solid gainsboro;
+        background: #fff;
+        border-radius: 6px;
         font-size: 1.5rem;
-        margin-top: 5px;
-      }
-
-      #description,
-      #markdown {
-        height: 250px;
+        margin-top: 20px;
       }
 
       .btns {
         display: flex;
-        margin-top: 10px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px 0px;
       }
 
       .btn {
         font-size: 1.5em;
-        padding: 10px;
-        background-color: #4267b2;
+        padding: 10px 20px;
+        background-color: #5dbd3e;
         color: white;
         border: 2px solid white;
-        border-radius: 8px;
+        border-radius: 25px;
         margin: 10px 0px;
       }
 
@@ -112,42 +87,15 @@
         background-color: rgb(16, 90, 16);
       }
 
-      .btn-cancel {
-        font-size: 1.5em;
-        padding: 10px;
-        background-color: grey;
-        color: white;
-        border: 2px solid white;
-        border-radius: 8px;
-        margin-top: 10px;
-        margin-left: 10px;
-      }
-      /* box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important; */
-
-      .btn-cancel:hover {
-        background-color: red;
-      }
-
-      .anchor {
-        text-decoration: none;
-        color: white;
-      }
-
       .google {
         background-color: #189940;
+        text-align: center;
         text-decoration: none;
-        padding: 15px;
+        padding: 12px 15px;
         border-radius: 30px;
         color: white;
-        font-size: 25px;
-        width: 60%;
-        margin: auto;
-        margin-top: 10px;
-        margin-bottom: 10px;
-      }
-
-      .exist {
-        display: none;
+        font-size: 20px;
+        margin-bottom: 15px;
       }
 
       @media screen and (max-width: 640px) {
@@ -158,34 +106,15 @@
         .cont {
           flex-direction: column;
           width: 100%;
-          box-shadow: none !important;
-          border-radius: 0;
-        }
-
-        .mssg {
-          flex-direction: row;
-          height: 50px;
-          width: 100%;
-        }
-
-        .mssg h1 {
-          font-size: 1.2rem !important;
+          height: 100vh;
         }
 
         .form {
           width: 100%;
         }
 
-        label {
-          font-size: 1.5rem;
-        }
-
         .write {
           font-size: 1.2rem;
-        }
-
-        .already {
-          display: none;
         }
 
         .google {
@@ -196,74 +125,44 @@
           margin: 10px;
           padding: 0px;
         }
-
-        .exist {
-          display: block;
-        }
       }
     </style>
   </head>
 
   <body>
     <div class="cont">
-      <div class="mssg">
-        <h1 style="font-size: 2.2rem; font-family: monospace">Blog Site</h1>
-        <h1 style="font-weight: 500; font-size: 2.5rem">Welcome!</h1>
-        <div class="already">
-          <p style="font-size: 20px">Already have an account!</p>
-          <br />
-          <a
-            href="/login"
-            class="log"
-            style="
-              border: 2px solid white;
-              border-radius: 5px;
-              padding: 5px;
-              color: white;
-              text-decoration: none;
-            "
-          >
-            Login
-          </a>
-        </div>
-      </div>
-
       <div class="form">
-        <form action="/register" method="POST" autocomplete="off">
+        <form action="/register" method="POST">
           <!--error messages-->
           <% if(typeof errors != 'undefined') { %> <%
           errors.forEach(function(error) { %>
           <p class="error"><%= error.msg %></p>
           <% }) %> <% } %>
-
           <!-- email -->
-          <label for="name">User-name:</label>
           <input
             type="text"
             class="write"
             name="name"
             id="name"
-            autocomplete="off"
+            placeholder="User-name..."
             required
           />
           <!-- password -->
-          <label for="password">Password:</label>
           <input
             type="password"
             class="write"
             name="password"
             id="password"
-            autocomplete="off"
+            placeholder="password..."
             required
           />
           <!--confirm password -->
-          <label for="password2">Confirm password:</label>
           <input
             type="password"
             class="write"
             name="password2"
             id="password2"
-            autocomplete="off"
+            placeholder="confirm password..."
             required
           />
 
@@ -272,26 +171,36 @@
             <button class="btn" type="submit">Register</button>
           </div>
           <p style="margin: auto; font-size: 25px; color: #7a7893">OR</p>
-          <a class="google" href="/auth/google"
-            ><i class="fab fa-google" style="margin-right: 10px"></i> sign up
-            with GOOGLE</a
-          >
-          <p
-            class="exist"
-            style="font-size: 1.1rem; text-align: center; margin-top: 10px"
-          >
-            Already have a account? <a href="/login"><strong>Login</strong></a>
-          </p>
         </form>
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+          "
+        >
+          <a class="google" href="/auth/google"
+            ><i class="fab fa-google" style="margin-right: 10px"></i> GOOGLE</a
+          >
+          <a
+            class="google"
+            href="/oops/maintance"
+            style="background-color: #5b7bd5"
+            ><i class="fab fa-facebook" style="margin-right: 10px"></i>
+            FaceBook</a
+          >
+        </div>
+        <p
+          style="
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 10px;
+            color: white;
+          "
+        >
+          Already have a account? <a href="/login"><strong>Login</strong></a>
+        </p>
       </div>
     </div>
-    <!-- script for clearing flash/error messages-->
-    <script>
-      const clear = () => {
-        var errors = document.querySelectorAll(".error");
-        errors.forEach((e) => (e.style.display = "none"));
-      };
-      setTimeout(clear, 5000);
-    </script>
   </body>
 </html>

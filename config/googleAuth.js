@@ -7,8 +7,8 @@ passport.use(
   new GoogleStrategy(
     {
       clientID:
-        "SECRET_CLIENTID",
-      clientSecret: "SECRET_CLIENTSECRET",
+        "195118986970-6sr88jhohv2hm9c6b484gpci44ocook7.apps.googleusercontent.com",
+      clientSecret: "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",
       callbackURL: "https://blog-site-by-vihan.herokuapp.com/google/callback",
       passReqToCallback: true,
     },

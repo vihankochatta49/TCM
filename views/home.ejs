@@ -21,14 +21,19 @@
         font-family: sans-serif;
       }
 
+
+      .top {
+        height: 100vh;
+        background-image: url("https://i.pinimg.com/736x/6e/5a/9b/6e5a9b7514899500000d31e685c3e0a3.jpg");
+      }
       .nav {
         max-width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
         box-shadow: 15px 2px 2px white;
-        background-color: #feed2d;
         border-bottom: 3px solid black;
+        background-color: rgba(0,0,0,0.7);
         padding: 10px;
         height: 50px;
       }
@@ -36,15 +41,16 @@
       .intro {
           display:  flex;
           flex-direction: column;
-          height: 60vh;
+          height: 100%;
           align-items: center;
           justify-content: center;
-          background-color: #feed2d;
+        background-color: rgba(0,0,0,0.7);
+
       }
 
       .head {
         font-size: 2.2rem;
-        color: #000;
+        color: #fff;
         font-weight: 600;
         font-family: monospace;
         margin-left: 15px;
@@ -56,7 +62,7 @@
       }
 
       .profile {
-        color: #000;
+        color: #fff;
         text-decoration: none;
         font-size: 1.5rem;
         margin-left: 30px;
@@ -64,10 +70,6 @@
 
       .profile:hover {
         color: #7a7893;
-      }
-
-      .half {
-        display: flex;
       }
 
       .blogs {
@@ -84,10 +86,10 @@
         position: relative;
         min-width: 600px;
         max-width: 800px;
-        background-color: white;
+        background-color: rgba(0, 0,0, 0.7);
         padding: 15px;
         margin-top: 25px;
-        border: 2px solid white;
+        border: 2px solid gold;
         border-radius: 10px;
         box-sizing: border-box;
         box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
@@ -97,35 +99,10 @@
         max-width: 100%;
       }
 
-      .protfolio {
-        max-width: 100%;
-        width: 300px;
-        font-size: 1.2rem;
-        height: fit-content;
-        margin-left: 50px;
-        margin-right: 15px;
-        margin-top: 35px;
-        background-color: rgb(157 146 219 / 80%);
-        border: 2px solid white;
-        border-radius: 10px;
-        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
-        line-height: 1.8;
-        padding: 15px;
-      }
-
-      .protfolio a {
-        background-color: white;
-      }
-
-      .protfolio a:hover {
-        background-color: rgb(255 255 255 / 80%);
-      }
-
       .blog {
         width: 100%;
         display: flex;
         justify-content: space-between;
-        /* align-items: start; */
       }
 
       .written-by {
@@ -136,13 +113,12 @@
         font-family: monospace;
         font-weight: 600;
         text-decoration: none;
-        color: black;
       }
 
       .head1 {
         width: 85%;
         margin-bottom: 10px;
-        color: black;
+        color: white;
         font-size: 1.8em;
         word-spacing: -5px;
         font-family: monospace;
@@ -155,12 +131,13 @@
       }
 
       .date {
-        color: darkslategray;
+        color: wheat;
         margin: 3px 0px 8px;
         font-size: 0.7rem;
       }
 
       .para {
+        color: white;
         font-size: 1.2em;
         margin: 10px 0px;
       }
@@ -168,39 +145,7 @@
       .like {
         font-size: 1rem;
         margin-top: 10px;
-        color: #7a7893;
-      }
-
-      .btns {
-        margin-top: 10px;
-        display: flex;
-      }
-
-      .btn {
-        margin: 5px 0px 0px -1px;
-        background-color: white;
-        border: 2px solid white;
-        border-radius: 8px;
-        cursor: pointer;
-      }
-
-      .like-btn {
-        color: black;
-        font-size: 1.5rem;
-        background-color: white;
-        border: 2px solid white;
-        border-radius: 8px;
-        cursor: pointer;
-      }
-
-      .like-btn:hover {
-        color: #4267b2;
-      }
-
-      .msg {
-        color: green;
-        font-size: 1.2em;
-        margin-top: 10px;
+        color: white;
       }
 
       .about-devs {
@@ -314,11 +259,6 @@
           margin: auto !important;
           padding: 10px;
         }
-
-        .protfolio {
-          display: none;
-        }
-
         .footer {
           font-size: 0.8em;
         }
@@ -327,6 +267,7 @@
   </head>
 
   <body>
+    <section class="top">
 <nav class="nav" id='nav'>
       <h1 class="head">Blog site</h1>
       <div class="dropdown" style="margin-right: 15px">
@@ -339,17 +280,53 @@
         <h1 style="
         font-size: 3.3rem;
         font-weight: 400;
+        color: #fff;
     ">If you wish to be a writer, <b>write</b></h1>
         <i style="
+        color: #fff;
         align-self: self-end;
         width: 30%;
         margin-top: 10px;
     ">-Epictetus</i>
     </div>
-
-    <section
-      style="display: flex; justify-content: center; background-color: #f2f2f2"
+  </section>
+  <section
+  style="flex-direction: column;background-color: #DDDAD8;height: 100vh;display: flex;justify-content: center;align-items: center;"
     >
+    <h1 style="
+    font-size: 45px;
+    margin-bottom: 15px;
+    font-family: monospace;
+">Write on blog-site</h1>
+    <div style="
+    text-align: JUSTIFY;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    color: #585454;
+    FONT-SIZE: 19px;
+">
+    The primary reason for writing anything is to communicate with others, to stimulate interest or action from the reader. You may also use writing to help you to reflect on your experiences and learn from them.
+    Writing sometimes has more impact than other communication channels. Through writing, you can select language to influence the thoughts and actions of your reader in particular ways, guiding them through your evidence and argument to convince them of your analysis and conclusions.
+  </div>
+  <a
+            href="/login"
+            style="
+              padding: 12px;
+              border-radius: 10px;
+              color: white;
+              font-size: 20px;
+              text-decoration: none;
+              margin-top: 15px;
+              background-color: #4C69BA;
+            "
+            >Start writing</a
+          >
+    </section>
+    <section
+      style="display: flex; justify-content: center; align-items: center; background-image: url('https://media.istockphoto.com/photos/black-wooden-desk-blackboard-periodic-table-crack-cocaine-texture-picture-id991775902?k=20&m=991775902&s=170667a&w=0&h=yEGyO2MRyzaNynO4GLWfEx4oxOqbYHaj0i8s5ojYGDs='); height: 100vh; flex-direction: column;"
+    >
+    <h1 style="font-size: 40px;color: gold">Blogs</h1>
       <div class="blogs">
         <!-- all articles -->
 
@@ -406,36 +383,6 @@
         </div>
         <%})%>
       </div>
-      <div>
-        <div class="protfolio">
-          <p style="font-weight: 600; margin-bottom: 20px">
-            Write on Blog site
-          </p>
-          <p>Grow your readship</p>
-          <p style="margin-bottom: 20px">Improve your writing skills</p>
-          <a
-            href="/login"
-            style="
-              border: 2px solid white;
-              padding: 7px;
-              border-radius: 10px;
-              text-decoration: none;
-              color: black;
-            "
-            >Start writing</a
-          >
-        </div>
-        <div class="protfolio" style="text-align: center; background: white">
-          <h1 style="font-weight: 400; font-size: 2.2rem">Follow us on</h1>
-          <a href="https://github.com/vihankochatta49/Blogs-work" target='_blank' style="text-decoration:none;font-size: 2.8em; margin-right: 20px; color: #171517"
-            ><i class="fab fa-github"></i></a>
-          <a
-            href="https://www.linkedin.com/in/vihan-kochatta-179606223/" target='_blank'
-            style="text-align: center; font-size: 2.8em; color: #0e76a8; text-decoration:none;"
-            ><i class="fab fa-linkedin"></i
-          ></a>
-        </div> 
-      </div>
         
       </div>
     </section>
@@ -443,7 +390,6 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-top: 20px;
     padding: 15px;
     background: #fff;
 ">

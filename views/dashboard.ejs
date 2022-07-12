@@ -23,6 +23,9 @@
 
       body {
         font-family: sans-serif;
+        background-image: url("https://cdn1.photostockeditor.com/c/2812/black-white-pencil-on-black-platform-background-background-image.jpg");
+        background-size: cover;
+        height: 100vh;
       }
 
       .nav {
@@ -30,10 +33,9 @@
         max-width: 100%;
         align-items: center;
         justify-content: space-between;
-        box-shadow: 15px 2px 2px white;
+        box-shadow: 15px 2px 2px gold;
         padding: 10px;
         height: 50px;
-        background-color: #1b324f;
       }
 
       .head {
@@ -46,9 +48,13 @@
 
       .plus {
         font-size: 2.2rem;
-        color: #fff;
+        color: gold;
         text-decoration: none;
         margin-right: 20px;
+      }
+
+      .plus:hover {
+        color: white;
       }
 
       .dropdown {
@@ -56,54 +62,8 @@
         display: inline-block;
       }
 
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        right: 0px;
-        top: 50px;
-        background-color: #2d2d2d;
-        min-width: 100px;
-        padding: 8px 0px;
-        z-index: 1;
-        border-radius: 10px;
-      }
-
-      .arrow-top:after {
-        content: " ";
-        position: absolute;
-        right: 19px;
-        top: -15px;
-        border-top: none;
-        border-right: 15px solid transparent;
-        border-left: 15px solid transparent;
-        border-bottom: 15px solid #2d2d2d;
-      }
-
       .dropdown:hover .dropdown-content {
         display: block;
-      }
-
-      .dropdown-content1 {
-        display: none;
-        position: absolute;
-        left: -17px;
-        top: 45px;
-        background-color: #2d2d2d;
-        min-width: 100px;
-        padding: 8px 0px;
-        z-index: 1;
-        border-radius: 10px;
-      }
-
-      .arrow-top1:after {
-        content: " ";
-        position: absolute;
-        left: 15px;
-        top: -15px;
-        border-top: none;
-        border-right: 15px solid transparent;
-        border-left: 15px solid transparent;
-        border-bottom: 15px solid #2d2d2d;
       }
 
       .dropdown:hover .dropdown-content1 {
@@ -112,13 +72,13 @@
 
       .home {
         font-size: 2.2rem;
-        color: #fff;
+        color: gold;
         text-decoration: none;
         margin-right: 10px;
       }
 
       .home:hover {
-        color: black;
+        color: white;
       }
 
       .userInfo {
@@ -126,22 +86,24 @@
         align-items: center;
         justify-content: space-between;
         padding: 10px 25px;
-        background-color: white;
+        background-color: rgba(0, 0, 0, 0.7);
         box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
       }
 
       .user-name {
+        color: white;
         font-size: 25px;
         font-family: monospace;
       }
 
       .user-posts {
+        color: white;
         font-size: 20px;
       }
-
+      /* 
       .half {
         display: flex;
-      }
+      } */
 
       .blogs {
         display: flex;
@@ -151,12 +113,11 @@
       }
 
       .bai {
-        border: 2px solid white;
+        border: 2px solid gold;
         border-radius: 10px;
         min-width: 600px;
         max-width: 800px;
-        /* width: 100%; */
-        background-color: white;
+        background-color: rgba(0, 0, 0, 0.7);
         padding: 15px;
         margin: 20px 0px 10px;
         box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
@@ -191,7 +152,7 @@
       .head1 {
         width: 85%;
         margin-bottom: 10px;
-        color: black;
+        color: white;
         font-size: 1.8em;
         word-spacing: -5px;
         font-family: monospace;
@@ -204,20 +165,21 @@
       }
 
       .date {
-        color: darkslategray;
+        color: white;
         margin: 3px 0px 8px;
         font-size: 0.7rem;
       }
 
       .para {
         width: 85%;
+        color: white;
         font-size: 1.2em;
       }
 
       .like {
         font-size: 1rem;
         margin-top: 10px;
-        color: #7a7893;
+        color: wheat;
       }
 
       .btns {
@@ -226,18 +188,15 @@
 
       .btn {
         margin: 5px 0px 0px -1px;
-        background-color: white;
-        border: 2px solid white;
-        border-radius: 8px;
+        background-color: rgba(0, 0, 0, 0.7);
         cursor: pointer;
       }
 
       .btn-delete {
-        background-color: white;
+        background-color: rgba(0, 0, 0, 0.7);
         padding: 5px;
-        color: #7a7893;
+        color: gold;
         font-size: 1.3rem;
-        border: 2px solid #fff;
       }
 
       .btn-delete:hover {
@@ -245,27 +204,24 @@
       }
 
       .btn-edit {
-        background-color: white;
-        border: 2px solid #fff;
+        background-color: rgba(0, 0, 0, 0.7);
         padding: 5px;
       }
 
       .anchor-edit {
         font-size: 1.3rem;
         text-decoration: none;
-        color: #7a7893;
+        color: gold;
       }
 
       .anchor-edit:hover {
-        color: black;
+        color: blue;
       }
 
       .like-btn {
-        color: black;
+        color: gold;
         font-size: 1.5rem;
-        background-color: white;
-        border: 2px solid white;
-        border-radius: 8px;
+        background-color: rgba(0, 0, 0, 0.7);
         cursor: pointer;
       }
 
@@ -351,12 +307,7 @@
     </div>
 
     <section
-      style="
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #f2f2f2;
-      "
+      style="display: flex; align-items: center; justify-content: center"
     >
       <% if( blogs.length == 0) {%>
       <h1
