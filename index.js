@@ -4,7 +4,6 @@ const path = require("path");
 const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
-const commentDB = require("./routes/commentDB");
 const methodOverride = require("method-override");
 const a = require("./routes/models");
 const app = express();
@@ -13,9 +12,6 @@ const port = process.env.PORT || 3000;
 
 //passport config
 require("./config/passport")(passport);
-
-//google auth config
-require("./config/googleAuth");
 
 //ejs engine
 app.set("view engine", "ejs");
@@ -31,46 +27,6 @@ mongoose
   .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/blogs")
   .then(() => console.log("Connection successful..."))
   .catch((err) => console.log(err));
-
-// Socket connection for comments
-const io = require("socket.io")(http);
-
-//user object
-const users = {};
-
-//new user joined
-io.on("connection", (socket) => {
-  //fetching data
-  commentDB.find().then((data) => {
-    socket.emit("user-msg", data);
-  });
-
-  //new user joined
-  socket.on("new-user-joined", (room, name) => {
-    socket.join(room);
-    users[socket.id] = name;
-    socket.to(room).emit("user-joined", name);
-  });
-
-  //user send message
-  socket.on("send", (room, message) => {
-    //saving comment to database
-    const userMsg = new commentDB({
-      roomName: room,
-      userName: users[socket.id],
-      userChat: message,
-    });
-    userMsg.save().then(() => {
-      socket.to(room).emit("recieve", {
-        message: message,
-        name: users[socket.id],
-      });
-    });
-  });
-
-  //user disconnected
-  socket.on("disconnect", (message) => delete users[socket.id]);
-});
 
 //express session
 app.use(
@@ -99,25 +55,6 @@ app.use((req, res, next) => {
   next();
 });
 
-//authentication with google
-app.get(
-  "/auth/google",
-  passport.authenticate("google", { scope: ["email", "profile"] })
-);
-
-app.get(
-  "/google/callback",
-  passport.authenticate("google", {
-    successRedirect: "/feed",
-    failureRedirect: "/auth/google/failure",
-  })
-);
-
-//handles google auth fail
-app.get("/auth/google/failure", (req, res) => {
-  res.send("Failed to authenticate..");
-});
-
 //getting routes/new.js
 app.use("/", require(path.join(__dirname, "routes/new")));
 
@@ -127,6 +64,7 @@ app.use("/", require("./routes/nav"));
 //getting routes/register.js
 app.use("/", require("./routes/register"));
 
+app.use("/", require("./routes/events"));
 //404 page
 app.get("*", (req, res) => {
   res.render("404Page");

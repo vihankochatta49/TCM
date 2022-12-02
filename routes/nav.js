@@ -1,15 +1,12 @@
 const express = require("express");
 const blogdb = require("./../routes/models");
 const userdb = require("./../routes/registerModels");
-const commentDB = require("./../routes/commentDB");
 const { ensureAuthenticated } = require("../config/auth");
 const router = express.Router();
 
 //home page
 router.get("/", async (req, res) => {
-  const profile = req.user;
-  const blogs = await blogdb.find().sort({ date: -1 });
-  res.render("home", { profile, blogs });
+  res.render("login");
 });
 
 //maintance error page
@@ -20,7 +17,13 @@ router.get("/oops/maintance", (req, res) => {
 //home page route
 router.get("/feed", ensureAuthenticated, async (req, res) => {
   const profile = req.user;
-  const blogs = await blogdb.find().sort({ date: -1 });
+  const blogs = [
+    { name: "Web" },
+    { name: "Marketing" },
+    { name: "Events" },
+    { name: "Security" },
+    { name: "Finace" },
+  ];
   res.render("feed", { profile, blogs });
 });
 
@@ -54,17 +57,6 @@ router.get("/users/profile/:name", async (req, res) => {
 router.get("/readMore/:slug/:blogNumber", async (req, res) => {
   const blogs = await blogdb.findOne({ blogNumber: req.params.blogNumber });
   if (blogs != null) res.render("show", { blogs });
-  else res.render("404Page");
-});
-
-//comment route
-router.get("/comment/:slug/:blogNumber/:name", async (req, res) => {
-  const profile = await userdb.findOne({
-    slugName: req.params.name,
-  });
-  const blogs = await blogdb.findOne({ blogNumber: req.params.blogNumber });
-  if (blogs != null && profile != null)
-    res.render("comment", { blogs, profile });
   else res.render("404Page");
 });
 

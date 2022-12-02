@@ -85,122 +85,21 @@
         border-radius: 10px;
         box-sizing: border-box;
         box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
+        text-align: center;
       }
 
-      img {
-        max-width: 100%;
-      }
-
-      .protfolio {
-        max-width: 100%;
-        width: 300px;
-        font-size: 1.2rem;
-        height: fit-content;
-        margin-left: 50px;
-        margin-right: 15px;
-        margin-top: 35px;
-        background-color: rgba(255,255,255,0.9);
-        border: 3px solid gold;
-        border-radius: 10px;
-        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
-        line-height: 1.8;
-        padding: 15px;
-      }
-
-      .protfolio a {
-        background-color: white;
-      }
-
-      .protfolio a:hover {
-        background-color: rgb(255 255 255 / 80%);
-      }
-
-      .blog {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        /* align-items: start; */
-      }
-
-      .written-by {
-        display: flex;
-        font-size: 14px;
-        align-items: center;
-        margin-bottom: 15px;
-        font-family: monospace;
-        font-weight: 600;
-        text-decoration: none;
-        color: gold;
-      }
-
-      .written-by:hover{
+      .bai a {
         color: white;
-      }
-
-      .head1 {
-        width: 85%;
-        margin-bottom: 10px;
-        color: white;
-        font-size: 1.8em;
-        word-spacing: -5px;
-        font-family: monospace;
+        font-size: 2rem;
         text-decoration: none;
-        font-weight: 600;
       }
 
-      .head1:hover {
-        color: gold;
+      .bai a:hover {
         text-decoration: underline;
+
       }
 
-      .date {
-        color: white;
-        margin: 3px 0px 8px;
-        font-size: 0.7rem;
-      }
-
-      .para {
-        color: white;
-        font-size: 1.2em;
-        margin: 10px 0px;
-      }
-
-      .like {
-        font-size: 1rem;
-        margin-top: 10px;
-        color: wheat;
-      }
-
-      .btns {
-        margin-top: 10px;
-        display: flex;
-      }
-
-      .btn {
-        margin: 5px 0px 0px -1px;
-        background-color: white;
-        border: 2px solid white;
-        border-radius: 8px;
-        cursor: pointer;
-      }
-
-      .like-btn {
-        color: gold;
-        font-size: 1.5rem;
-        background-color:black;
-        cursor: pointer;
-      }
-
-      .like-btn:hover {
-        color: #4267b2;
-      }
-
-      .msg {
-        color: green;
-        font-size: 1.2em;
-        margin-top: 10px;
-      }
-
+  
       @media screen and (max-width: 800px) {
         .plus {
           right: 5px;
@@ -242,7 +141,7 @@
 
   <body>
     <nav class="nav">
-      <h1 class="head">Blog site</h1>
+      <h1 class="head">Techkriti Content Manager</h1>
       <div class="dropdown" style="margin-right: 15px">
         <a class="profile" href="/<%= profile.slugName %>"
           ><i class="far fa-user"></i
@@ -258,127 +157,12 @@
 
         <% blogs.forEach(function (e) { %>
         <div class="bai">
-          <!-- single article -->
-          <div class="blog">
-            <div
-              style="
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-              "
-            >
-              <!--author name-->
-              <div>
-                <a href="/users/profile/<%= e.slugName %>" class="written-by">
-                  <i
-                    class="far fa-user"
-                    style="margin-right: 5px; font-size: 18px"
-                  ></i>
-                  <%= e.name %>
-                </a>
-                <!-- title -->
-                <a
-                  href="/readMore/<%= e.slug %>/<%= e.blogNumber %>"
-                  class="head1"
-                  ><%= e.title %></a
-                >
-
-                <!-- description -->
-                <p class="para"><%= e.description %></p>
-
-                <!-- date -->
-                <p class="date"><%= e.createdAt %> <a style='margin-left: 5px; font-size: 1.2em; text-decoration: none; color: gray;' href="/readMore/<%= e.slug %>/<%= e.blogNumber %>">read more</a></p>
-              </div>
-
-             <!-- no. of likes -->
-            <p class="like">
-              <i class="far fa-thumbs-up"></i> <span id="<%= e.id%>"><%=e.likes%></span> 
-            </p>
-
-            </div>
-
-            <% if(e.imageBase64) {%>
-
-            <img
-              src="data:<%= e.contentType %>;base64,<%= e.imageBase64 %>"
-              height="150"
-              width="200"
-              style="margin: 15px"
-            />
-
-            <% } %>
-          </div>
-          <div class="btns" style="margin-top: 10px; align-items: center">
-            <!-- like button -->
-              <div class="dropdown">
-                <button class="like-btn" onclick="likePost('<%= e.id %>')">
-                  <i class="far fa-thumbs-up"></i>
-                </button>
-              </div>
-
-            <!-- comment button -->
-            <div class="dropdown">
-              <a
-                class="like-btn"
-                href="/comment/<%= e.slug %>/<%= e.blogNumber %>/<%= profile.slugName %>"
-                style="margin-left: 5px"
-                ><i class="far fa-comment"></i
-              ></a>
-            </div>
-          </div>
+          <a href="/<%=e.name%>/<%=profile.slugName%>"><%=e.name%></a>
         </div>
         <%})%>
-      </div>
-      <div>
-        <div class="protfolio">
-          <p style="font-weight: 600; margin-bottom: 20px">
-            Write on Blog site
-          </p>
-          <p>Grow your readship</p>
-          <p style="margin-bottom: 20px">Improve your writing skills</p>
-          <a
-            href="/new-article/create/<%= profile.slugName%>"
-            style="
-              border: 2px solid white;
-              padding: 7px;
-              border-radius: 10px;
-              text-decoration: none;
-              color: black;
-            "
-            >Start writing</a
-          >
-        </div>
-        <div class="protfolio" style="text-align: center; background: white">
-          <h1 style="font-weight: 400; font-size: 2.2rem">Follow us on</h1>
-          <a href="https://github.com/vihankochatta49/Blogs-work" target='_blank' style="text-decoration:none;font-size: 2.8em; margin-right: 20px; color: #171517"
-            ><i class="fab fa-github"></i></a>
-          <a
-            href="https://www.linkedin.com/in/vihan-kochatta-179606223/" target='_blank'
-            style="text-align: center; font-size: 2.8em; color: #0e76a8; text-decoration:none;"
-            ><i class="fab fa-linkedin"></i
-          ></a>
-        </div>  
       </div>
         
       </div>
     </section>
-    <script>
-      function likePost(id) {
-        var totalLikes = document.getElementById(`${id}`);
-        fetch(`/like/post/${id}`, {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: {
-            postId: id,
-          },
-        })
-          .then((res) => res.json())
-          .then((result) => {
-            totalLikes.innerHTML = result.likes;
-          });
-      }
-    </script>
   </body>
 </html>

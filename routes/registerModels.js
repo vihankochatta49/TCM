@@ -17,11 +17,10 @@ const userSchema = new mongoose.Schema({
   password2: {
     type: String,
   },
-  registerNumber: {
+  position: {
     type: String,
   },
   slugName: String,
-  proivder: String,
 });
 
 userSchema.pre("validate", function (next) {

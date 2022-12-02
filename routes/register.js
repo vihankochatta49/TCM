@@ -33,15 +33,12 @@ router.post("/register", (req, res) => {
         errors.push({ msg: "Email is already registered" });
         res.render("register", { errors, name, password, password2 });
       } else {
-        //register number
-        var registerNumber = Math.floor(Math.random() * 1000000000);
-
         const createDoc = async function () {
           try {
             const userData = new rM({
               name: req.body.name,
               password: req.body.password,
-              registerNumber: registerNumber,
+              position: "Head",
             });
 
             // generating hashed password
@@ -69,7 +66,6 @@ router.post("/register", (req, res) => {
 
 //post route for login (passport authenticate)
 router.post("/login", (req, res, next) => {
-  console.log(req);
   passport.authenticate("local", {
     successRedirect: "/feed",
     failureRedirect: "/login",

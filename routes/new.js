@@ -65,23 +65,4 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-//counting likes
-router.put("/like/post/:id", (req, res) => {
-  blogdb
-    .findByIdAndUpdate(
-      req.params.id,
-      {
-        $inc: { likes: 1 },
-      },
-      { new: true }
-    )
-    .exec((err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
-        res.json(result);
-      }
-    });
-});
-
 module.exports = router;
