@@ -9,7 +9,7 @@
       referrerpolicy="no-referrer"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog site</title>
+    <title>TCM</title>
 
     <style>
       body {
@@ -133,17 +133,6 @@
         class="write"
         required
       />
-      <!-- description -->
-      <label for="description">Headline:</label>
-      <textarea
-        type="text"
-        class="write"
-        name="description"
-        id="description"
-        required
-      >
-      <%= blogs.description %></textarea
-      >
       <!-- markdown -->
       <label for="markdown">Description:</label>
       <textarea
@@ -156,6 +145,17 @@
       <%= blogs.markdown %></textarea
       >
 
+      <!-- description -->
+      <label for="price">Price:</label>
+      <textarea
+        type="text"
+        class="write"
+        name="price"
+        id="price"
+        required
+      >
+      <%= blogs.price %></textarea
+      >
       <div class="btns">
         <!-- buttons -->
         <button class="btn" type="submit">Update</button>

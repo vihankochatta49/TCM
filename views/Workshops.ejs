@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TCM</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      html {
+        height: 100%;
+        background-color: #f2f2f2;
+      }
+
+      body {
+        font-family: sans-serif;
+        background-image: url("https://cdn1.photostockeditor.com/c/2812/black-white-pencil-on-black-platform-background-background-image.jpg");
+        background-size: cover;
+        height: 100vh;
+      }
+
+      button {
+        border: none;
+      }
+
+      .nav {
+        display: flex;
+        max-width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 15px 2px 2px gold;
+        padding: 10px;
+        height: 50px;
+      }
+
+      .head {
+        font-size: 2.2rem;
+        color: #fff;
+        font-weight: 600;
+        font-family: monospace;
+        margin-left: 15px;
+      }
+
+      .plus {
+        font-size: 2.2rem;
+        color: gold;
+        text-decoration: none;
+        margin-right: 20px;
+      }
+
+      .plus:hover {
+        color: white;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown:hover .dropdown-content1 {
+        display: block;
+      }
+
+      .home {
+        font-size: 2.2rem;
+        color: gold;
+        text-decoration: none;
+        margin-right: 10px;
+      }
+
+      .home:hover {
+        color: white;
+      }
+
+      .userInfo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 25px;
+        background-color: rgba(0, 0, 0, 0.7);
+        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
+      }
+
+      .user-name {
+        color: white;
+        font-size: 25px;
+        font-family: monospace;
+      }
+
+      .user-posts {
+        color: white;
+        font-size: 20px;
+      }
+      /* 
+      .half {
+        display: flex;
+      } */
+
+      .blogs {
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .bai {
+        border: 2px solid gold;
+        border-radius: 10px;
+        min-width: 600px;
+        max-width: 800px;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 15px;
+        margin: 20px 0px 10px;
+        box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important;
+      }
+
+      .blog {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .content-img {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .blog-content {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .written-by {
+        font-size: 14px;
+        margin-bottom: 15px;
+        color: white;
+        font-family: monospace;
+        font-weight: 600;
+      }
+
+      .head1 {
+        width: 85%;
+        margin-bottom: 10px;
+        color: white;
+        font-size: 1.8em;
+        word-spacing: -5px;
+        font-family: monospace;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .head1:hover {
+        text-decoration: underline;
+      }
+
+      .date {
+        color: white;
+        margin: 3px 0px 8px;
+        font-size: 0.7rem;
+      }
+
+      .para {
+        width: 85%;
+        color: white;
+        font-size: 1.1em;
+      }
+
+      .like {
+        font-size: 1rem;
+        margin-top: 10px;
+        color: wheat;
+      }
+
+      .btns {
+        display: flex;
+      }
+
+      .btn {
+        margin: 5px 0px 0px -1px;
+        background-color: rgba(0, 0, 0, 0.7);
+        cursor: pointer;
+      }
+
+      .btn-delete {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 5px;
+        color: gold;
+        font-size: 1.3rem;
+      }
+
+      .btn-delete:hover {
+        color: red;
+      }
+
+      .btn-edit {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 5px;
+      }
+
+      .anchor-edit {
+        font-size: 1.3rem;
+        text-decoration: none;
+        color: gold;
+      }
+
+      .anchor-edit:hover {
+        color: blue;
+      }
+
+      .like-btn {
+        color: gold;
+        font-size: 1.5rem;
+        background-color: rgba(0, 0, 0, 0.7);
+        cursor: pointer;
+      }
+
+      .like-btn:hover {
+        color: #4267b2;
+      }
+
+      .logout {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        padding: 10px;
+        background-color: #f11818;
+        color: white;
+        font-size: 20px;
+        border-radius: 10px;
+        text-decoration: none;
+      }
+
+      .logout:hover {
+        text-decoration: underline;
+        background-color: white;
+        color: #7a7893;
+      }
+
+      @media screen and (max-width: 800px) {
+        .plus,
+        .home {
+          margin-right: 10px;
+        }
+
+        .head {
+          font-size: 2rem;
+          margin-left: 0px;
+        }
+
+        .blogs {
+          padding: 0px 10px;
+        }
+
+        .user-name,
+        .user-posts {
+          font-size: 1.2rem;
+        }
+
+        .bai {
+          padding: 15px 10px;
+          max-width: 100%;
+          min-width: 300px;
+          box-sizing: border-box;
+        }
+
+        .content-img {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="nav">
+      <h1 class="head">TCM</h1>
+
+      <div class="icons">
+        <!-- new article -->
+        <div class="dropdown">
+          <a href="/new-article/create/<%= profile.slugName %>" class="plus"
+            ><i class="fas fa-plus"></i
+          ></a>
+        </div>
+
+        <!-- home -->
+
+        <div class="dropdown">
+          <a href="/feed" class="home"><i class="fas fa-home"></i></a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="userInfo">
+      <p class="user-name"><%= profile.name %></p>
+      <p class="user-posts">Posts: <%= blogs.length %></p>
+    </div>
+
+    <section
+      style="display: flex; align-items: center; justify-content: center"
+    >
+      <% if( blogs.length == 0) {%>
+      <h1
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 70vh;
+          font-size: 4em;
+          font-family: monospace;
+          font-weight: 500;
+          color: #adacac;
+        "
+      >
+        No post yet
+      </h1>
+      <%}%> <% if(blogs.length != 0) {%>
+      <div class="blogs">
+        <!-- all articles -->
+
+        <% blogs.forEach(function (e) { %>
+        <div class="bai">
+          <!-- single article -->
+          <div class="blog">
+            <div class="content-img">
+              <div class="blog-content">
+                <!--author name-->
+                <p class="written-by">
+                  <%= e.name %>
+                </p>
+
+                <p class="para"><%=e.markdown%></p>
+                
+                <!-- date -->
+                <p class="date">
+                  <%= e.createdAt %>
+                  <!-- <a
+                    style="
+                    margin-left: 5px;
+                    font-size: 1.2em;
+                    text-decoration: none;
+                    color: gray;
+                    "
+                    href="/readMore/<%= e.slug %>/<%= e.blogNumber %>"
+                    ></a> -->
+                  </p>
+                  <p class="para">Price: <%= e.price %></p>
+              </div>
+
+            </div>
+            <div class="btns">
+              <!-- edit button -->
+
+              <div class="dropdown">
+                <button class="btn-edit">
+                  <a
+                    class="anchor-edit"
+                    href="/edit/<%= e.slug %>/<%= e.blogNumber %>"
+                    ><i class="fas fa-pen"></i
+                  ></a>
+                </button>
+              </div>
+
+              <!-- delete button -->
+              <form
+                action="/<%= e.id %>?_method=DELETE"
+                method="POST"
+                class="delete"
+              >
+                <div class="dropdown">
+                  <button type="submit" class="btn-delete">
+                    <i class="far fa-trash-alt"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <%})%>
+      </div>
+      <%}%>
+      <!-- logout -->
+      <a href="/user/logout" class="logout"
+        ><i class="fas fa-sign-out-alt"></i> Logout</a
+      >
+    </section>
+  </body>
+</html>

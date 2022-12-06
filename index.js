@@ -5,7 +5,6 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
 const methodOverride = require("method-override");
-const a = require("./routes/models");
 const app = express();
 const http = require("http").createServer(app);
 const port = process.env.PORT || 3000;
@@ -24,7 +23,7 @@ app.use(methodOverride("_method"));
 
 // Connecting with database
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/blogs")
+  .connect("mongodb+srv://vihan:vihank123@cluster0.pnbyexm.mongodb.net/?retryWrites=true&w=majority" || "mongodb://localhost:27017/blogs")
   .then(() => console.log("Connection successful..."))
   .catch((err) => console.log(err));
 
@@ -55,16 +54,15 @@ app.use((req, res, next) => {
   next();
 });
 
-//getting routes/new.js
-app.use("/", require(path.join(__dirname, "routes/new")));
-
-//getting routes/nav.js
-app.use("/", require("./routes/nav"));
+//getting routes/workshopRoute.js
+app.use("/", require("./routes/workshopRoute"));
 
 //getting routes/register.js
 app.use("/", require("./routes/register"));
 
+//getting routes/events.js
 app.use("/", require("./routes/events"));
+
 //404 page
 app.get("*", (req, res) => {
   res.render("404Page");

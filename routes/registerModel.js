@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const slugify = require("slugify");
-var findOrCreate = require("mongoose-findorcreate");
 
 //schema for register data
 const userSchema = new mongoose.Schema({
@@ -29,7 +28,5 @@ userSchema.pre("validate", function (next) {
   }
   next();
 });
-
-userSchema.plugin(findOrCreate); //for google auth user
 
 module.exports = new mongoose.model("userData", userSchema);

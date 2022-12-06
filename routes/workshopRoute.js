@@ -1,6 +1,6 @@
 const express = require("express");
-const blogdb = require("./../routes/models");
-const userdb = require("./../routes/registerModels");
+const blogdb = require("./../routes/workshopModel");
+const userdb = require("./../routes/registerModel");
 const fs = require("fs");
 const markdown = require("markdown").markdown;
 const router = express.Router();
@@ -16,7 +16,7 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-// saving blog to database
+// saving workshop to database
 router.post("/save/:name", (req, res) => {
   //generating 9 digit blog number
   var blogNumber = Math.floor(Math.random() * 1000000000);
@@ -29,16 +29,14 @@ router.post("/save/:name", (req, res) => {
 
       const apprec = new blogdb({
         title: req.body.title,
-        description: req.body.description,
         markdown: req.body.markdown,
-        roomName: req.body.title,
-        blogNumber: blogNumber,
-        registerNumber: registeredUser.registerNumber,
+        price: req.body.price,
         name: registeredUser.name,
+        blogNumber: blogNumber,
       });
 
       const blog = await blogdb.insertMany([apprec]);
-      res.redirect(`/readMore/${apprec.slug}/${apprec.blogNumber}`);
+      res.redirect("/feed");
     } catch (err) {
       console.log(err);
     }
@@ -54,7 +52,7 @@ router.put("/:id", async (req, res) => {
     await blogdb.updateMany(art, {
       $set: {
         title: req.body.title,
-        description: req.body.description,
+        price: req.body.price,
         markdown: req.body.markdown,
         sanitizedHtml: markdown.toHTML(req.body.markdown),
       },

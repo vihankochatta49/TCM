@@ -27,5 +27,13 @@
     "passport-local": "^1.0.0",
     "slugify": "^1.6.4",
     "socket.io": "^4.4.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vihankochatta49/TCM.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vihankochatta49/TCM/issues"
+  },
+  "homepage": "https://github.com/vihankochatta49/TCM#readme"
 }
