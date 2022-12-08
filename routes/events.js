@@ -19,6 +19,41 @@ router.get("/feed", ensureAuthenticated, (req, res) => {
   res.render("feed", { profile, blogs });
 });
 
+//competitions route
+router.get("/:event",ensureAuthenticated,(req,res)=> {
+  const profile = req.user;
+  var comp=[];
+  var event = req.params.event;
+  if(req.params.event == "Competitions") {
+    comp = [
+      {name: "Technology"},
+      {name: "Entrepreneurial"},
+      {name: "Miscellanous"},
+    ];
+  }else if(req.params.event == "Technology") {
+    comp = [
+      {name: "ROBOGAMES"},
+      {name: "SOFTWARE CORNER"},
+      {name: "TAKE OFF"},
+      {name: "TECHNOVATION"},
+      {name: "ECDC"},
+    ];
+  }else if(req.params.event == "Entrepreneurial") {
+    comp = [
+      {name: "FINTECH"},
+      {name: "Entrepreneurial Events"},
+      {name: "BUSINESS Events"},
+    ];
+  }else if(req.params.event == "Miscellanous") {
+    comp = [
+      {name: "DESIGN EVENTS"},
+      {name: "MANDAKINI"},
+      {name: "MODEL UNITED NATIONS"},
+    ];
+  }
+  res.render("Competitions",{profile,comp,event});
+})
+
 //different events route
 router.get("/:event/:name", async (req, res) => {
   const profile = await userdb.findOne({
@@ -30,7 +65,7 @@ router.get("/:event/:name", async (req, res) => {
     })
     .sort({ date: -1 });
   if (profile.position == req.params.event) {
-    res.render(`${req.params.event}`,{profile,blogs});
+    res.render("Workshops",{profile,blogs});
   } else res.render("404Page");
 });
 

@@ -4,6 +4,7 @@ const markdown = require("markdown").markdown;
 
 //schema for blog posts
 const schema = new mongoose.Schema({
+  event: String,
   title: String,
   markdown: String,
   price: String,

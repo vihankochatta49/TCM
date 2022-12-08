@@ -28,6 +28,7 @@ router.post("/save/:name", (req, res) => {
       });
 
       const apprec = new blogdb({
+        event: req.body.event,
         title: req.body.title,
         markdown: req.body.markdown,
         price: req.body.price,
@@ -51,6 +52,7 @@ router.put("/:id", async (req, res) => {
 
     await blogdb.updateMany(art, {
       $set: {
+        event: req.body.event,
         title: req.body.title,
         price: req.body.price,
         markdown: req.body.markdown,

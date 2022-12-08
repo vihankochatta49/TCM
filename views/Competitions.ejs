@@ -147,12 +147,15 @@
     >
       <div class="blogs">
         <!-- all articles -->
+
+        <% comp.forEach(function (e) { %>
+          
         <div class="bai">
-          <a href="/Workshops/<%=profile.slugName%>">Workshops</a>
+          <% if(event == "Competitions" ) {%> <a href="/<%=e.name%>"><%=e.name%></a><%}else{%>
+            <a href="/<%=e.name%>/<%=profile.slugName%>"><%=e.name%></a>
+            <%}%>
         </div>
-        <div class="bai">
-          <a href="/Competitions">Competitions</a>
-        </div>
+        <%})%>
       </div>
         
       </div>
