@@ -7,19 +7,19 @@ const { ensureAuthenticated } = require("../config/auth");
 const nodemailer = require("nodemailer");
 // const nodemailer = require('../lib/nodemailer');
 
-router.get("/",(req,res) => {
+router.get("/", (req, res) => {
   res.render("register");
-})
+});
 
-router.get("/login", (req,res) => {
+router.get("/login", (req, res) => {
   res.render("login");
-})
+});
 
-router.get("/feed",ensureAuthenticated,async (req,res) => {
+router.get("/feed", ensureAuthenticated, async (req, res) => {
   const b = req.user;
-  const a = await rM.findOne({name: b.name,});
-  res.render("feed",{a});
-})
+  const a = await rM.findOne({ name: b.name });
+  res.render("feed", { a });
+});
 
 // saving register data to db (post route)
 router.post("/register", (req, res) => {
@@ -50,14 +50,7 @@ router.post("/register", (req, res) => {
         res.render("register", { errors, name, password, password2 });
       } else {
         var teamNumber = Math.floor(Math.random() * 1000000000);
-        var emails = [];
-        for(var i=1;i<=2;i++) {
-          var x = "member"+`${i}`+"Email";
-          console.log(x);
-          console.log(req.body.member1Email);
-          emails.push(req.body.x);
-        }
-        console.log(emails);
+        var emails = req.body.memberEmail;
         const createDoc = async function () {
           try {
             const userData = new rM({
@@ -66,11 +59,9 @@ router.post("/register", (req, res) => {
               password: req.body.password,
               position: "Leader",
               member1: req.body.member1Name,
-              member1Email: req.body.member1Email,
               member2: req.body.member2Name,
-              member2Email: req.body.member2Email,
               teamNumber: teamNumber,
-              emails:emails,
+              emails: req.body.memberEmail,
             });
 
             // generating hashed password
@@ -81,28 +72,28 @@ router.post("/register", (req, res) => {
             //saving to db
             const user = await rM.insertMany([userData]);
 
-var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'vihankochatta49@gmail.com',
-    pass: 'ppxqajkxkddmhdsn'
-  }
-});
+            var transporter = nodemailer.createTransport({
+              service: "gmail",
+              auth: {
+                user: "vihankochatta49@gmail.com",
+                pass: "ppxqajkxkddmhdsn",
+              },
+            });
 
-var mailOptions = {
-  from: 'vihankochatta49@gmail.com',
-  to: `${req.body.member1Email},${req.body.member2Email}`,
-  subject: 'Teckriti team resgistration',
-  text: `localhost:3000/register/${teamNumber}`,
-}
+            var mailOptions = {
+              from: "vihankochatta49@gmail.com",
+              to: emails,
+              subject: "Teckriti team resgistration",
+              text: `localhost:3000/register/${teamNumber}`,
+            };
 
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
-});
+            transporter.sendMail(mailOptions, function (error, info) {
+              if (error) {
+                console.log(error);
+              } else {
+                console.log("Email sent: " + info.response);
+              }
+            });
 
             req.flash(
               "success_msg",
