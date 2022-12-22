@@ -36,10 +36,17 @@
         background-color: rgba(0, 0, 0, 0.7);
       }
 
-      .error {
-        color: red;
-        font-size: 1.5em;
-        margin-bottom: 10px;
+      .mssg {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        background: #1b324f;
+        color: white;
+        font-size: 25px;
+        width: 25%;
+        text-align: center;
+        height: 555px;
       }
 
       .form {
@@ -86,7 +93,6 @@
       .btn:hover {
         background-color: rgb(16, 90, 16);
       }
-
       @media screen and (max-width: 640px) {
         body {
           height: 100%;
@@ -98,6 +104,15 @@
           height: 100vh;
         }
 
+        .mssg {
+          flex-direction: row;
+          height: 50px;
+          width: 100%;
+        }
+
+        .mssg h1 {
+          font-size: 1.2rem !important;
+        }
         .form {
           width: 100%;
         }
@@ -121,18 +136,26 @@
   <body>
     <div class="cont">
       <div class="form">
-        <form action="/register" method="POST">
-          <!--error messages-->
-          <% if(typeof errors != 'undefined') { %> <%
-          errors.forEach(function(error) { %>
-          <p class="error"><%= error.msg %></p>
-          <% }) %> <% } %>
+        <form action="/login" method="POST">
+          <!--error and success messages-->
+          <% if(typeof errors != 'undefined') {%>
+          <%errors.forEach(function(error) {%>
+          <p class="msg" style="color: yellow"><%=error.msg %></p>
+          <%});%> <% } %> <% if(success_msg != '') {%>
+          <!--flash success message-->
+          <p class="msg" style="color: green"><%=success_msg %></p>
+          <% } %> <% if(error_msg != '') {%>
+          <!--flash error message-->
+          <p class="msg" style="color: red"><%=error_msg %></p>
+          <% } %> <% if(error != '') {%>
+          <p class="msg" style="color: red"><%=error %></p>
+          <% } %>
           <!-- email -->
           <input
             type="text"
             class="write"
-            name="name"
-            id="name"
+            name="email"
+            id="email"
             placeholder="User-name..."
             required
           />
@@ -145,21 +168,11 @@
             placeholder="password..."
             required
           />
-          <!--confirm password -->
-          <input
-            type="password"
-            class="write"
-            name="password2"
-            id="password2"
-            placeholder="confirm password..."
-            required
-          />
 
           <!-- buttons -->
           <div class="btns">
-            <button class="btn" type="submit">Register</button>
+            <button class="btn" type="submit">Login</button>
           </div>
-        </form>
         <p
           style="
             font-size: 1.1rem;
@@ -168,7 +181,8 @@
             color: white;
           "
         >
-          Already have a account? <a href="/login"><strong>Login</strong></a>
+          Don't have a account?
+          <a href="/register"><strong>Register</strong></a>
         </p>
       </div>
     </div>
